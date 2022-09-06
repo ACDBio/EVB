@@ -1,0 +1,438 @@
+structure_id	structure_name	acronym	loc	acronym_upper	Left_hemisphere	Right_hemisphere	Undefined_hemisphere	source	coldcuts_acronym	coldcuts_id	coldcuts_name	coldcuts
+4679	PHA_Posterior Hypothalamic Area, Left	PHA	NA	PHA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4909	OPs_occipital pole, Left, superior aspect	OPs	NA	OPS	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4307	SI_Substantia Innominata, Left	SI	NA	SI	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4139	STG-i_superior temporal gyrus, Right, inferior bank of gyrus	STG	i	STG	FALSE	TRUE	FALSE	ABA_dataset_adult	STG	12140	superior temporal gyrus	TRUE
+4124	Pcu-i_precuneus, Right,  inferior lateral bank of gyrus	Pcu	i	PCU	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4033	MFG-s_middle frontal gyrus, Right, superior bank of gyrus	MFG	s	MFG	FALSE	TRUE	FALSE	ABA_dataset_adult	MFG	12116	middle frontal gyrus	TRUE
+9048	Dk_nucleus of Darkschewitsch, Left	Dk	NA	DK	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4288	Pu_Putamen, Left	Pu	NA	PU	TRUE	FALSE	FALSE	ABA_dataset_adult	Pu	10338	putamen	TRUE
+4128	PCLp-cs_paracentral lobule, posterior part, Left, bank of cingulate sulcus	PCLp	cs	PCLP	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4761	PV-IX_IX, Right Paravermis	PV	IX	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9677	Sp5_spinal trigeminal nucleus, Left	Sp5	NA	SP5	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4110	SMG-i_supramarginal gyrus, Right, inferior bank of gyrus	SMG	i	SMG	FALSE	TRUE	FALSE	ABA_dataset_adult	SMG	12135	supramarginal gyrus	TRUE
+4251	S_subiculum, Left	S	NA	S	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4088	PoG-sl_postcentral gyrus, Left, superior lateral aspect of gyrus	PoG	sl	POG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4273	SIG_Short Insular Gyri, Left	SIG	NA	SIG	TRUE	FALSE	FALSE	ABA_dataset_adult	SIG	12178	short insular gyri	TRUE
+4629	AHA_Anterior Hypothalamic Area, Right	AHA	NA	AHA	FALSE	TRUE	FALSE	ABA_dataset_adult	AHA	10377	amygdalohippocampal area	TRUE
+4194	LiG-str_lingual gyrus, Left, striate	LiG	str	LIG	TRUE	FALSE	FALSE	ABA_dataset_adult	LIG	12177	long insular gyri	TRUE
+4194	LiG-str_lingual gyrus, Left, striate	LiG	str	LIG	TRUE	FALSE	FALSE	ABA_dataset_adult	LiG	12151	lingual gyrus	TRUE
+4070	PaOG_parolfactory gyri, Right	PaOG	NA	PAOG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4492	ILc_Caudal Group of Intralaminar Nuclei, Right	ILc	NA	ILC	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4444	MG_Medial Geniculate Complex, Left	MG	NA	MG	TRUE	FALSE	FALSE	ABA_dataset_adult	MG	10434	medial geniculate nuclei	TRUE
+4667	TM_Tuberomammillary Nucleus, Left	TM	NA	TM	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9075	SNR_Substantia Nigra, pars reticulata, Left	SNR	NA	SNR	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9169	PRF_Pontine Reticular Formation, Right	PRF	NA	PRF	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4758	PV-VIIB_VIIB, Right Paravermis	PV	VIIB	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4322	Cl_Claustrum, Left	Cl	NA	CL	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9019	MBRF_Midbrain Reticular Formation, Left	MBRF	NA	MBRF	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4751	PV-III_III, Right Paravermis	PV	III	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9450	EW_Edinger Westphal nucleus, Left	EW	NA	EW	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9186	SOC_Superior Olivary Complex, Right	SOC	NA	SOC	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4519	Sb_Subthalamic Nucleus, Right	Sb	NA	SB	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4314	SI_Substantia Innominata, Right	SI	NA	SI	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4012	PrG-prc_precentral gyrus, Left, bank of the precentral sulcus	PrG	prc	PRG	TRUE	FALSE	FALSE	ABA_dataset_adult	PRG	146034892	perirhinal gyrus ( rostral part of FuGt)	TRUE
+9546	10_dorsal motor nucleus of the vagus, Left	10	NA	10	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4207	IOG-s_inferior occipital gyrus, Left, superior bank of gyrus	IOG	s	IOG	TRUE	FALSE	FALSE	ABA_dataset_adult	IOG	12153	inferior occipital gyrus	TRUE
+4087	PoG-cs_postcentral gyrus, Left, bank of the central sulcus	PoG	cs	POG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9004	CGMB_central grey substance of midbrain, Left	CGMB	NA	CGMB	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4292	Acb_Nucleus Accumbens, Right	Acb	NA	ACB	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4537	Pa_Paraventricular Nuclei, Right of Thalamus, Right	Pa	NA	PA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9556	Gr_gracile nucleus, Right	Gr	NA	GR	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+13005	LHM_Lateral Hypothalamic Area, Mammillary Region, Left	LHM	NA	LHM	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4130	PCLp-l_paracentral lobule, posterior part, Right, lateral bank of gyrus	PCLp	l	PCLP	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9493	Pn_pontine nuclei, Right	Pn	NA	PN	FALSE	TRUE	FALSE	ABA_dataset_adult	Pn	10661	pons	TRUE
+4890	FP-s_frontal pole, Left, superior aspect	FP	s	FP	TRUE	FALSE	FALSE	ABA_dataset_adult	FP	146034888	frontal pole	TRUE
+9150	LC_locus ceruleus, Right	LC	NA	LC	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4257	CA4_CA4 field, Left	CA4	NA	CA4	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4117	AnG-i_angular gyrus, Right, inferior bank of gyrus	AnG	i	ANG	FALSE	TRUE	FALSE	ABA_dataset_adult	AnG	12136	angular gyrus	TRUE
+4740	He-Crus II_Crus II, Left Lateral Hemisphere	He	Crus II	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4286	BCd_Body of Caudate Nucleus, Right	BCd	NA	BCD	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+10148	CGPo_central grey of the pons, Left	CGPo	NA	CGPO	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4783	Emb_Emboliform Nucleus, Left	Emb	NA	EMB	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4738	He-VI_VI, Left Lateral Hemisphere	He	VI	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4624	SO_Supraoptic Nucleus, Right	SO	NA	SO	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4532	PIN_pineal	PIN	NA	PIN	FALSE	FALSE	TRUE	ABA_dataset_adult	Pin	10460	pineal body	TRUE
+4499	MG_Medial Geniculate Complex, Right	MG	NA	MG	FALSE	TRUE	FALSE	ABA_dataset_adult	MG	10434	medial geniculate nuclei	TRUE
+4255	CA2_CA2 field, Left	CA2	NA	CA2	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4167	HG_Heschls gyrus, Right	HG	NA	HG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4143	MTG-i_middle temporal gyrus, Left, inferior bank of gyrus	MTG	i	MTG	TRUE	FALSE	FALSE	ABA_dataset_adult	MTG	12141	middle temporal gyrus	TRUE
+4143	MTG-i_middle temporal gyrus, Left, inferior bank of gyrus	MTG	i	MTG	TRUE	FALSE	FALSE	ABA_dataset_adult	MTg	12195	midbrain tegmentum	TRUE
+4894	FP-s_frontal pole, Right, superior aspect	FP	s	FP	FALSE	TRUE	FALSE	ABA_dataset_adult	FP	146034888	frontal pole	TRUE
+4282	BCd_Body of Caudate Nucleus, Left	BCd	NA	BCD	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4901	IRoG_inferior rostral gyrus, Left	IRoG	NA	IROG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9005	CGMB_central grey substance of midbrain, Right	CGMB	NA	CGMB	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4355	BMA_Basomedial nucleus, Right	BMA	NA	BMA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4046	orIFG_inferior frontal gyrus, orbital part, Right	orIFG	NA	ORIFG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9074	SNC_Substantia Nigra, pars compacta, Left	SNC	NA	SNC	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4211	IOG-i_inferior occipital gyrus, Right, inferior bank of gyrus	IOG	i	IOG	FALSE	TRUE	FALSE	ABA_dataset_adult	IOG	12153	inferior occipital gyrus	TRUE
+4604	PVH_Paraventricular Nucleus of the Hypothalamus, Right	PVH	NA	PVH	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4506	R_Reticular Nucleus of Thalamus, Left	R	NA	R	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4363	CeA_Central Nucleus, Right	CeA	NA	CEA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4173	PLT_planum temporale, Right	PLT	NA	PLT	FALSE	TRUE	FALSE	ABA_dataset_adult	PLT	12145	planum temporale	TRUE
+4061	LOrG_lateral orbital gyrus, Right	LOrG	NA	LORG	FALSE	TRUE	FALSE	ABA_dataset_adult	LOrG	12125	lateral orbital gyrus	TRUE
+4722	PV-VI_VI, Left Paravermis	PV	VI	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4264	CA2_CA2 field, Right	CA2	NA	CA2	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4234	CgGp-i_Cingulate gyrus, parietal part, Right, inferior bank of gyrus	CgGp	i	CGGP	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4214	SOG-s_superior occipital gyrus, Left, superior bank of gyrus	SOG	s	SOG	TRUE	FALSE	FALSE	ABA_dataset_adult	SOG	12154	superior occipital gyrus	TRUE
+4440	LGd_Dorsal Lateral Geniculate Nucleus, Left	LGd	NA	LGD	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4627	LHA_Lateral hypothalamic area, Right	LHA	NA	LHA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4728	PV-IX_IX, Left Paravermis	PV	IX	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4248	PHG-cos_parahippocampal gyrus, Right, bank of the cos	PHG	cos	PHG	FALSE	TRUE	FALSE	ABA_dataset_adult	PHG	12162	parahippocampal gyrus	TRUE
+4311	DBh_Diagonal Band, Horizontal Division, Left	DBh	NA	DBH	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4153	ITG-its_inferior temporal gyrus, Right, bank of the its	ITG	its	ITG	FALSE	TRUE	FALSE	ABA_dataset_adult	ITG	12142	inferior temporal gyrus	TRUE
+4030	MFG-s_middle frontal gyrus, Left, superior bank of gyrus	MFG	s	MFG	TRUE	FALSE	FALSE	ABA_dataset_adult	MFG	12116	middle frontal gyrus	TRUE
+9543	Cu_cuneate nucleus, Left	Cu	NA	CU	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9456	MBRa_Midbrain Raphe Nuclei, Left	MBRa	NA	MBRA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4186	Cun-pest_cuneus, Left, peristriate	Cun	pest	CUN	TRUE	FALSE	FALSE	ABA_dataset_adult	Cun	12150	cuneus	TRUE
+9137	6_abducens nucleus, Left	6	NA	6	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4218	SOG-i_superior occipital gyrus, Right, inferior bank of gyrus	SOG	i	SOG	FALSE	TRUE	FALSE	ABA_dataset_adult	SOG	12154	superior occipital gyrus	TRUE
+4760	PV-VIIIB_VIIIB, Right Paravermis	PV	VIIIB	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4706	Ve-VIIAf_VIIAf	Ve	VIIAf	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+9023	MBRF_Midbrain Reticular Formation, Right	MBRF	NA	MBRF	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4710	Ve-VIIIB_VIIIB	Ve	VIIIB	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+9064	4_trochlear nucleus, Left	4	NA	4	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4908	TP-m_temporal pole, Right, medial aspect	TP	m	TP	FALSE	TRUE	FALSE	ABA_dataset_adult	TP	12146	temporal pole	TRUE
+4015	PrG-cs_precentral gyrus, Left, bank of the central sulcus	PrG	cs	PRG	TRUE	FALSE	FALSE	ABA_dataset_adult	PRG	146034892	perirhinal gyrus ( rostral part of FuGt)	TRUE
+4114	AnG-i_angular gyrus, Left, inferior bank of gyrus	AnG	i	ANG	TRUE	FALSE	FALSE	ABA_dataset_adult	AnG	12136	angular gyrus	TRUE
+4163	FuG-l_fusiform gyrus, Right, lateral bank of gyrus	FuG	l	FUG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4524	Hl_Lateral Habenular Nucleus, Left	Hl	NA	HL	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4138	STG-l_superior temporal gyrus, Right, lateral bank of gyrus	STG	l	STG	FALSE	TRUE	FALSE	ABA_dataset_adult	STG	12140	superior temporal gyrus	TRUE
+4299	GPi_globus pallidus, internal segment, Right	GPi	NA	GPI	FALSE	TRUE	FALSE	ABA_dataset_adult	GPi	10344	internal segment of globus pallidus	TRUE
+4417	DTLv_Lateral group of Nuclei, Left, Ventral division	DTLv	NA	DTLV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4244	PHG-l_parahippocampal gyrus, Left, lateral bank of gyrus	PHG	l	PHG	TRUE	FALSE	FALSE	ABA_dataset_adult	PHG	12162	parahippocampal gyrus	TRUE
+4271	LIG_Long Insular Gyri, Right	LIG	NA	LIG	FALSE	TRUE	FALSE	ABA_dataset_adult	LIG	12177	long insular gyri	TRUE
+4271	LIG_Long Insular Gyri, Right	LIG	NA	LIG	FALSE	TRUE	FALSE	ABA_dataset_adult	LiG	12151	lingual gyrus	TRUE
+4495	LGd_Dorsal Lateral Geniculate Nucleus, Right	LGd	NA	LGD	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9520	Arc_arcuate nucleus of medulla, Left	Arc	NA	ARC	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9022	SubCn_subcuneiform nucleus, Left	SubCn	NA	SUBCN	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4245	PHG-cos_parahippocampal gyrus, Left, bank of the cos	PHG	cos	PHG	TRUE	FALSE	FALSE	ABA_dataset_adult	PHG	12162	parahippocampal gyrus	TRUE
+4020	PrG-cs_precentral gyrus, Right, bank of the central sulcus	PrG	cs	PRG	FALSE	TRUE	FALSE	ABA_dataset_adult	PRG	146034892	perirhinal gyrus ( rostral part of FuGt)	TRUE
+4725	PV-VIIB_VIIB, Left Paravermis	PV	VIIB	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4787	Dt_Dentate Nucleus, Right	Dt	NA	DT	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4542	PrOR_Preoptic Region, Left	PrOR	NA	PROR	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4904	TP-i_temporal pole, Left, inferior aspect	TP	i	TP	TRUE	FALSE	FALSE	ABA_dataset_adult	TP	12146	temporal pole	TRUE
+4709	Ve-VIIIA_VIIIA	Ve	VIIIA	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4593	SO_Supraoptic Nucleus, Left	SO	NA	SO	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4057	POrG_posterior orbital gyrus, Left	POrG	NA	PORG	TRUE	FALSE	FALSE	ABA_dataset_adult	POrG	12124	posterior intermediate orbital gyrus	TRUE
+4024	SFG-l_superior frontal gyrus, Left, lateral bank of gyrus	SFG	l	SFG	TRUE	FALSE	FALSE	ABA_dataset_adult	SFG	12115	superior frontal gyrus	TRUE
+9156	SubC_nucleus subceruleus, Right	SubC	NA	SUBC	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9103	IC_Inferior Colliculus, Left	IC	NA	IC	TRUE	FALSE	FALSE	ABA_dataset_adult	IC	12305	inferior colliculus	TRUE
+4135	STG-l_superior temporal gyrus, Left, lateral bank of gyrus	STG	l	STG	TRUE	FALSE	FALSE	ABA_dataset_adult	STG	12140	superior temporal gyrus	TRUE
+4753	PV-V_V, Right Paravermis	PV	V	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9703	8Ve_vestibular nuclei, Right	8Ve	NA	8VE	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4906	TP-s_temporal pole, Right, superior aspect	TP	s	TP	FALSE	TRUE	FALSE	ABA_dataset_adult	TP	12146	temporal pole	TRUE
+4069	PaOG_parolfactory gyri, Left	PaOG	NA	PAOG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4197	LiG-str_lingual gyrus, Right, striate	LiG	str	LIG	FALSE	TRUE	FALSE	ABA_dataset_adult	LIG	12177	long insular gyri	TRUE
+4197	LiG-str_lingual gyrus, Right, striate	LiG	str	LIG	FALSE	TRUE	FALSE	ABA_dataset_adult	LiG	12151	lingual gyrus	TRUE
+4727	PV-VIIIB_VIIIB, Left Paravermis	PV	VIIIB	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9222	cc_corpus callosum	cc	NA	CC	FALSE	FALSE	TRUE	ABA_dataset_adult	cc	10561	corpus callosum	TRUE
+4596	LHA_Lateral hypothalamic area, Left	LHA	NA	LHA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9207	Pr5_principal sensory nucleus of trigeminal nerve, Left	Pr5	NA	PR5	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4759	PV-VIIIA_VIIIA, Right Paravermis	PV	VIIIA	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9144	7_facial motor nucleus, Right	7	NA	7	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4742	He-VIIIA_VIIIA, Left Lateral Hemisphere	He	VIIIA	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4099	SPL-i_supraparietal lobule, Left, inferior bank of gyrus	SPL	i	SPL	TRUE	FALSE	FALSE	ABA_dataset_adult	SPL	12133	supraparietal lobule	TRUE
+4217	SOG-s_superior occipital gyrus, Right, superior bank of gyrus	SOG	s	SOG	FALSE	TRUE	FALSE	ABA_dataset_adult	SOG	12154	superior occipital gyrus	TRUE
+4705	Ve-VI_VI	Ve	VI	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4106	SMG-s_supramarginal gyrus, Left, superior bank of gyrus	SMG	s	SMG	TRUE	FALSE	FALSE	ABA_dataset_adult	SMG	12135	supramarginal gyrus	TRUE
+9534	8Co_cochlear nuclei, Right	8Co	NA	8CO	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4483	DTP_Posterior Group of Nuclei, Right	DTP	NA	DTP	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4367	COMA_Cortico-medial group, Left	COMA	NA	COMA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9067	VTA_ventral tegmental area, Left	VTA	NA	VTA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9598	GiRt_gigantocellular group, Left	GiRt	NA	GIRT	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4260	S_subiculum, Right	S	NA	S	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4455	DTM_Medial Group of Nuclei, Right	DTM	NA	DTM	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9684	Sp5_spinal trigeminal nucleus, Right	Sp5	NA	SP5	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4113	AnG-s_angular gyrus, Left, superior bank of gyrus	AnG	s	ANG	TRUE	FALSE	FALSE	ABA_dataset_adult	AnG	12136	angular gyrus	TRUE
+9206	Mo5_motor nucleus of trigeminal nerve, Left	Mo5	NA	MO5	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4746	He-X_X, Left Lateral Hemisphere	He	X	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9079	PTec_Pretectal Region	PTec	NA	PTEC	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4151	ITG-mts_inferior temporal gyrus, Left, bank of mts	ITG	mts	ITG	TRUE	FALSE	FALSE	ABA_dataset_adult	ITG	12142	inferior temporal gyrus	TRUE
+4051	MOrG_medial orbital gyrus, Left	MOrG	NA	MORG	TRUE	FALSE	FALSE	ABA_dataset_adult	MOrG	12122	medial orbital gyrus	TRUE
+4518	Sb_Subthalamic Nucleus, Left	Sb	NA	SB	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9642	RaM_raphe nuclei of medulla	RaM	NA	RAM	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4193	LiG-pest_lingual gyrus, Left, peristriate	LiG	pest	LIG	TRUE	FALSE	FALSE	ABA_dataset_adult	LIG	12177	long insular gyri	TRUE
+4193	LiG-pest_lingual gyrus, Left, peristriate	LiG	pest	LIG	TRUE	FALSE	FALSE	ABA_dataset_adult	LiG	12151	lingual gyrus	TRUE
+4267	DG_Dentate gyrus, Right	DG	NA	DG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4189	Cun-pest_cuneus, Right, peristriate	Cun	pest	CUN	FALSE	TRUE	FALSE	ABA_dataset_adult	Cun	12150	cuneus	TRUE
+4313	BST_Nucleus of Stria Terminalis, Left	BST	NA	BST	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4201	OTG-i_occipito-temporal gyrus, Left, inferior bank of gyrus	OTG	i	OTG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4017	PrG-prc_precentral gyrus, Right, bank of the precentral sulcus	PrG	prc	PRG	FALSE	TRUE	FALSE	ABA_dataset_adult	PRG	146034892	perirhinal gyrus ( rostral part of FuGt)	TRUE
+9039	3_Oculomotor Nuclear Complex, Right	3	NA	3	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4210	IOG-s_inferior occipital gyrus, Right, superior bank of gyrus	IOG	s	IOG	FALSE	TRUE	FALSE	ABA_dataset_adult	IOG	12153	inferior occipital gyrus	TRUE
+4720	PV-V_V, Left Paravermis	PV	V	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4892	FPm_frontal pole, Left, medial aspect	FPm	NA	FPM	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4123	Pcu-s_precuneus, Right, superior lateral bank of gyrus	Pcu	s	PCU	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4671	MB_Mammillary Body, Left	MB	NA	MB	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4734	He-III_III, Left Lateral Hemisphere	He	III	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9698	8Ve_vestibular nuclei, Left	8Ve	NA	8VE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4903	TP-s_temporal pole, Left, superior aspect	TP	s	TP	TRUE	FALSE	FALSE	ABA_dataset_adult	TP	12146	temporal pole	TRUE
+4675	LM_Lateral Mammillary Nucleus, Left	LM	NA	LM	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4648	PeF_Perifornical Nucleus, Left	PeF	NA	PEF	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4039	trIFG_Inferior frontal gyrus, triangular part, Left	trIFG	NA	TRIFG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4095	PoG-pcs_postcentral gyrus, Right, bank of the posterior central sulcus	PoG	pcs	POG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+10151	LTu_Lateral Tuberal Nucleus, Left	LTu	NA	LTU	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9078	SNR_Substantia Nigra, pars reticulata, Right	SNR	NA	SNR	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4240	CgGr-s_Cingulate gyrus, retrosplenial part, Right, superior bank of gyrus	CgGr	s	CGGR	FALSE	TRUE	FALSE	ABA_dataset_adult	CgGr	12157	cingulate gyrus, rostral (anterior) part	TRUE
+4711	Ve-IX_IX	Ve	IX	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4116	AnG-s_angular gyrus, Right, superior bank of gyrus	AnG	s	ANG	FALSE	TRUE	FALSE	ABA_dataset_adult	AnG	12136	angular gyrus	TRUE
+4120	Pcu-s_precuneus, Left,  superior lateral bank of gyrus	Pcu	s	PCU	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4074	PCLa-i_paracentral lobule, anterior part, Left, inferior bank of gyrus	PCLa	i	PCLA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+10143	Pir_piriform cortex, left	Pir	NA	PIR	FALSE	FALSE	TRUE	ABA_dataset_adult	Pir	10311	piriform cortex	TRUE
+9157	RPn_pontine raphe nucleus	RPn	NA	RPN	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4718	PV-III_III, Left Paravermis	PV	III	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9455	MBRa_Midbrain Raphe Nuclei	MBRa	NA	MBRA	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4771	He-VI_VI, Right Lateral Hemisphere	He	VI	HE	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4196	LiG-pest_lingual gyrus, Right, peristriate	LiG	pest	LIG	FALSE	TRUE	FALSE	ABA_dataset_adult	LIG	12177	long insular gyri	TRUE
+4196	LiG-pest_lingual gyrus, Right, peristriate	LiG	pest	LIG	FALSE	TRUE	FALSE	ABA_dataset_adult	LiG	12151	lingual gyrus	TRUE
+4730	PV-X_X, Left Paravermis	PV	X	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4902	IRoG_inferior rostral gyrus, Right	IRoG	NA	IROG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9054	RN_Red Nucleus, Left	RN	NA	RN	TRUE	FALSE	FALSE	ABA_dataset_adult	RN	12247	red nucleus	TRUE
+4739	He-Crus I_Crus I, Left Lateral Hemisphere	He	Crus I	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4782	Dt_Dentate Nucleus, Left	Dt	NA	DT	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4031	MFG-i_middle frontal gyrus, Left, inferior bank of gyrus	MFG	i	MFG	TRUE	FALSE	FALSE	ABA_dataset_adult	MFG	12116	middle frontal gyrus	TRUE
+4382	LA_Lateral Nucleus, Right	LA	NA	LA	FALSE	TRUE	FALSE	ABA_dataset_adult	La	10367	lateral nucleus	TRUE
+4289	Pu_Putamen, Right	Pu	NA	PU	FALSE	TRUE	FALSE	ABA_dataset_adult	Pu	10338	putamen	TRUE
+4707	Ve-VIIAt_VIIAt	Ve	VIIAt	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4064	SCG_subcollosal gyrus, Right	SCG	NA	SCG	FALSE	TRUE	FALSE	ABA_dataset_adult	SCG	12160	subcallosal gyrus (parolfactory gyrus)	TRUE
+4641	DMH_Dorsomedial hypothalamic Nucleus, Left	DMH	NA	DMH	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4788	Emb_Emboliform Nucleus, Right	Emb	NA	EMB	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4899	SRoG_superior rostral gyrus, Right	SRoG	NA	SROG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4726	PV-VIIIA_VIIIA, Left Paravermis	PV	VIIIA	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4743	He-VIIIB_VIIIB, Left Lateral Hemisphere	He	VIIIB	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4052	MOrG_medial orbital gyrus, Right	MOrG	NA	MORG	FALSE	TRUE	FALSE	ABA_dataset_adult	MOrG	12122	medial orbital gyrus	TRUE
+4169	TG_transverse gyri, Left	TG	NA	TG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4179	PLP_planum polare, Right	PLP	NA	PLP	FALSE	TRUE	FALSE	ABA_dataset_adult	PLP	12147	planum polare	TRUE
+4049	GRe_gyrus rectus, Right	GRe	NA	GRE	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9161	PRF_Pontine Reticular Formation, Left	PRF	NA	PRF	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4284	HCd_Head of Caudate Nucleus, Right	HCd	NA	HCD	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4155	ITG-mts_inferior temporal gyrus, Right, bank of mts	ITG	mts	ITG	FALSE	TRUE	FALSE	ABA_dataset_adult	ITG	12142	inferior temporal gyrus	TRUE
+4395	DTA_Anterior Group of Nuclei, Left	DTA	NA	DTA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9565	IO_inferior olivary complex, Right	IO	NA	IO	FALSE	TRUE	FALSE	ABA_dataset_adult	IO	12600	inferior olive	TRUE
+4556	PrOR_Preoptic Region, Right	PrOR	NA	PROR	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9016	ICjl_interstitial nucleus of Cajal, Left	ICjl	NA	ICJL	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4014	PrG-il_precentral gyrus, Left, inferior lateral aspect of gyrus	PrG	il	PRG	TRUE	FALSE	FALSE	ABA_dataset_adult	PRG	146034892	perirhinal gyrus ( rostral part of FuGt)	TRUE
+4154	ITG-l_inferior temporal gyrus, Right, lateral bank of gyrus	ITG	l	ITG	FALSE	TRUE	FALSE	ABA_dataset_adult	ITG	12142	inferior temporal gyrus	TRUE
+4685	MB_Mammillary Body, Right	MB	NA	MB	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4708	Ve-VIIB_VIIB	Ve	VIIB	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4464	DTLd_Lateral group of Nuclei, Right, Dorsal Division	DTLd	NA	DTLD	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4346	BLA_Basolateral Nucleus, Right	BLA	NA	BLA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4040	trIFG_Inferior frontal gyrus, triangular part, Right	trIFG	NA	TRIFG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4018	PrG-sl_precentral gyrus, Right, superior lateral aspect of gyrus	PrG	sl	PRG	FALSE	TRUE	FALSE	ABA_dataset_adult	PRG	146034892	perirhinal gyrus ( rostral part of FuGt)	TRUE
+4379	LA_Lateral Nucleus, Left	LA	NA	LA	TRUE	FALSE	FALSE	ABA_dataset_adult	La	10367	lateral nucleus	TRUE
+4512	R_Reticular Nucleus of Thalamus, Right	R	NA	R	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4109	SMG-s_supramarginal gyrus, Right, superior bank of gyrus	SMG	s	SMG	FALSE	TRUE	FALSE	ABA_dataset_adult	SMG	12135	supramarginal gyrus	TRUE
+4757	PV-Crus II_Crus II, Right Paravermis	PV	Crus II	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4230	CgGp-s_Cingulate gyrus, parietal part, Left, superior bank of gyrus	CgGp	s	CGGP	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9521	Arc_arcuate nucleus of medulla, Right	Arc	NA	ARC	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9077	SNC_Substantia Nigra, pars compacta, Right	SNC	NA	SNC	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4774	He-VIIB_VIIB, Right Lateral Hemisphere	He	VIIB	HE	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4072	PCLa_paracentral lobule, anterior part, Left	PCLa	NA	PCLA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4274	SIG_Short Insular Gyri, Right	SIG	NA	SIG	FALSE	TRUE	FALSE	ABA_dataset_adult	SIG	12178	short insular gyri	TRUE
+4298	GPe_globus pallidus, external segment, Right	GPe	NA	GPE	FALSE	TRUE	FALSE	ABA_dataset_adult	GPe	10343	external segment of globus pallidus	TRUE
+4172	PLT_planum temporale, Left	PLT	NA	PLT	TRUE	FALSE	FALSE	ABA_dataset_adult	PLT	12145	planum temporale	TRUE
+4089	PoG-il_postcentral gyrus, Left, inferior lateral aspect of gyrus	PoG	il	POG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4233	CgGp-s_Cingulate gyrus, parietal part, Right, superior bank of gyrus	CgGp	s	CGGP	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4644	ARH_Arcuate Nucleus of the Hypothalamus, Left	ARH	NA	ARH	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4166	HG_Heschls gyrus, Left	HG	NA	HG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9178	SOC_Superior Olivary Complex, Left	SOC	NA	SOC	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4127	PCLp-l_paracentral lobule, posterior part, Left, lateral bank of gyrus	PCLp	l	PCLP	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4701	Ve-III_III	Ve	III	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4785	Glo_Globose Nucleus, Left	Glo	NA	GLO	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4048	GRe_gyrus rectus, Left	GRe	NA	GRE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9558	12_hypoglossal nucleus, Left	12	NA	12	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4304	SptN_Septal nuclei, Right	SptN	NA	SPTN	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9593	CMRt_central medullary reticular group, Right	CMRt	NA	CMRT	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9242	cgb_cingulum bundle, Right	cgb	NA	CGB	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4659	ARH_Arcuate Nucleus of the Hypothalamus, Right	ARH	NA	ARH	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9057	RN_Red Nucleus, Right	RN	NA	RN	FALSE	TRUE	FALSE	ABA_dataset_adult	RN	12247	red nucleus	TRUE
+4329	ATZ_Amygdaloid Transition zone, Left	ATZ	NA	ATZ	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4054	AOrG_anterior orbital gyrus, Left	AOrG	NA	AORG	TRUE	FALSE	FALSE	ABA_dataset_adult	AOrG	12123	anterior intermediate orbital gyrus	TRUE
+4226	CgGf-s_Cingulate gyrus, frontal part, Right, superior bank of gyrus	CgGf	s	CGGF	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4280	HCd_Head of Caudate Nucleus, Left	HCd	NA	HCD	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4573	PVH_Paraventricular Nucleus of the Hypothalamus, Left	PVH	NA	PVH	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9155	SubC_nucleus subceruleus, Left	SubC	NA	SUBC	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4295	GPe_globus pallidus, external segment, Left	GPe	NA	GPE	TRUE	FALSE	FALSE	ABA_dataset_adult	GPe	10343	external segment of globus pallidus	TRUE
+4450	DTA_Anterior Group of Nuclei, Right	DTA	NA	DTA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4034	MFG-i_middle frontal gyrus, Right, inferior bank of gyrus	MFG	i	MFG	FALSE	TRUE	FALSE	ABA_dataset_adult	MFG	12116	middle frontal gyrus	TRUE
+4775	He-VIIIA_VIIIA, Right Lateral Hemisphere	He	VIIIA	HE	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4090	PoG-pcs_postcentral gyrus, Left, bank of the posterior central sulcus	PoG	pcs	POG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4170	TG_transverse gyri, Right	TG	NA	TG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4911	OPl_occipital pole, Left, lateral aspect	OPl	NA	OPL	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4702	Ve-IV_IV	Ve	IV	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+9031	3_Oculomotor Nuclear Complex, Left	3	NA	3	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4107	SMG-i_supramarginal gyrus, Left, inferior bank of gyrus	SMG	i	SMG	TRUE	FALSE	FALSE	ABA_dataset_adult	SMG	12135	supramarginal gyrus	TRUE
+4027	SFG-l_superior frontal gyrus, Right, lateral bank of gyrus	SFG	l	SFG	FALSE	TRUE	FALSE	ABA_dataset_adult	SFG	12115	superior frontal gyrus	TRUE
+4896	FPm_frontal pole, Right, medial aspect	FPm	NA	FPM	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9065	4_trochlear nucleus, Right	4	NA	4	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4308	nbM_Basal nucleus, Left	nbM	NA	NBM	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4371	COMA_Cortico-medial group, Right	COMA	NA	COMA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4342	BLA_Basolateral Nucleus, Left	BLA	NA	BLA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9152	MPB_medial parabrachial nucleus, Left	MPB	NA	MPB	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4237	CgGr-s_Cingulate gyrus, retrosplenial part, Left, superior bank of gyrus	CgGr	s	CGGR	TRUE	FALSE	FALSE	ABA_dataset_adult	CgGr	12157	cingulate gyrus, rostral (anterior) part	TRUE
+4713	Ve-X_X	Ve	X	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4703	Ve-V_V	Ve	V	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4055	AOrG_anterior orbital gyrus, Right	AOrG	NA	AORG	FALSE	TRUE	FALSE	ABA_dataset_adult	AOrG	12123	anterior intermediate orbital gyrus	TRUE
+4073	PCLa-s_paracentral lobule, anterior part, Left, superior bank of gyrus	PCLa	s	PCLA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9153	MPB_medial parabrachial nucleus,Right	MPB	NA	MPB	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4136	STG-i_superior temporal gyrus, Left, inferior bank of gyrus	STG	i	STG	TRUE	FALSE	FALSE	ABA_dataset_adult	STG	12140	superior temporal gyrus	TRUE
+4093	PoG-sl_postcentral gyrus, Right, superior lateral aspect of gyrus	PoG	sl	POG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9147	LPB_lateral parabrachial nucleus, Right	LPB	NA	LPB	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+13006	LHM_Lateral Hypothalamic Area, Mammillary Region, Right	LHM	NA	LHM	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4013	PrG-sl_precentral gyrus, Left, superior lateral aspect of gyrus	PrG	sl	PRG	TRUE	FALSE	FALSE	ABA_dataset_adult	PRG	146034892	perirhinal gyrus ( rostral part of FuGt)	TRUE
+4323	Cl_Claustrum, Right	Cl	NA	CL	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4042	opIFG_inferior frontal gyrus, opercular part, Left	opIFG	NA	OPIFG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4131	PCLp-cs_paracentral lobule, posterior part, Right, bank of cingulate sulcus	PCLp	cs	PCLP	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4409	DTLd_Lateral group of Nuclei, Left, Dorsal Division	DTLd	NA	DTLD	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4224	CgGf-i_Cingulate gyrus, frontal part, Left, inferior bank of gyrus	CgGf	i	CGGF	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4160	FuG-cos_fusiform gyrus, Left, bank of cos	FuG	cos	FUG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9213	Mo5_motor nucleus of trigeminal nerve, Right	Mo5	NA	MO5	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4724	PV-Crus II_Crus II, Left Paravermis	PV	Crus II	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9525	CGS_central glial substance	CGS	NA	CGS	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4736	He-V_V, Left Lateral Hemisphere	He	V	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4060	LOrG_lateral orbital gyrus, Left	LOrG	NA	LORG	TRUE	FALSE	FALSE	ABA_dataset_adult	LOrG	12125	lateral orbital gyrus	TRUE
+4310	DBv_Diagonal Band, Vertical Division, Left	DBv	NA	DBV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4472	DTLv_Lateral group of Nuclei, Right, Ventral division	DTLv	NA	DTLV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4159	FuG-l_fusiform gyrus, Left, lateral bank of gyrus	FuG	l	FUG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4523	Hm_Medial Habenular Nucleus, Left	Hm	NA	HM	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4178	PLP_planum polare, Left	PLP	NA	PLP	TRUE	FALSE	FALSE	ABA_dataset_adult	PLP	12147	planum polare	TRUE
+9115	SC_Superior Colliculus, Left	SC	NA	SC	TRUE	FALSE	FALSE	ABA_dataset_adult	SC	12292	superior colliculus	TRUE
+4291	Acb_Nucleus Accumbens, Left	Acb	NA	ACB	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4094	PoG-il_postcentral gyrus, Right, inferior lateral aspect of gyrus	PoG	il	POG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4142	MTG-s_middle temporal gyrus, Left, superior bank of gyrus	MTG	s	MTG	TRUE	FALSE	FALSE	ABA_dataset_adult	MTG	12141	middle temporal gyrus	TRUE
+4142	MTG-s_middle temporal gyrus, Left, superior bank of gyrus	MTG	s	MTG	TRUE	FALSE	FALSE	ABA_dataset_adult	MTg	12195	midbrain tegmentum	TRUE
+10145	OlfT_Olfactory Tubercle, Left	OlfT	NA	OLFT	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4254	CA1_CA1 field, Left	CA1	NA	CA1	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4023	SFG-m_superior frontal gyrus, Left, medial bank of gyrus	SFG	m	SFG	TRUE	FALSE	FALSE	ABA_dataset_adult	SFG	12115	superior frontal gyrus	TRUE
+9555	Gr_gracile nucleus, Left	Gr	NA	GR	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9561	IO_inferior olivary complex, Left	IO	NA	IO	TRUE	FALSE	FALSE	ABA_dataset_adult	IO	12600	inferior olive	TRUE
+4432	ILr_Rostral Group of intralaminar Nuclei, Left	ILr	NA	ILR	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4092	PoG-cs_postcentral gyrus, Right, bank of the central sulcus	PoG	cs	POG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4146	MTG-i_middle temporal gyrus, Right, inferior bank of gyrus	MTG	i	MTG	FALSE	TRUE	FALSE	ABA_dataset_adult	MTG	12141	middle temporal gyrus	TRUE
+4146	MTG-i_middle temporal gyrus, Right, inferior bank of gyrus	MTG	i	MTG	FALSE	TRUE	FALSE	ABA_dataset_adult	MTg	12195	midbrain tegmentum	TRUE
+9708	CPLV_Choroid Plexus of the lateral ventricle	CPLV	NA	CPLV	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+4360	CeA_Central Nucleus, Left	CeA	NA	CEA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4907	TP-i_temporal pole, Right, inferior aspect	TP	i	TP	FALSE	TRUE	FALSE	ABA_dataset_adult	TP	12146	temporal pole	TRUE
+9143	7_facial motor nucleus, Left	7	NA	7	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4789	Fas_Fastigial Nucleus, Right	Fas	NA	FAS	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9559	12_hypoglossal nucleus, Right	12	NA	12	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4772	He-Crus I_Crus I, Right Lateral Hemisphere	He	Crus I	HE	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4238	CgGr-i_Cingulate gyrus, retrosplenial part, Left, inferior bank of gyrus	CgGr	i	CGGR	TRUE	FALSE	FALSE	ABA_dataset_adult	CgGr	12157	cingulate gyrus, rostral (anterior) part	TRUE
+4910	OPi_occipital pole, Left, inferior aspect	OPi	NA	OPI	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4121	Pcu-i_precuneus, Left, inferior lateral bank of gyrus	Pcu	i	PCU	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4256	CA3_CA3 field, Left	CA3	NA	CA3	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4149	ITG-its_inferior temporal gyrus, Left, bank of the its	ITG	its	ITG	TRUE	FALSE	FALSE	ABA_dataset_adult	ITG	12142	inferior temporal gyrus	TRUE
+10149	CGPo_central grey of the pons, Right	CGPo	NA	CGPO	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9020	CnF_cuneiform nucleus, Left	CnF	NA	CNF	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4669	SuM_Supramammillary Nucleus, Left	SuM	NA	SUM	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4905	TP-m_temporal pole, Left, medial aspect	TP	m	TP	TRUE	FALSE	FALSE	ABA_dataset_adult	TP	12146	temporal pole	TRUE
+4597	PalHy_Pallidohypothalamic Nucleus, Left	PalHy	NA	PALHY	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4258	DG_Dentate gyrus, Left	DG	NA	DG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9214	Pr5_principal sensory nucleus of trigeminal nerve, Right	Pr5	NA	PR5	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+13008	LHT_Lateral Hypothalamic Area, Tuberal Region, Left	LHT	NA	LHT	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4790	Glo_Globose Nucleus, Right	Glo	NA	GLO	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4693	PHA_Posterior Hypothalamic Area, Right	PHA	NA	PHA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9017	ICjl_interstitial nucleus of Cajal, Right	ICjl	NA	ICJL	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4270	LIG_Long Insular Gyri, Left	LIG	NA	LIG	TRUE	FALSE	FALSE	ABA_dataset_adult	LIG	12177	long insular gyri	TRUE
+4270	LIG_Long Insular Gyri, Left	LIG	NA	LIG	TRUE	FALSE	FALSE	ABA_dataset_adult	LiG	12151	lingual gyrus	TRUE
+9604	GiRt_gigantocellular group, Right	GiRt	NA	GIRT	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4077	PCLa-i_paracentral lobule, anterior part, Right, inferior bank of gyrus	PCLa	i	PCLA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4227	CgGf-i_Cingulate gyrus, frontal part, Right, inferior bank of gyrus	CgGf	i	CGGF	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4263	CA1_CA1 field, Right	CA1	NA	CA1	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4079	fro_frontal operculum, Left	fro	NA	FRO	TRUE	FALSE	FALSE	ABA_dataset_adult	FrO	12127	frontal operculum	TRUE
+4223	CgGf-s_Cingulate gyrus, frontal part, Left, superior bank of gyrus	CgGf	s	CGGF	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4513	ZI_Zona Incerta, Right	ZI	NA	ZI	FALSE	TRUE	FALSE	ABA_dataset_adult	ZI	10463	zona incerta	TRUE
+4744	He-IX_IX, Left Lateral Hemisphere	He	IX	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9123	SC_Superior Colliculus, Right	SC	NA	SC	FALSE	TRUE	FALSE	ABA_dataset_adult	SC	12292	superior colliculus	TRUE
+9024	CnF_cuneiform nucleus, Right	CnF	NA	CNF	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9158	RPn_pontine raphe nucleus, Left	RPn	NA	RPN	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4335	ATZ_Amygdaloid Transition zone, Right	ATZ	NA	ATZ	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9068	VTA_ventral tegmental area, Right	VTA	NA	VTA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9146	LPB_lateral parabrachial nucleus, Left	LPB	NA	LPB	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4895	FPi_frontal pole, Right, inferior aspect	FPi	NA	FPI	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4528	Hm_Medial Habenular Nucleus, Right	Hm	NA	HM	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4637	VMH_Ventromedial Hypothalamic Nucleus, Left	VMH	NA	VMH	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9547	10_dorsal motor nucleus of the vagus, Right	10	NA	10	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4529	Hl_Lateral Habenular Nucleus, Right	Hl	NA	HL	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4022	SFG_superior frontal gyrus, Left	SFG	NA	SFG	TRUE	FALSE	FALSE	ABA_dataset_adult	SFG	12115	superior frontal gyrus	TRUE
+4351	BMA_Basomedial nucleus, Left	BMA	NA	BMA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4043	opIFG_inferior frontal gyrus, opercular part, Right	opIFG	NA	OPIFG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9614	LMRt_lateral medullary reticular group, Left	LMRt	NA	LMRT	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4204	OTG-i_occipito-temporal gyrus, Right, inferior bank of gyrus	OTG	i	OTG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4098	SPL-s_supraparietal lobule, Left, superior bank of gyrus	SPL	s	SPL	TRUE	FALSE	FALSE	ABA_dataset_adult	SPL	12133	supraparietal lobule	TRUE
+9492	Pn_pontine nuclei, Left	Pn	NA	PN	TRUE	FALSE	FALSE	ABA_dataset_adult	Pn	10661	pons	TRUE
+4150	ITG-l_inferior temporal gyrus, Left, lateral bank of gyrus	ITG	l	ITG	TRUE	FALSE	FALSE	ABA_dataset_adult	ITG	12142	inferior temporal gyrus	TRUE
+4773	He-Crus II_Crus II, Right Lateral Hemisphere	He	Crus II	HE	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4507	ZI_Zona Incerta, Left	ZI	NA	ZI	TRUE	FALSE	FALSE	ABA_dataset_adult	ZI	10463	zona incerta	TRUE
+9619	LMRt_lateral medullary reticular group, Right	LMRt	NA	LMRT	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4755	PV-VI_VI, Right Paravermis	PV	VI	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4281	TCd_Tail of Caudate Nucleus, Left	TCd	NA	TCD	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4672	MM_Medial mammillary Nucleus, Left	MM	NA	MM	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4296	GPi_globus pallidus, internal segment, Left	GPi	NA	GPI	TRUE	FALSE	FALSE	ABA_dataset_adult	GPi	10344	internal segment of globus pallidus	TRUE
+4534	Pa_Paraventricular Nuclei, Left of Thalamus, Left	Pa	NA	PA	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4019	PrG-il_precentral gyrus, Right, inferior lateral aspect of gyrus	PrG	il	PRG	FALSE	TRUE	FALSE	ABA_dataset_adult	PRG	146034892	perirhinal gyrus ( rostral part of FuGt)	TRUE
+4215	SOG-i_superior occipital gyrus, Left, inferior bank of gyrus	SOG	i	SOG	TRUE	FALSE	FALSE	ABA_dataset_adult	SOG	12154	superior occipital gyrus	TRUE
+4719	PV-IV_IV, Left Paravermis	PV	IV	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4487	ILr_Rostral Group of intralaminar Nuclei, Right	ILr	NA	ILR	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4080	fro_frontal operculum, Right	fro	NA	FRO	FALSE	TRUE	FALSE	ABA_dataset_adult	FrO	12127	frontal operculum	TRUE
+9529	8Co_cochlear nuclei, Left	8Co	NA	8CO	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4026	SFG-m_superior frontal gyrus, Right, medial bank of gyrus	SFG	m	SFG	FALSE	TRUE	FALSE	ABA_dataset_adult	SFG	12115	superior frontal gyrus	TRUE
+4063	SCG_subcallosal gyrus, Left	SCG	NA	SCG	TRUE	FALSE	FALSE	ABA_dataset_adult	SCG	12160	subcallosal gyrus (parolfactory gyrus)	TRUE
+4784	Fas_Fastigial Nucleus, Left	Fas	NA	FAS	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4145	MTG-s_middle temporal gyrus, Right, superior bank of gyrus	MTG	s	MTG	FALSE	TRUE	FALSE	ABA_dataset_adult	MTG	12141	middle temporal gyrus	TRUE
+4145	MTG-s_middle temporal gyrus, Right, superior bank of gyrus	MTG	s	MTG	FALSE	TRUE	FALSE	ABA_dataset_adult	MTg	12195	midbrain tegmentum	TRUE
+4898	SRoG_superior rostral gyrus, Left	SRoG	NA	SROG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9589	CMRt_central medullary reticular group, Left	CMRt	NA	CMRT	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4203	OTG-s_occipito-temporal gyrus, Right, superior bank of gyrus	OTG	s	OTG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4231	CgGp-i_Cingulate gyrus, parietal part, Left, inferior bank of gyrus	CgGp	i	CGGP	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4598	AHA_Anterior Hypothalamic Area, Left	AHA	NA	AHA	TRUE	FALSE	FALSE	ABA_dataset_adult	AHA	10377	amygdalohippocampal area	TRUE
+4101	SPL-s_supraparietal lobule, Right, superior bank of gyrus	SPL	s	SPL	FALSE	TRUE	FALSE	ABA_dataset_adult	SPL	12133	supraparietal lobule	TRUE
+9544	Cu_cuneate nucleus, Right	Cu	NA	CU	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9138	6_abducens nucleus, Right	6	NA	6	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4285	TCd_Tail of Caudate Nucleus, Right	TCd	NA	TCD	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4187	Cun-str_cuneus, Left, striate	Cun	str	CUN	TRUE	FALSE	FALSE	ABA_dataset_adult	Cun	12150	cuneus	TRUE
+4723	PV-Crus I_Crus I, Left Paravermis	PV	Crus I	PV	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4266	CA4_CA4 field, Right	CA4	NA	CA4	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4164	FuG-cos_fusiform gyrus, Right, bank of cos	FuG	cos	FUG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4400	DTM_Medial Group of Nuclei, Left	DTM	NA	DTM	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4741	He-VIIB_VIIB, Left Lateral Hemisphere	He	VIIB	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9241	cgb_cingulum bundle, Left	cgb	NA	CGB	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4162	FuG-its_fusiform gyrus, Right, bank of the its	FuG	its	FUG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4247	PHG-l_parahippocampal gyrus, Right, lateral bank of gyrus	PHG	l	PHG	FALSE	TRUE	FALSE	ABA_dataset_adult	PHG	12162	parahippocampal gyrus	TRUE
+4265	CA3_CA3 field, Right	CA3	NA	CA3	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4735	He-IV_IV, Left Lateral Hemisphere	He	IV	HE	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4891	FPi_frontal pole, Left, inferior aspect	FPi	NA	FPI	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4102	SPL-i_supraparietal lobule, Right, inferior bank of gyrus	SPL	i	SPL	FALSE	TRUE	FALSE	ABA_dataset_adult	SPL	12133	supraparietal lobule	TRUE
+4301	SptN_Septal nuclei, Left	SptN	NA	SPTN	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4058	POrG_posterior orbital gyrus, Right	POrG	NA	PORG	FALSE	TRUE	FALSE	ABA_dataset_adult	POrG	12124	posterior intermediate orbital gyrus	TRUE
+4208	IOG-i_inferior occipital gyrus, Left, inferior bank of gyrus	IOG	i	IOG	TRUE	FALSE	FALSE	ABA_dataset_adult	IOG	12153	inferior occipital gyrus	TRUE
+9026	SubCn_subcuneiform nucleus, Right	SubCn	NA	SUBCN	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4067	PTG_paraterminal gyrus, Right	PTG	NA	PTG	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4241	CgGr-i_Cingulate gyrus, retrosplenial part, Right, inferior bank of gyrus	CgGr	i	CGGR	FALSE	TRUE	FALSE	ABA_dataset_adult	CgGr	12157	cingulate gyrus, rostral (anterior) part	TRUE
+4437	ILc_Caudal Group of Intralaminar Nuclei, Left	ILc	NA	ILC	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4428	DTP_Posterior Group of Nuclei, Left	DTP	NA	DTP	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4076	PCLa-s_paracentral lobule, anterior part, Right, superior bank of gyrus	PCLa	s	PCLA	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4158	FuG-its_fusiform gyrus, Left, bank of the its	FuG	its	FUG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4045	orIFG_inferior frontal gyrus, orbital part, Left	orIFG	NA	ORIFG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4190	Cun-str_cuneus, Right, striate	Cun	str	CUN	FALSE	TRUE	FALSE	ABA_dataset_adult	Cun	12150	cuneus	TRUE
+4200	OTG-s_occipito-temporal gyrus, Left, superior bank of gyrus	OTG	s	OTG	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4752	PV-IV_IV, Right Paravermis	PV	IV	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4756	PV-Crus I_Crus I, Right Paravermis	PV	Crus I	PV	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+9149	LC_locus ceruleus, Left	LC	NA	LC	TRUE	FALSE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4652	VMH_Ventromedial Hypothalamic Nucleus, Right	VMH	NA	VMH	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+4700	Ve-I-II_I-II	Ve	I	VE	FALSE	FALSE	TRUE	ABA_dataset_adult	NA	NA	NA	NA
+9451	EW_Edinger Westphal nucleus, Right	EW	NA	EW	FALSE	TRUE	FALSE	ABA_dataset_adult	NA	NA	NA	NA
+Brain - Amygdala	Brain - Amygdala	NA	NA	AMY	FALSE	FALSE	TRUE	GTEx	AMY	10361	amygdaloid complex	TRUE
+Brain - Anterior cingulate cortex (BA24)	Brain - Anterior cingulate cortex (BA24)	NA	NA	NA	FALSE	FALSE	TRUE	GTEx	NA	NA	NA	NA
+Brain - Caudate (basal ganglia)	Brain - Caudate (basal ganglia)	NA	NA	BN	FALSE	FALSE	TRUE	GTEx	BN	10332	basal nuclei (basal ganglia)	TRUE
+Brain - Cerebellar Hemisphere	Brain - Cerebellar Hemisphere	NA	NA	CBH	FALSE	FALSE	TRUE	GTEx	CBH	10659	cerebellar hemisphere	TRUE
+Brain - Cerebellum	Brain - Cerebellum	NA	NA	CB	FALSE	FALSE	TRUE	GTEx	CB	10656	cerebellum	TRUE
+Brain - Cortex	Brain - Cortex	NA	NA	NA	FALSE	FALSE	TRUE	GTEx	NA	NA	NA	NA
+Brain - Frontal Cortex (BA9)	Brain - Frontal Cortex (BA9)	NA	NA	NA	FALSE	FALSE	TRUE	GTEx	NA	NA	NA	NA
+Brain - Hippocampus	Brain - Hippocampus	NA	NA	HIB	FALSE	FALSE	TRUE	GTEx	HiB	12173	body of hippocampus	TRUE
+Brain - Hypothalamus	Brain - Hypothalamus	NA	NA	HTH	FALSE	FALSE	TRUE	GTEx	HTH	10467	hypothalamus	TRUE
+Brain - Nucleus accumbens (basal ganglia)	Brain - Nucleus accumbens (basal ganglia)	NA	NA	NAC	FALSE	FALSE	TRUE	GTEx	NAC	10339	nucleus accumbens	TRUE
+Brain - Putamen (basal ganglia)	Brain - Putamen (basal ganglia)	NA	NA	PU	FALSE	FALSE	TRUE	GTEx	Pu	10338	putamen	TRUE
+Brain - Spinal cord (cervical c-1)	Brain - Spinal cord (cervical c-1)	NA	NA	NA	FALSE	FALSE	TRUE	GTEx	NA	NA	NA	NA
+Brain - Substantia nigra	Brain - Substantia nigra	NA	NA	SN	FALSE	FALSE	TRUE	GTEx	SN	12251	substantia nigra	TRUE

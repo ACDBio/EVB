@@ -1,0 +1,340 @@
+	ligand_pubchem_sid	ligand_pubchem_cid	ligand name	ligand_type	Receptor_id	Receptor_uniprot	Receptor_location	Type	target_species	pubmed_id	Other.DB	LRID	pipe_genesymbol
+0	135651413	5202.0	5-hydroxytryptamine	Metabolite	3350	P08908	Membrane	sMOL-receptor interaction	Human	1386736;9760039;10431754;9550290;9205951;15628665	IUPHAR	LR08151	HTR1A
+1	135651413	5202.0	5-hydroxytryptamine	Metabolite	3351	P28222	Membrane	sMOL-receptor interaction	Human	1565658;8863519	IUPHAR	LR08152	HTR1B
+2	135651581	1150.0	tryptamine	Metabolite	3351	P28222	Membrane	sMOL-receptor interaction	Human	1565658	IUPHAR	LR08154	HTR1B
+3	135651962	7048566.0	5-HT-moduline	Peptide	3351	P28222	Membrane	sMOL-receptor interaction	Human	9774213	IUPHAR	LR08155	HTR1B
+4	135651413	5202.0	5-hydroxytryptamine	Metabolite	3352	P28221	Membrane	sMOL-receptor interaction	Human	10431754;1565658;9208142;9776361;8957260;8967979;1652050	IUPHAR	LR08156	HTR1D
+5	135651962	7048566.0	5-HT-moduline	Peptide	3352	P28221	Membrane	sMOL-receptor interaction	Human	9774213	IUPHAR	LR08157	HTR1D
+6	135651413	5202.0	5-hydroxytryptamine	Metabolite	3354	P28566	Membrane	sMOL-receptor interaction	Human	1608964;8380639;14744596;15110837	IUPHAR	LR08158	HTR1E
+7	135651581	1150.0	tryptamine	Metabolite	3354	P28566	Membrane	sMOL-receptor interaction	Human	8380639;14744596;15110837	IUPHAR	LR08159	HTR1E
+8	135651413	5202.0	5-hydroxytryptamine	Metabolite	3355	P30939	Membrane	sMOL-receptor interaction	Human	8380639	IUPHAR	LR08160	HTR1F
+9	135651413	5202.0	5-hydroxytryptamine	Metabolite	3356	P28223	Membrane	sMOL-receptor interaction	Human	8534270	IUPHAR	LR08162	HTR2A
+10	135651581	1150.0	tryptamine	Metabolite	3356	P28223	Membrane	sMOL-receptor interaction	Human	15322733;2233697;8114677	IUPHAR	LR08164	HTR2A
+11	135651413	5202.0	5-hydroxytryptamine	Metabolite	3357	P41595	Membrane	sMOL-receptor interaction	Human	15322733;12954071;11104741;8078486;15466450	IUPHAR	LR08165	HTR2B
+12	135651413	5202.0	5-hydroxytryptamine	Metabolite	3358	P28335	Membrane	sMOL-receptor interaction	Human	15322733;12954071;10217294;10611640;14709324	IUPHAR	LR08166	HTR2C
+13	135651413	5202.0	5-hydroxytryptamine	Metabolite	3359	P46098	Membrane	sMOL-receptor interaction	Human	9950429;8848005;7565620;10521471;9463477;16081679;10825381	IUPHAR	LR08167	HTR3A
+14	135652731		Ca2+	Inorganic	3359	P46098	Membrane	sMOL-receptor interaction	Human	9508827;10582123	IUPHAR	LR08169	HTR3A
+15	135652741		Mg2+	Inorganic	3359	P46098	Membrane	sMOL-receptor interaction	Human	10582123	IUPHAR	LR08170	HTR3A
+17	135651413	5202.0	5-hydroxytryptamine	Metabolite	3360	Q13639	Membrane	sMOL-receptor interaction	Human	15466450;9349523;9603189;9351641;10646498;11218067;10683202;11030734;10821780;15351779	IUPHAR	LR08174	HTR4
+18	135651413	5202.0	5-hydroxytryptamine	Metabolite	3361	P47898	Membrane	sMOL-receptor interaction	Human	7988681;11343685	IUPHAR	LR08175	HTR5A
+19	135651413	5202.0	5-hydroxytryptamine	Metabolite	3362	P50406	Membrane	sMOL-receptor interaction	Human	8522988;9730917;9284367	IUPHAR	LR08176	HTR6
+20	135651413	5202.0	5-hydroxytryptamine	Metabolite	3363	P34969	Membrane	sMOL-receptor interaction	Human	12527336;11414657;9298538;8226867;9720804	IUPHAR	LR08177	HTR7
+21	135651545	6323481.0	phosphatidylserine	Metabolite	575	O14514	Membrane	sMOL-receptor interaction	Human	17960134	IUPHAR	LR08178	ADGRB1
+22	135651430	5816.0	(-)-adrenaline	Metabolite	148	P35348	Membrane	sMOL-receptor interaction	Human	7651358;8564227	IUPHAR	LR08179	ADRA1A
+23	135651527	439260.0	(-)-noradrenaline	Metabolite	148	P35348	Membrane	sMOL-receptor interaction	Human	7651358;10433504;8564227	IUPHAR	LR08180	ADRA1A
+24	135651430	5816.0	(-)-adrenaline	Metabolite	147	P35368	Membrane	sMOL-receptor interaction	Human	7651358	IUPHAR	LR08181	ADRA1B
+25	135651527	439260.0	(-)-noradrenaline	Metabolite	147	P35368	Membrane	sMOL-receptor interaction	Human	7651358	IUPHAR	LR08182	ADRA1B
+26	135651430	5816.0	(-)-adrenaline	Metabolite	146	P25100	Membrane	sMOL-receptor interaction	Human	7651358;8564227	IUPHAR	LR08183	ADRA1D
+27	135651527	439260.0	(-)-noradrenaline	Metabolite	146	P25100	Membrane	sMOL-receptor interaction	Human	7651358;8564227	IUPHAR	LR08184	ADRA1D
+28	135651430	5816.0	(-)-adrenaline	Metabolite	150	P08913	Membrane	sMOL-receptor interaction	Human	9824686;9605427	IUPHAR	LR08185	ADRA2A
+29	135651527	439260.0	(-)-noradrenaline	Metabolite	150	P08913	Membrane	sMOL-receptor interaction	Human	9824686;9605427	IUPHAR	LR08186	ADRA2A
+30	135651430	5816.0	(-)-adrenaline	Metabolite	151	P18089	Membrane	sMOL-receptor interaction	Human	9605427	IUPHAR	LR08187	ADRA2B
+31	135651527	439260.0	(-)-noradrenaline	Metabolite	151	P18089	Membrane	sMOL-receptor interaction	Human	9824686;9605427	IUPHAR	LR08188	ADRA2B
+32	135651430	5816.0	(-)-adrenaline	Metabolite	152	P18825	Membrane	sMOL-receptor interaction	Human	9605427	IUPHAR	LR08189	ADRA2C
+33	135651527	439260.0	(-)-noradrenaline	Metabolite	152	P18825	Membrane	sMOL-receptor interaction	Human	9824686;9605427	IUPHAR	LR08190	ADRA2C
+34	135651474	10635.0	dihydrotestosterone	Metabolite	367	P10275	Membrane	sMOL-receptor interaction	Human	2911578	IUPHAR	LR08191	AR
+35	135651426	60961.0	adenosine	Metabolite	134	P30542	Membrane	sMOL-receptor interaction	Human	14662005	IUPHAR	LR08192	ADORA1
+36	135651426	60961.0	adenosine	Metabolite	135	P29274	Membrane	sMOL-receptor interaction	Human	15822182;7746802;14662005	IUPHAR	LR08193	ADORA2A
+37	135651426	60961.0	adenosine	Metabolite	136	P29275	Membrane	sMOL-receptor interaction	Human	15822182;7746802;14662005	IUPHAR	LR08194	ADORA2B
+38	135651426	60961.0	adenosine	Metabolite	140	P0DMS8	Membrane	sMOL-receptor interaction	Human	15822182;7746802;14662005	IUPHAR	LR08195	ADORA3
+39	178102796		gastrin releasing peptide(14-27)	Peptide	4829	P28336	Membrane	sMOL-receptor interaction	Human	21729729	IUPHAR	LR08196	NMBR
+40	178102796		gastrin releasing peptide(14-27)	Peptide	2925	P30550	Membrane	sMOL-receptor interaction	Human	21729729	IUPHAR	LR08197	GRPR
+41	178102799		neuromedin C	Peptide	2925	P30550	Membrane	sMOL-receptor interaction	Human	21729729	IUPHAR	LR08198	GRPR
+42	135651430	5816.0	(-)-adrenaline	Metabolite	153	P08588	Membrane	sMOL-receptor interaction	Human	2849109;14730417	IUPHAR	LR08199	ADRB1
+43	135651527	439260.0	(-)-noradrenaline	Metabolite	153	P08588	Membrane	sMOL-receptor interaction	Human	2849109;14730417	IUPHAR	LR08200	ADRB1
+44	135651526	951.0	noradrenaline	Metabolite	153	P08588	Membrane	sMOL-receptor interaction	Human	2849109	IUPHAR	LR08201	ADRB1
+45	135651527	439260.0	(-)-noradrenaline	Metabolite	154	P07550	Membrane	sMOL-receptor interaction	Human	2849109;14730417	IUPHAR	LR08202	ADRB2
+46	135651430	5816.0	(-)-adrenaline	Metabolite	154	P07550	Membrane	sMOL-receptor interaction	Human	2849109;9295336;14730417	IUPHAR	LR08203	ADRB2
+47	135651526	951.0	noradrenaline	Metabolite	154	P07550	Membrane	sMOL-receptor interaction	Human	15102946	IUPHAR	LR08204	ADRB2
+48	135652747		Zn2+	Inorganic	154	P07550	Membrane	sMOL-receptor interaction	Human	12409304;11752207	IUPHAR	LR08205	ADRB2
+49	135651430	5816.0	(-)-adrenaline	Metabolite	155	P13945	Membrane	sMOL-receptor interaction	Human	14730417	IUPHAR	LR08206	ADRB3
+50	135651527	439260.0	(-)-noradrenaline	Metabolite	155	P13945	Membrane	sMOL-receptor interaction	Human	9131260;14730417;14744619	IUPHAR	LR08207	ADRB3
+51	135651547	838.0	(plusmn)-adrenaline	Metabolite	155	P13945	Membrane	sMOL-receptor interaction	Human	8719421;7903415;14730417	IUPHAR	LR08208	ADRB3
+52	135651371	5283156.0	12R-HETE	Metabolite	1241	Q15722	Membrane	sMOL-receptor interaction	Human	9177352	IUPHAR	LR08209	LTB4R
+53	135651386	5280745.0	20-hydroxy-LTB4	Metabolite	1241	Q15722	Membrane	sMOL-receptor interaction	Human	9177352	IUPHAR	LR08210	LTB4R
+54	178102780	5283141.0	12-hydroxyheptadecatrienoic acid	Metabolite	56413	Q9NPC1	Membrane	sMOL-receptor interaction	Human	18378794	IUPHAR	LR08211	LTB4R2
+55	178102781	5283130.0	12-epi LTB4	Metabolite	56413	Q9NPC1	Membrane	sMOL-receptor interaction	Human	11278893	IUPHAR	LR08212	LTB4R2
+56	135651372	5283155.0	12S-HETE	Metabolite	56413	Q9NPC1	Membrane	sMOL-receptor interaction	Human	11278893	IUPHAR	LR08213	LTB4R2
+57	135651378	5280724.0	15S-HETE	Metabolite	56413	Q9NPC1	Membrane	sMOL-receptor interaction	Human	11278893	IUPHAR	LR08214	LTB4R2
+58	53801088	5280492.0	LTB4	Metabolite	56413	Q9NPC1	Membrane	sMOL-receptor interaction	Human	18378794	IUPHAR	LR08215	LTB4R2
+59	135652731		Ca2+	Inorganic	846	P41180	Membrane	sMOL-receptor interaction	Human	7531693	IUPHAR	LR08217	CASR
+60	135651562	1103.0	spermine	Metabolite	846	P41180	Membrane	sMOL-receptor interaction	Human	9357776	IUPHAR	LR08218	CASR
+61	135651515	6305.0	L-tryptophan	Metabolite	846	P41180	Membrane	sMOL-receptor interaction	Human	10781086;15234970	IUPHAR	LR08219	CASR
+62	135651438	5281969.0	anandamide	Metabolite	8913	O43497	Membrane	sMOL-receptor interaction	Human	11742980	IUPHAR	LR08220	CACNA1G
+63	135651438	5281969.0	anandamide	Metabolite	8912	O95180	Membrane	sMOL-receptor interaction	Human	11742980	IUPHAR	LR08221	CACNA1H
+64	135650814	5280723.0	PGE1	Natural product	117144	Q8NEC5	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08222	CATSPER1
+65	135651539	5280360.0	PGE2	Metabolite	117144	Q8NEC5	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08223	CATSPER1
+66	178102065	5280939.0	PGF1alpha	Metabolite	117144	Q8NEC5	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08224	CATSPER1
+67	135651551	5994.0	progesterone	Metabolite	117144	Q8NEC5	Membrane	sMOL-receptor interaction	Human	21412339;21412338	IUPHAR	LR08225	CATSPER1
+68	135650814	5280723.0	PGE1	Natural product	117155	Q96P56	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08226	CATSPER2
+69	135651539	5280360.0	PGE2	Metabolite	117155	Q96P56	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08227	CATSPER2
+70	178102065	5280939.0	PGF1alpha	Metabolite	117155	Q96P56	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08228	CATSPER2
+71	135651551	5994.0	progesterone	Metabolite	117155	Q96P56	Membrane	sMOL-receptor interaction	Human	21412339;21412338	IUPHAR	LR08229	CATSPER2
+72	135650814	5280723.0	PGE1	Natural product	347732	Q86XQ3	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08230	CATSPER3
+73	135651539	5280360.0	PGE2	Metabolite	347732	Q86XQ3	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08231	CATSPER3
+74	178102065	5280939.0	PGF1alpha	Metabolite	347732	Q86XQ3	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08232	CATSPER3
+75	135651551	5994.0	progesterone	Metabolite	347732	Q86XQ3	Membrane	sMOL-receptor interaction	Human	21412339;21412338	IUPHAR	LR08233	CATSPER3
+76	135650814	5280723.0	PGE1	Natural product	378807	Q7RTX7	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08234	CATSPER4
+77	135651539	5280360.0	PGE2	Metabolite	378807	Q7RTX7	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08235	CATSPER4
+78	178102065	5280939.0	PGF1alpha	Metabolite	378807	Q7RTX7	Membrane	sMOL-receptor interaction	Human	21412339	IUPHAR	LR08236	CATSPER4
+79	135651551	5994.0	progesterone	Metabolite	378807	Q7RTX7	Membrane	sMOL-receptor interaction	Human	21412339;21412338	IUPHAR	LR08237	CATSPER4
+80	135651438	5281969.0	anandamide	Metabolite	1268	P21554	Membrane	sMOL-receptor interaction	Human	7565624;8819477	IUPHAR	LR08238	CNR1
+81	135651394	5282280.0	2-arachidonoylglycerol	Metabolite	1269	P34972	Membrane	sMOL-receptor interaction	Human	7605349;9721036	IUPHAR	LR08239	CNR2
+82	135651438	5281969.0	anandamide	Metabolite	1269	P34972	Membrane	sMOL-receptor interaction	Human	7565624;8819477;7605349	IUPHAR	LR08240	CNR2
+83	178100598	3084441.0	desulfated cholecystokinin-8	Peptide	887	P32239	Membrane	sMOL-receptor interaction	Human	7681836	IUPHAR	LR08241	CCKBR
+84	178100364	10473088.0	resolvin E1	Metabolite	1240	Q99788	Membrane	sMOL-receptor interaction	Human	15753205;20887750;17339491	IUPHAR	LR08242	CMKLR1
+85	135651454	135398570.0	cyclic GMP	Metabolite	1259	P29973	Membrane	sMOL-receptor interaction	Human	12467592;7530019;1379636;7479749;9512030;7526403;9874685	IUPHAR	LR08243	CNGA1
+86	135651452	6076.0	cyclic AMP	Metabolite	1261	Q16281	Membrane	sMOL-receptor interaction	Human	8814292;12730238	IUPHAR	LR08244	CNGA3
+87	135651454	135398570.0	cyclic GMP	Metabolite	1261	Q16281	Membrane	sMOL-receptor interaction	Human	8814292;9517456;12730238	IUPHAR	LR08245	CNGA3
+88	135651512	5280493.0	LTC4	Metabolite	10800	Q9Y271	Membrane	sMOL-receptor interaction	Human	10391245	IUPHAR	LR08246	CYSLTR1
+89	135651513	6435286.0	LTD4	Metabolite	10800	Q9Y271	Membrane	sMOL-receptor interaction	Human	10391245	IUPHAR	LR08249	CYSLTR1
+90	135651514	5280879.0	LTE4	Metabolite	10800	Q9Y271	Membrane	sMOL-receptor interaction	Human	9547367	IUPHAR	LR08253	CYSLTR1
+91	135651512	5280493.0	LTC4	Metabolite	57105	Q9NS75	Membrane	sMOL-receptor interaction	Human	10913337;11093801	IUPHAR	LR08257	CYSLTR2
+92	135651513	6435286.0	LTD4	Metabolite	57105	Q9NS75	Membrane	sMOL-receptor interaction	Human	9547367	IUPHAR	LR08262	CYSLTR2
+93	135651514	5280879.0	LTE4	Metabolite	57105	Q9NS75	Membrane	sMOL-receptor interaction	Human	10913337;11093801	IUPHAR	LR08269	CYSLTR2
+94	135652148	5311080.0	endomorphin-1	Peptide	4985	P41143	Membrane	sMOL-receptor interaction	Human	9849897	IUPHAR	LR08274	OPRD1
+95	135651538	448457.0	PGD2	Metabolite	5729	Q13258	Membrane	sMOL-receptor interaction	Human	10448933;7642548;9579725;16604093	IUPHAR	LR08275	PTGDR
+96	135650814	5280723.0	PGE1	Natural product	5729	Q13258	Membrane	sMOL-receptor interaction	Human	9579725	IUPHAR	LR08276	PTGDR
+97	135651539	5280360.0	PGE2	Metabolite	5729	Q13258	Membrane	sMOL-receptor interaction	Human	7642548;9579725;10634944	IUPHAR	LR08277	PTGDR
+98	135651540	5280363.0	PGF2alpha	Metabolite	5729	Q13258	Membrane	sMOL-receptor interaction	Human	9579725;10634944	IUPHAR	LR08278	PTGDR
+99	135651542	5280884.0	PGJ2	Metabolite	5729	Q13258	Membrane	sMOL-receptor interaction	Human	9579725	IUPHAR	LR08279	PTGDR
+100	135651538	448457.0	PGD2	Metabolite	11251	Q9Y5Y4	Membrane	sMOL-receptor interaction	Human	12466225;16256979	IUPHAR	LR08280	PTGDR2
+101	135651539	5280360.0	PGE2	Metabolite	11251	Q9Y5Y4	Membrane	sMOL-receptor interaction	Human	12466225	IUPHAR	LR08281	PTGDR2
+102	135651540	5280363.0	PGF2alpha	Metabolite	11251	Q9Y5Y4	Membrane	sMOL-receptor interaction	Human	12466225	IUPHAR	LR08282	PTGDR2
+103	135651542	5280884.0	PGJ2	Metabolite	11251	Q9Y5Y4	Membrane	sMOL-receptor interaction	Human	12466225	IUPHAR	LR08283	PTGDR2
+104	135651480	681.0	dopamine	Metabolite	1812	P21728	Membrane	sMOL-receptor interaction	Human	1826762;7525564	IUPHAR	LR08284	DRD1
+105	135651526	951.0	noradrenaline	Metabolite	1812	P21728	Membrane	sMOL-receptor interaction	Human	1826762	IUPHAR	LR08285	DRD1
+106	135651413	5202.0	5-hydroxytryptamine	Metabolite	1812	P21728	Membrane	sMOL-receptor interaction	Human	1826762	IUPHAR	LR08286	DRD1
+107	135651480	681.0	dopamine	Metabolite	1813	P14416	Membrane	sMOL-receptor interaction	Human	8301582;7756621;7576010	IUPHAR	LR08287	DRD2
+108	135651480	681.0	dopamine	Metabolite	1814	P35462	Membrane	sMOL-receptor interaction	Human	8301582;7756621;7576010;1975644	IUPHAR	LR08288	DRD3
+109	135651480	681.0	dopamine	Metabolite	1815	P21917	Membrane	sMOL-receptor interaction	Human	1840645	IUPHAR	LR08289	DRD4
+110	135651413	5202.0	5-hydroxytryptamine	Metabolite	1816	P21918	Membrane	sMOL-receptor interaction	Human	1826762	IUPHAR	LR08290	DRD5
+111	135651480	681.0	dopamine	Metabolite	1816	P21918	Membrane	sMOL-receptor interaction	Human	1826762	IUPHAR	LR08291	DRD5
+112	135651526	951.0	noradrenaline	Metabolite	1816	P21918	Membrane	sMOL-receptor interaction	Human	1826762	IUPHAR	LR08292	DRD5
+113	135651538	448457.0	PGD2	Metabolite	5731	P34995	Membrane	sMOL-receptor interaction	Human	11999132	IUPHAR	LR08293	PTGER1
+114	135650814	5280723.0	PGE1	Natural product	5731	P34995	Membrane	sMOL-receptor interaction	Human	11999132	IUPHAR	LR08294	PTGER1
+115	135651539	5280360.0	PGE2	Metabolite	5731	P34995	Membrane	sMOL-receptor interaction	Human	16604093;10634944;11999132	IUPHAR	LR08295	PTGER1
+116	135651540	5280363.0	PGF2alpha	Metabolite	5731	P34995	Membrane	sMOL-receptor interaction	Human	10634944;11999132	IUPHAR	LR08296	PTGER1
+117	135651541	5282411.0	PGI2	Metabolite	5731	P34995	Membrane	sMOL-receptor interaction	Human	11999132	IUPHAR	LR08297	PTGER1
+118	135651538	448457.0	PGD2	Metabolite	5732	P43116	Membrane	sMOL-receptor interaction	Human	10462542	IUPHAR	LR08298	PTGER2
+119	135651539	5280360.0	PGE2	Metabolite	5732	P43116	Membrane	sMOL-receptor interaction	Human	16604093;10634944;10462542	IUPHAR	LR08299	PTGER2
+120	135651540	5280363.0	PGF2alpha	Metabolite	5732	P43116	Membrane	sMOL-receptor interaction	Human	10634944;10462542	IUPHAR	LR08300	PTGER2
+121	135651539	5280360.0	PGE2	Metabolite	5733	P43115	Membrane	sMOL-receptor interaction	Human	10634944	IUPHAR	LR08301	PTGER3
+122	135651540	5280363.0	PGF2alpha	Metabolite	5733	P43115	Membrane	sMOL-receptor interaction	Human	10634944	IUPHAR	LR08304	PTGER3
+123	135651538	448457.0	PGD2	Metabolite	5734	P35408	Membrane	sMOL-receptor interaction	Human	10462542;10952683	IUPHAR	LR08305	PTGER4
+124	135650814	5280723.0	PGE1	Natural product	5734	P35408	Membrane	sMOL-receptor interaction	Human	19584306	IUPHAR	LR08307	PTGER4
+125	135651539	5280360.0	PGE2	Metabolite	5734	P35408	Membrane	sMOL-receptor interaction	Human	16604093;10634944;10462542;10952683;17495127	IUPHAR	LR08309	PTGER4
+126	135651540	5280363.0	PGF2alpha	Metabolite	5734	P35408	Membrane	sMOL-receptor interaction	Human	10634944;10462542;10952683	IUPHAR	LR08311	PTGER4
+127	135651541	5282411.0	PGI2	Metabolite	5734	P35408	Membrane	sMOL-receptor interaction	Human	10952683	IUPHAR	LR08313	PTGER4
+128	135651381	5757.0	17beta-estradiol	Metabolite	2099	P03372	Membrane	sMOL-receptor interaction	Human	9048584	IUPHAR	LR08314	ESR1
+129	135651483	5756.0	estriol	Metabolite	2099	P03372	Membrane	sMOL-receptor interaction	Human	9048584	IUPHAR	LR08315	ESR1
+130	135651484	5870.0	estrone	Metabolite	2099	P03372	Membrane	sMOL-receptor interaction	Human	9048584	IUPHAR	LR08316	ESR1
+131	135651436	5280934.0	alpha-linolenic acid	Metabolite	2864	O14842	Membrane	sMOL-receptor interaction	Human	12496284;12565875;12629551	IUPHAR	LR08317	FFAR1
+132	135651477	445580.0	docosahexaenoic acid	Metabolite	2864	O14842	Membrane	sMOL-receptor interaction	Human	12496284;12629551	IUPHAR	LR08318	FFAR1
+133	178100239	11005.0	myristic acid	Metabolite	2864	O14842	Membrane	sMOL-receptor interaction	Human	12496284;12565875;12629551	IUPHAR	LR08319	FFAR1
+134	135651531	445639.0	oleic acid	Metabolite	2864	O14842	Membrane	sMOL-receptor interaction	Human	12496284;12565875;12629551	IUPHAR	LR08320	FFAR1
+135	178103114	81326.0	1-methylcyclopropanecarboxylic acid	Synthetic organic	2867	O15552	Membrane	sMOL-receptor interaction	Human	21220428	IUPHAR	LR08321	FFAR2
+136	135651422	176.0	acetic acid	Metabolite	2867	O15552	Membrane	sMOL-receptor interaction	Human	12496283;12684041;12711604;21220428	IUPHAR	LR08322	FFAR2
+137	135650039	264.0	butyric acid	Metabolite	2867	O15552	Membrane	sMOL-receptor interaction	Human	12496283;12684041;12711604;21220428	IUPHAR	LR08323	FFAR2
+138	178103113	125468.0	trans-2-methylcrotonic acid	Synthetic organic	2867	O15552	Membrane	sMOL-receptor interaction	Human	21220428	IUPHAR	LR08324	FFAR2
+139	135651552	1032.0	propanoic acid	Metabolite	2867	O15552	Membrane	sMOL-receptor interaction	Human	12496283;12684041;12711604;21220428	IUPHAR	LR08325	FFAR2
+140	178103114	81326.0	1-methylcyclopropanecarboxylic acid	Synthetic organic	2865	O14843	Membrane	sMOL-receptor interaction	Human	21220428	IUPHAR	LR08326	FFAR3
+141	135650039	264.0	butyric acid	Metabolite	2865	O14843	Membrane	sMOL-receptor interaction	Human	12496283;12711604;14722361;21220428	IUPHAR	LR08327	FFAR3
+142	135651552	1032.0	propanoic acid	Metabolite	2865	O14843	Membrane	sMOL-receptor interaction	Human	12496283;12711604;14722361;21220428	IUPHAR	LR08328	FFAR3
+143	135651436	5280934.0	alpha-linolenic acid	Metabolite	338557	Q5NUL3	Membrane	sMOL-receptor interaction	Human	22519963	IUPHAR	LR08329	FFAR4
+144	135651503	5280450.0	linoleic acid	Metabolite	338557	Q5NUL3	Membrane	sMOL-receptor interaction	Human	16702987	IUPHAR	LR08330	FFAR4
+145	178100239	11005.0	myristic acid	Metabolite	338557	Q5NUL3	Membrane	sMOL-receptor interaction	Human	22282525	IUPHAR	LR08331	FFAR4
+146	135651531	445639.0	oleic acid	Metabolite	338557	Q5NUL3	Membrane	sMOL-receptor interaction	Human	22282525	IUPHAR	LR08332	FFAR4
+147	135652476	3081832.0	spinorphin	Peptide	2357	P21462	Membrane	sMOL-receptor interaction	Human	11714831;1373134	IUPHAR	LR08333	FPR1
+148	178102864		PrP106-126	Peptide	2358	P25090	Membrane	sMOL-receptor interaction	Human	23549262	IUPHAR	LR08334	FPR2
+149	178102860	16126783.0	aspirin-triggered resolvin D1	Metabolite	2358	P25090	Membrane	sMOL-receptor interaction	Human	22449948	IUPHAR	LR08335	FPR2
+150	135651504	5280914.0	LXA4	Metabolite	2358	P25090	Membrane	sMOL-receptor interaction	Human	20080636	IUPHAR	LR08336	FPR2
+151	178100762	73755062.0	resolvin D1	Metabolite	2358	P25090	Membrane	sMOL-receptor interaction	Human	20080636	IUPHAR	LR08337	FPR2
+152	135651538	448457.0	PGD2	Metabolite	5737	P43088	Membrane	sMOL-receptor interaction	Human	12519077	IUPHAR	LR08339	PTGFR
+153	135651539	5280360.0	PGE2	Metabolite	5737	P43088	Membrane	sMOL-receptor interaction	Human	10634944;12519077	IUPHAR	LR08340	PTGFR
+154	135651540	5280363.0	PGF2alpha	Metabolite	5737	P43088	Membrane	sMOL-receptor interaction	Human	16604093;10634944;12519077	IUPHAR	LR08341	PTGFR
+156	135651455	10133.0	chenodeoxycholic acid	Metabolite	151306	Q8TDU6	Membrane	sMOL-receptor interaction	Human	12419312	IUPHAR	LR08343	GPBAR1
+157	135651459	221493.0	cholic acid	Metabolite	151306	Q8TDU6	Membrane	sMOL-receptor interaction	Human	12419312	IUPHAR	LR08344	GPBAR1
+158	135651468	222528.0	deoxycholic acid	Metabolite	151306	Q8TDU6	Membrane	sMOL-receptor interaction	Human	12419312	IUPHAR	LR08345	GPBAR1
+159	135651505	9903.0	lithocholic acid	Metabolite	151306	Q8TDU6	Membrane	sMOL-receptor interaction	Human	12419312	IUPHAR	LR08346	GPBAR1
+160	135651381	5757.0	17beta-estradiol	Metabolite	2852	Q99527	Membrane	sMOL-receptor interaction	Human	15705806;15539556	IUPHAR	LR08347	GPER1
+161	135651492	750.0	glycine	Metabolite	222545	Q5T6X5	Membrane	sMOL-receptor interaction	Human	15576628	IUPHAR	LR08348	GPRC6A
+162	135651498	5950.0	L-alanine	Metabolite	222545	Q5T6X5	Membrane	sMOL-receptor interaction	Human	15576628	IUPHAR	LR08349	GPRC6A
+163	135651500	6322.0	L-arginine	Metabolite	222545	Q5T6X5	Membrane	sMOL-receptor interaction	Human	15576628	IUPHAR	LR08350	GPRC6A
+164	135650512	9750.0	L-citrulline	Synthetic organic	222545	Q5T6X5	Membrane	sMOL-receptor interaction	Human	15576628	IUPHAR	LR08351	GPRC6A
+165	135651502	5961.0	L-glutamine	Metabolite	222545	Q5T6X5	Membrane	sMOL-receptor interaction	Human	15576628	IUPHAR	LR08352	GPRC6A
+166	135651507	5962.0	L-lysine	Metabolite	222545	Q5T6X5	Membrane	sMOL-receptor interaction	Human	15576628	IUPHAR	LR08353	GPRC6A
+167	135651508	6262.0	L-ornithine	Metabolite	222545	Q5T6X5	Membrane	sMOL-receptor interaction	Human	15576628	IUPHAR	LR08354	GPRC6A
+168	135651510	5951.0	L-serine	Metabolite	222545	Q5T6X5	Membrane	sMOL-receptor interaction	Human	15576628	IUPHAR	LR08355	GPRC6A
+169	381744893		mutant ANP	Peptide	4881	P16066	Membrane	sMOL-receptor interaction	Human	19729120	IUPHAR	LR08356	NPR1
+170	135651506	107689.0	L-lactic acid	Metabolite	27198	Q9BXC0	Membrane	sMOL-receptor interaction	Human	18952058;19047060;20374963;23396314	IUPHAR	LR08357	HCAR1
+171	135649984	92135.0	beta-D-hydroxybutyric acid	Synthetic organic	338442	Q8TDS4	Membrane	sMOL-receptor interaction	Human	15929991	IUPHAR	LR08358	HCAR2
+172	135651406	11367166.0	3-hydroxyoctanoic acid	Metabolite	8843	P49019	Membrane	sMOL-receptor interaction	Human	19561068	IUPHAR	LR08359	HCAR3
+173	135651493	774.0	histamine	Metabolite	3269	P35367	Membrane	sMOL-receptor interaction	Human	7925364;12065734;16394198;12626648;15206929	IUPHAR	LR08360	HRH1
+174	135651493	774.0	histamine	Metabolite	11255	Q9Y5N1	Membrane	sMOL-receptor interaction	Human	10869375;11284713;11090094;12393057;11179434;14640553	IUPHAR	LR08361	HRH3
+175	135651493	774.0	histamine	Metabolite	59340	Q9H3N8	Membrane	sMOL-receptor interaction	Human	11179434;11561071;11181941;11179436;15947036;16432504;15454206	IUPHAR	LR08362	HRH4
+176	135651533	5283454.0	N-oleoylethanolamide	Metabolite	139760	Q8TDV5	Membrane	sMOL-receptor interaction	Human	16517404;19901198;23396314	IUPHAR	LR08363	GPR119
+177	135651563	5283560.0	sphingosine 1-phosphate	Metabolite	2835	P47775	Membrane	sMOL-receptor interaction	Human	12220620	IUPHAR	LR08364	GPR12
+178	178102204	5312830.0	9-hydroxyoctadecadienoic acid	Metabolite	29933	Q9UNW8	Membrane	sMOL-receptor interaction	Human	16236715	IUPHAR	LR08365	GPR132
+179	178100347	6140.0	L-phenylalanine	Metabolite	124274	Q6DWJ6	Membrane	sMOL-receptor interaction	Human	24826842	IUPHAR	LR08366	GPR139
+180	135651515	6305.0	L-tryptophan	Metabolite	124274	Q6DWJ6	Membrane	sMOL-receptor interaction	Human	26349500	IUPHAR	LR08368	GPR139
+181	178100545	6047.0	levodopa	Metabolite	4935	P51810	Membrane	sMOL-receptor interaction	Human	18828673	IUPHAR	LR08370	GPR143
+182	178100887	42607474.0	lysophosphatidylserine	Metabolite	84636	Q9BXC1	Membrane	sMOL-receptor interaction	Human	22983457	IUPHAR	LR08371	GPR174
+183	135651446	5957.0	ATP	Metabolite	2840	Q13304	Membrane	sMOL-receptor interaction	Human	21773766	IUPHAR	LR08372	GPR17
+184	135651512	5280493.0	LTC4	Metabolite	2840	Q13304	Membrane	sMOL-receptor interaction	Human	16990797	IUPHAR	LR08373	GPR17
+185	135651513	6435286.0	LTD4	Metabolite	2840	Q13304	Membrane	sMOL-receptor interaction	Human	16990797	IUPHAR	LR08374	GPR17
+186	135651585	18068.0	UDP-galactose	Metabolite	2840	Q13304	Membrane	sMOL-receptor interaction	Human	20148890;16990797	IUPHAR	LR08375	GPR17
+187	135651586	8629.0	UDP-glucose	Metabolite	2840	Q13304	Membrane	sMOL-receptor interaction	Human	20148890;16990797	IUPHAR	LR08376	GPR17
+188	135651583	6031.0	uridine diphosphate	Metabolite	2840	Q13304	Membrane	sMOL-receptor interaction	Human	20148890;16990797	IUPHAR	LR08377	GPR17
+189	135651392	65094.0	25-hydroxycholesterol	Metabolite	1880	P32249	Membrane	sMOL-receptor interaction	Human	21796211	IUPHAR	LR08378	GPR183
+190	135651393	123976.0	27-hydroxycholesterol	Metabolite	1880	P32249	Membrane	sMOL-receptor interaction	Human	21796211	IUPHAR	LR08379	GPR183
+191	178101170	15907756.0	7alpha,27-dihydroxycholesterol	Metabolite	1880	P32249	Membrane	sMOL-receptor interaction	Human	21796211	IUPHAR	LR08380	GPR183
+192	178101168	107722.0	7alpha-hydroxycholesterol	Metabolite	1880	P32249	Membrane	sMOL-receptor interaction	Human	21796211	IUPHAR	LR08381	GPR183
+193	178101172	473142.0	7beta,25-dihydroxycholesterol	Metabolite	1880	P32249	Membrane	sMOL-receptor interaction	Human	21796211	IUPHAR	LR08382	GPR183
+194	178101171	52931518.0	7beta,27-dihydroxycholesterol	Metabolite	1880	P32249	Membrane	sMOL-receptor interaction	Human	21796211	IUPHAR	LR08383	GPR183
+195	178101169	473141.0	7beta-hydroxycholesterol	Metabolite	1880	P32249	Membrane	sMOL-receptor interaction	Human	21796211	IUPHAR	LR08384	GPR183
+196	178101167	11954197.0	7alpha,25-dihydroxycholesterol	Metabolite	1880	P32249	Membrane	sMOL-receptor interaction	Human	21796211;21796212	IUPHAR	LR08385	GPR183
+197	178100542	5283389.0	N-arachidonoylglycine	Metabolite	2841	Q14330	Membrane	sMOL-receptor interaction	Human	16844083	IUPHAR	LR08386	GPR18
+198	135651504	5280914.0	LXA4	Metabolite	2854	O75388	Membrane	sMOL-receptor interaction	Human	20080636	IUPHAR	LR08388	GPR32
+199	178100762	73755062.0	resolvin D1	Metabolite	2854	O75388	Membrane	sMOL-receptor interaction	Human	20080636	IUPHAR	LR08389	GPR32
+200	178100887	42607474.0	lysophosphatidylserine	Metabolite	2857	Q9UPC5	Membrane	sMOL-receptor interaction	Human	16460680;22343749	IUPHAR	LR08390	GPR34
+201	135649710	56947016.0	2-oleoyl-LPA	Synthetic organic	2859	Q9HC97	Membrane	sMOL-receptor interaction	Human	20361937	IUPHAR	LR08391	GPR35
+202	135651497	3845.0	kynurenic acid	Metabolite	2859	Q9HC97	Membrane	sMOL-receptor interaction	Human	16754668;23396314	IUPHAR	LR08392	GPR35
+203	135652747		Zn2+	Inorganic	2863	O43194	Membrane	sMOL-receptor interaction	Human	16959833	IUPHAR	LR08393	GPR39
+204	135651563	5283560.0	sphingosine 1-phosphate	Metabolite	2827	P46089	Membrane	sMOL-receptor interaction	Human	12220620	IUPHAR	LR08394	GPR3
+205	135651394	5282280.0	2-arachidonoylglycerol	Metabolite	9290	Q9Y2T6	Membrane	sMOL-receptor interaction	Human	17876302	IUPHAR	LR08395	GPR55
+206	135651438	5281969.0	anandamide	Metabolite	9290	Q9Y2T6	Membrane	sMOL-receptor interaction	Human	17876302	IUPHAR	LR08396	GPR55
+207	178100854	73755067.0	lysophosphatidylinositol	Metabolite	9290	Q9Y2T6	Membrane	sMOL-receptor interaction	Human	17765871;20136841;23396314	IUPHAR	LR08397	GPR55
+208	178100539	4671.0	N-palmitoylethanolamine	Metabolite	9290	Q9Y2T6	Membrane	sMOL-receptor interaction	Human	17876302	IUPHAR	LR08398	GPR55
+209	178100855	73755068.0	2-arachidonoylglycerolphosphoinositol	Metabolite	9290	Q9Y2T6	Membrane	sMOL-receptor interaction	Human	18845565	IUPHAR	LR08399	GPR55
+210	135650184	644260.0	dihydrosphingosine 1-phosphate	Synthetic organic	81491	Q9BZJ6	Membrane	sMOL-receptor interaction	Human	12618218	IUPHAR	LR08400	GPR63
+211	178102157	9547172.0	dioleoylphosphatidic acid	Metabolite	81491	Q9BZJ6	Membrane	sMOL-receptor interaction	Human	12618218	IUPHAR	LR08401	GPR63
+212	135651563	5283560.0	sphingosine 1-phosphate	Metabolite	81491	Q9BZJ6	Membrane	sMOL-receptor interaction	Human	12618218	IUPHAR	LR08402	GPR63
+213	135651509	5497152.0	LPA	Metabolite	53836	Q9BY21	Membrane	sMOL-receptor interaction	Human	17905198;18466763	IUPHAR	LR08403	GPR87
+214	135651448	239.0	beta-alanine	Metabolite	116512	Q8TDS7	Membrane	sMOL-receptor interaction	Human	15037633;23396314	IUPHAR	LR08404	MRGPRD
+215	135651509	5497152.0	LPA	Metabolite	27334	O00398	Membrane	sMOL-receptor interaction	Human	18466763	IUPHAR	LR08405	P2RY10
+216	135651563	5283560.0	sphingosine 1-phosphate	Metabolite	27334	O00398	Membrane	sMOL-receptor interaction	Human	18466763	IUPHAR	LR08406	P2RY10
+217	135651541	5282411.0	PGI2	Metabolite	5739	P43119	Membrane	sMOL-receptor interaction	Human	372237	IUPHAR	LR08407	PTGIR
+218	135650814	5280723.0	PGE1	Natural product	5739	P43119	Membrane	sMOL-receptor interaction	Human	11454473;17704830	IUPHAR	LR08408	PTGIR
+219	135651442	444899.0	arachidonic acid	Metabolite	54207	P57789	Membrane	sMOL-receptor interaction	Human	10880510	IUPHAR	LR08409	KCNK10
+220	135651442	444899.0	arachidonic acid	Metabolite	338567	Q7Z418	Membrane	sMOL-receptor interaction	Human	12754259	IUPHAR	LR08410	KCNK18
+221	135651442	444899.0	arachidonic acid	Metabolite	3776	O95069	Membrane	sMOL-receptor interaction	Human	9687497	IUPHAR	LR08411	KCNK2
+222	135651442	444899.0	arachidonic acid	Metabolite	50801	Q9NYG8	Membrane	sMOL-receptor interaction	Human	9628867	IUPHAR	LR08412	KCNK4
+223	135652731		Ca2+	Inorganic	3780	Q92952	Membrane	sMOL-receptor interaction	Human	8781233;9774106	IUPHAR	LR08413	KCNN1
+224	135652731		Ca2+	Inorganic	3781	Q9H2S1	Membrane	sMOL-receptor interaction	Human	9774106;16239218;10991935	IUPHAR	LR08414	KCNN2
+225	135652741		Mg2+	Inorganic	3768	Q14500	Membrane	sMOL-receptor interaction	Human	8735700	IUPHAR	LR08415	KCNJ12
+226	135651442	444899.0	arachidonic acid	Metabolite	3761	P48050	Membrane	sMOL-receptor interaction	Human	11306688	IUPHAR	LR08416	KCNJ4
+227	135652741		Mg2+	Inorganic	3761	P48050	Membrane	sMOL-receptor interaction	Human	7969496	IUPHAR	LR08417	KCNJ4
+228	135651553	1045.0	putrescine	Metabolite	3761	P48050	Membrane	sMOL-receptor interaction	Human	7969496	IUPHAR	LR08418	KCNJ4
+229	135651561	1102.0	spermidine	Metabolite	3761	P48050	Membrane	sMOL-receptor interaction	Human	7969496	IUPHAR	LR08419	KCNJ4
+230	135651562	1103.0	spermine	Metabolite	3761	P48050	Membrane	sMOL-receptor interaction	Human	7969496	IUPHAR	LR08420	KCNJ4
+231	135652738		H+	Inorganic	3761	P48050	Membrane	sMOL-receptor interaction	Human	10200419;10896660	IUPHAR	LR08421	KCNJ4
+232	135652738		H+	Inorganic	3770	Q9UNX9	Membrane	sMOL-receptor interaction	Human	10942728	IUPHAR	LR08423	KCNJ14
+233	135652743		Na+	Inorganic	3760	P48549	Membrane	sMOL-receptor interaction	Human	10085101	IUPHAR	LR08424	KCNJ3
+234	135652743		Na+	Inorganic	3763	P48051	Membrane	sMOL-receptor interaction	Human	10085101	IUPHAR	LR08425	KCNJ6
+235	135651544	5311358.0	PIP2	Metabolite	3765	Q92806	Membrane	sMOL-receptor interaction	Human	8688080	IUPHAR	LR08426	KCNJ9
+236	135652743		Na+	Inorganic	3762	P48544	Membrane	sMOL-receptor interaction	Human	8923264	IUPHAR	LR08427	KCNJ5
+237	135651544	5311358.0	PIP2	Metabolite	3762	P48544	Membrane	sMOL-receptor interaction	Human	8688080;9804555	IUPHAR	LR08428	KCNJ5
+238	135651544	5311358.0	PIP2	Metabolite	3785	O43526	Membrane	sMOL-receptor interaction	Human	16251430	IUPHAR	LR08429	KCNQ2
+239	135651544	5311358.0	PIP2	Metabolite	9132	P56696	Membrane	sMOL-receptor interaction	Human	16251430	IUPHAR	LR08430	KCNQ4
+240	135651487	11132720.0	farnesyl diphosphate	Metabolite	9170	Q9HBW0	Membrane	sMOL-receptor interaction	Human	19366702	IUPHAR	LR08431	LPAR2
+241	135651509	5497152.0	LPA	Metabolite	9170	Q9HBW0	Membrane	sMOL-receptor interaction	Human	10727522;15177455	IUPHAR	LR08432	LPAR2
+242	135651509	5497152.0	LPA	Metabolite	23566	Q9UBY5	Membrane	sMOL-receptor interaction	Human	10488122	IUPHAR	LR08433	LPAR3
+243	135651487	11132720.0	farnesyl diphosphate	Metabolite	23566	Q9UBY5	Membrane	sMOL-receptor interaction	Human	19366702	IUPHAR	LR08434	LPAR3
+244	135651488	6440220.0	farnesyl monophosphate	Metabolite	23566	Q9UBY5	Membrane	sMOL-receptor interaction	Human	17092771	IUPHAR	LR08436	LPAR3
+245	135651509	5497152.0	LPA	Metabolite	2846	Q99677	Membrane	sMOL-receptor interaction	Human	12724320	IUPHAR	LR08438	LPAR4
+246	135651487	11132720.0	farnesyl diphosphate	Metabolite	2846	Q99677	Membrane	sMOL-receptor interaction	Human	19366702	IUPHAR	LR08439	LPAR4
+247	135651488	6440220.0	farnesyl monophosphate	Metabolite	57121	Q9H1C0	Membrane	sMOL-receptor interaction	Human	19366702	IUPHAR	LR08440	LPAR5
+248	135651509	5497152.0	LPA	Metabolite	57121	Q9H1C0	Membrane	sMOL-receptor interaction	Human	18499677;20056548;23396314	IUPHAR	LR08441	LPAR5
+249	135651487	11132720.0	farnesyl diphosphate	Metabolite	57121	Q9H1C0	Membrane	sMOL-receptor interaction	Human	19366702;18499677	IUPHAR	LR08443	LPAR5
+250	178100542	5283389.0	N-arachidonoylglycine	Metabolite	57121	Q9H1C0	Membrane	sMOL-receptor interaction	Human	19366702;18499677	IUPHAR	LR08444	LPAR5
+251	135651509	5497152.0	LPA	Metabolite	10161	P43657	Membrane	sMOL-receptor interaction	Human	19386608;18297070	IUPHAR	LR08445	LPAR6
+252	135651501	33032.0	L-glutamic acid	Metabolite	2911	Q13255	Membrane	sMOL-receptor interaction	Human	10443583	IUPHAR	LR08446	GRM1
+253	135651501	33032.0	L-glutamic acid	Metabolite	2912	Q14416	Membrane	sMOL-receptor interaction	Human	10443583	IUPHAR	LR08447	GRM2
+254	135651501	33032.0	L-glutamic acid	Metabolite	2913	Q14832	Membrane	sMOL-receptor interaction	Human	10443583	IUPHAR	LR08449	GRM3
+255	135651520	188803.0	NAAG	Metabolite	2913	Q14832	Membrane	sMOL-receptor interaction	Human	10884552	IUPHAR	LR08451	GRM3
+256	135651501	33032.0	L-glutamic acid	Metabolite	2914	Q14833	Membrane	sMOL-receptor interaction	Human	10443583	IUPHAR	LR08452	GRM4
+257	135651501	33032.0	L-glutamic acid	Metabolite	2915	P41594	Membrane	sMOL-receptor interaction	Human	10443583	IUPHAR	LR08453	GRM5
+258	135651501	33032.0	L-glutamic acid	Metabolite	2916	O15303	Membrane	sMOL-receptor interaction	Human	10443583	IUPHAR	LR08454	GRM6
+259	135651511	68841.0	L-serine-O-phosphate	Metabolite	2916	O15303	Membrane	sMOL-receptor interaction	Human	9144651	IUPHAR	LR08456	GRM6
+260	135651501	33032.0	L-glutamic acid	Metabolite	2917	Q14831	Membrane	sMOL-receptor interaction	Human	11138847	IUPHAR	LR08458	GRM7
+261	135651511	68841.0	L-serine-O-phosphate	Metabolite	2917	Q14831	Membrane	sMOL-receptor interaction	Human	11138847	IUPHAR	LR08459	GRM7
+262	135651501	33032.0	L-glutamic acid	Metabolite	2918	O00222	Membrane	sMOL-receptor interaction	Human	10443583	IUPHAR	LR08460	GRM8
+263	135651511	68841.0	L-serine-O-phosphate	Metabolite	2918	O00222	Membrane	sMOL-receptor interaction	Human	9473604;10216218	IUPHAR	LR08462	GRM8
+264	135651424	187.0	acetylcholine	Metabolite	1128	P11229	Membrane	sMOL-receptor interaction	Human	7651370;9224827	IUPHAR	LR08463	CHRM1
+265	135651424	187.0	acetylcholine	Metabolite	1129	P08172	Membrane	sMOL-receptor interaction	Human	7651370;12235229;9224827;9454790	IUPHAR	LR08464	CHRM2
+266	135651424	187.0	acetylcholine	Metabolite	1131	P20309	Membrane	sMOL-receptor interaction	Human	7651370;12235229;9224827	IUPHAR	LR08465	CHRM3
+267	135651424	187.0	acetylcholine	Metabolite	1132	P08173	Membrane	sMOL-receptor interaction	Human	7651370;12235229;9224827	IUPHAR	LR08466	CHRM4
+268	135651424	187.0	acetylcholine	Metabolite	1133	P08912	Membrane	sMOL-receptor interaction	Human	12235229	IUPHAR	LR08467	CHRM5
+269	135651518	896.0	melatonin	Metabolite	4543	P48039	Membrane	sMOL-receptor interaction	Human	12764576;9089668;2991499	IUPHAR	LR08468	MTNR1A
+270	135651518	896.0	melatonin	Metabolite	4544	P49286	Membrane	sMOL-receptor interaction	Human	12764576;9089668;2991499	IUPHAR	LR08469	MTNR1B
+271	135652148	5311080.0	endomorphin-1	Peptide	4988	P35372	Membrane	sMOL-receptor interaction	Human	9849897;9087409	IUPHAR	LR08470	OPRM1
+272	135652324		neuropeptide-gamma	Peptide	6869	P25103	Membrane	sMOL-receptor interaction	Human	8702757	IUPHAR	LR08471	TACR1
+273	178102788	6438757.0	5-oxo-15-HETE	Metabolite	165140	Q8TDS5	Membrane	sMOL-receptor interaction	Human	7803484;8387490;7797484;8598482	IUPHAR	LR08472	OXER1
+274	178102790	73755178.0	5-oxo-20-HETE	Metabolite	165140	Q8TDS5	Membrane	sMOL-receptor interaction	Human	8598482	IUPHAR	LR08473	OXER1
+275	135651414	56947094.0	5-oxo-C20:3	Metabolite	165140	Q8TDS5	Membrane	sMOL-receptor interaction	Human	18292294	IUPHAR	LR08474	OXER1
+276	135651415	5283159.0	5-oxo-ETE	Metabolite	165140	Q8TDS5	Membrane	sMOL-receptor interaction	Human	7797484;19450703;18292294;9829988;1326548	IUPHAR	LR08475	OXER1
+277	178102785	71751402.0	5-oxo-ODE	Metabolite	165140	Q8TDS5	Membrane	sMOL-receptor interaction	Human	18287092	IUPHAR	LR08476	OXER1
+278	135651416	5280733.0	5S-HETE	Metabolite	165140	Q8TDS5	Membrane	sMOL-receptor interaction	Human	7803484;8387490;16039985	IUPHAR	LR08477	OXER1
+279	53801093	5280778.0	5S-HPETE	Metabolite	165140	Q8TDS5	Membrane	sMOL-receptor interaction	Human	16039985	IUPHAR	LR08478	OXER1
+280	178102792	10568747.0	5-oxo-12-HETE	Metabolite	165140	Q8TDS5	Membrane	sMOL-receptor interaction	Human	9920859	IUPHAR	LR08479	OXER1
+281	178100543	51.0	alpha-ketoglutaric acid	Metabolite	27199	Q96P68	Membrane	sMOL-receptor interaction	Human	15141213;23396314	IUPHAR	LR08480	OXGR1
+282	135651446	5957.0	ATP	Metabolite	5023	P51575	Membrane	sMOL-receptor interaction	Human	12213051	IUPHAR	LR08481	P2RX1
+283	135651446	5957.0	ATP	Metabolite	5024	P56373	Membrane	sMOL-receptor interaction	Human	12213051	IUPHAR	LR08482	P2RX3
+284	135651446	5957.0	ATP	Metabolite	5025	Q99571	Membrane	sMOL-receptor interaction	Human	12213051	IUPHAR	LR08483	P2RX4
+285	135651446	5957.0	ATP	Metabolite	5027	Q99572	Membrane	sMOL-receptor interaction	Human	12213051	IUPHAR	LR08484	P2RX7
+286	135651446	5957.0	ATP	Metabolite	5032	Q96G91	Membrane	sMOL-receptor interaction	Human	10578132;12761346;12213051	IUPHAR	LR08485	P2RY11
+287	135651592	6133.0	uridine triphosphate	Metabolite	5032	Q96G91	Membrane	sMOL-receptor interaction	Human	12761346	IUPHAR	LR08486	P2RY11
+288	135651427	6022.0	ADP	Metabolite	64805	Q9H244	Membrane	sMOL-receptor interaction	Human	15199474	IUPHAR	LR08487	P2RY12
+289	135651427	6022.0	ADP	Metabolite	53829	Q9BPV8	Membrane	sMOL-receptor interaction	Human	12815166	IUPHAR	LR08488	P2RY13
+290	135651446	5957.0	ATP	Metabolite	53829	Q9BPV8	Membrane	sMOL-receptor interaction	Human	12815166	IUPHAR	LR08489	P2RY13
+291	135651585	18068.0	UDP-galactose	Metabolite	9934	Q15391	Membrane	sMOL-receptor interaction	Human	19339661	IUPHAR	LR08490	P2RY14
+292	135651583	6031.0	uridine diphosphate	Metabolite	9934	Q15391	Membrane	sMOL-receptor interaction	Human	19759354	IUPHAR	LR08491	P2RY14
+293	135651427	6022.0	ADP	Metabolite	5028	P47900	Membrane	sMOL-receptor interaction	Human	9154346;12391289	IUPHAR	LR08492	P2RY1
+294	135651446	5957.0	ATP	Metabolite	5028	P47900	Membrane	sMOL-receptor interaction	Human	9154346;12391289	IUPHAR	LR08493	P2RY1
+295	135651446	5957.0	ATP	Metabolite	5029	P41231	Membrane	sMOL-receptor interaction	Human	8564228;11754592;12213051	IUPHAR	LR08495	P2RY2
+296	135651592	6133.0	uridine triphosphate	Metabolite	5029	P41231	Membrane	sMOL-receptor interaction	Human	8564228;11754592	IUPHAR	LR08496	P2RY2
+297	135651446	5957.0	ATP	Metabolite	5030	P51582	Membrane	sMOL-receptor interaction	Human	21193033	IUPHAR	LR08497	P2RY4
+298	135651592	6133.0	uridine triphosphate	Metabolite	5030	P51582	Membrane	sMOL-receptor interaction	Human	10779375	IUPHAR	LR08498	P2RY4
+299	135651583	6031.0	uridine diphosphate	Metabolite	5031	Q15077	Membrane	sMOL-receptor interaction	Human	8670200	IUPHAR	LR08499	P2RY6
+300	135651534	108156.0	PAF	Metabolite	5724	P25105	Membrane	sMOL-receptor interaction	Human	7594622	IUPHAR	LR08500	PTAFR
+301	135651531	445639.0	oleic acid	Metabolite	5338	O14939	Membrane	sMOL-receptor interaction	Human	12374567	IUPHAR	LR08502	PLD2
+302	135651544	5311358.0	PIP2	Metabolite	5338	O14939	Membrane	sMOL-receptor interaction	Human	9582313	IUPHAR	LR08503	PLD2
+303	135651442	444899.0	arachidonic acid	Metabolite	5590	Q05513	Membrane	sMOL-receptor interaction	Human	7744003	IUPHAR	LR08504	PRKCZ
+304	135652422		PTHrP-(1-34)	Peptide	5746	P49190	Membrane	sMOL-receptor interaction	Human	11602681	IUPHAR	LR08505	PTH2R
+305	135651563	5283560.0	sphingosine 1-phosphate	Metabolite	1901	P21453	Membrane	sMOL-receptor interaction	Human	31805144	IUPHAR	LR08506	S1PR1
+306	135651563	5283560.0	sphingosine 1-phosphate	Metabolite	9294	O95136	Membrane	sMOL-receptor interaction	Human	10446161;9988698	IUPHAR	LR08509	S1PR2
+307	135651563	5283560.0	sphingosine 1-phosphate	Metabolite	286223	Q99500	Membrane	sMOL-receptor interaction	Human	10446161;9988698;17170199	IUPHAR	LR08510	S1PR3
+308	135651563	5283560.0	sphingosine 1-phosphate	Metabolite	8698	O95977	Membrane	sMOL-receptor interaction	Human	12270137;11967257	IUPHAR	LR08513	S1PR4
+309	135651563	5283560.0	sphingosine 1-phosphate	Metabolite	53637	Q9H228	Membrane	sMOL-receptor interaction	Human	11705398;17114004;11967257;14732717	IUPHAR	LR08514	S1PR5
+310	340590260	444266.0	maleic acid	Synthetic organic	56670	Q9BXA5	Membrane	sMOL-receptor interaction	Human	28160606	IUPHAR	LR08515	SUCNR1
+311	178100544	1110.0	succinic acid	Metabolite	56670	Q9BXA5	Membrane	sMOL-receptor interaction	Human	15141213;23396314	IUPHAR	LR08516	SUCNR1
+312	135652016	1001.0	beta-phenylethylamine	Metabolite	134864	Q96RJ0	Membrane	sMOL-receptor interaction	Human	11459929;18524885;17038507;18602830;19725810;22073124	IUPHAR	LR08517	TAAR1
+313	135651582	5610.0	tyramine	Metabolite	134864	Q96RJ0	Membrane	sMOL-receptor interaction	Human	11459929;18524885;17038507;19892733;19725810;22073124	IUPHAR	LR08518	TAAR1
+314	135651539	5280360.0	PGE2	Metabolite	6915	P21731	Membrane	sMOL-receptor interaction	Human	10634944	IUPHAR	LR08519	TBXA2R
+315	135651540	5280363.0	PGF2alpha	Metabolite	6915	P21731	Membrane	sMOL-receptor interaction	Human	10634944	IUPHAR	LR08520	TBXA2R
+316	178102922	880.0	methylglyoxal	Metabolite	8989	O75762	Membrane	sMOL-receptor interaction	Human	22701540;22740698;22133672	IUPHAR	LR08521	TRPA1
+317	178101107	105074.0	pregnenolone sulphate	Metabolite	4308	Q7Z4N2	Membrane	sMOL-receptor interaction	Human	21278253	IUPHAR	LR08522	TRPM1
+318	135651544	5311358.0	PIP2	Metabolite	7226	O94759	Membrane	sMOL-receptor interaction	Human	22847436	IUPHAR	LR08523	TRPM2
+319	135651429	30243.0	ADP ribose	Metabolite	7226	O94759	Membrane	sMOL-receptor interaction	Human	11385575	IUPHAR	LR08524	TRPM2
+320	135651450	123847.0	cADPR	Metabolite	7226	O94759	Membrane	sMOL-receptor interaction	Human	16601673;15808509;16585058	IUPHAR	LR08525	TRPM2
+321	135652736		H2O2	Inorganic	7226	O94759	Membrane	sMOL-receptor interaction	Human	15302683;12562896;11960981;14512294;11804595	IUPHAR	LR08526	TRPM2
+322	53801022	123953.0	NAADP	Metabolite	7226	O94759	Membrane	sMOL-receptor interaction	Human	16585058	IUPHAR	LR08527	TRPM2
+323	135651521	5892.0	NAD	Metabolite	7226	O94759	Membrane	sMOL-receptor interaction	Human	16601673;11509734;11804595;12564954	IUPHAR	LR08528	TRPM2
+324	135651442	444899.0	arachidonic acid	Metabolite	7226	O94759	Membrane	sMOL-receptor interaction	Human	11804595	IUPHAR	LR08529	TRPM2
+325	135651473	91486.0	dihydrosphingosine	Metabolite	80036	Q9HCF6	Membrane	sMOL-receptor interaction	Human	15550678	IUPHAR	LR08530	TRPM3
+326	135650729	6438166.0	NN-dimethyl-D-erythrosphingosine	Metabolite	80036	Q9HCF6	Membrane	sMOL-receptor interaction	Human	15550678	IUPHAR	LR08531	TRPM3
+327	53801018	5280335.0	sphingosine	Metabolite	80036	Q9HCF6	Membrane	sMOL-receptor interaction	Human	15550678	IUPHAR	LR08532	TRPM3
+328	178101006	73755084.0	epipregnanolone sulphate	Metabolite	80036	Q9HCF6	Membrane	sMOL-receptor interaction	Human	20735426	IUPHAR	LR08533	TRPM3
+329	178101107	105074.0	pregnenolone sulphate	Metabolite	80036	Q9HCF6	Membrane	sMOL-receptor interaction	Human	18978782	IUPHAR	LR08534	TRPM3
+330	135652731		Ca2+	Inorganic	54795	Q8TD43	Membrane	sMOL-receptor interaction	Human	15590641;16424899;16407466;15331675	IUPHAR	LR08535	TRPM4
+331	135651544	5311358.0	PIP2	Metabolite	54795	Q8TD43	Membrane	sMOL-receptor interaction	Human	16424899	IUPHAR	LR08536	TRPM4
+332	135651446	5957.0	ATP	Metabolite	54795	Q8TD43	Membrane	sMOL-receptor interaction	Human	14758478	IUPHAR	LR08537	TRPM4
+333	53801012	6083.0	adenosine 5'-monophosphate	Metabolite	54795	Q8TD43	Membrane	sMOL-receptor interaction	Human	14758478	IUPHAR	LR08538	TRPM4
+334	135651427	6022.0	ADP	Metabolite	54795	Q8TD43	Membrane	sMOL-receptor interaction	Human	14758478	IUPHAR	LR08539	TRPM4
+335	135652741		Mg2+	Inorganic	140803	Q9BX84	Membrane	sMOL-receptor interaction	Human	14576148	IUPHAR	LR08540	TRPM6
+336	178100233	643961.0	phosphatidyl (3,5) inositol bisphosphate	Metabolite	57192	Q9GZU1	Membrane	sMOL-receptor interaction	Human	20802798	IUPHAR	LR08541	MCOLN1
+337	135651438	5281969.0	anandamide	Metabolite	7442	Q8NER1	Membrane	sMOL-receptor interaction	Human	12761211	IUPHAR	LR08542	TRPV1
+338	178100984		Cu2+	Inorganic	353174	Q401N2	Membrane	sMOL-receptor interaction	Human	26872532	IUPHAR	LR08544	ZACN
+339	135652738		H+	Inorganic	353174	Q401N2	Membrane	sMOL-receptor interaction	Human	26872532	IUPHAR	LR08545	ZACN
+340	135652747		Zn2+	Inorganic	353174	Q401N2	Membrane	sMOL-receptor interaction	Human	12381728;26872532	IUPHAR	LR08546	ZACN
