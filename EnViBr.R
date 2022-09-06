@@ -30,8 +30,9 @@ full_brainont_path<-"./Data/ABA_coldcuts_GTEx_ontology.tsv"
 gtex<-read_tsv(gtexpath)
 n_enrichment_categories_toshow<-20
 brainontology<-read_tsv(full_brainont_path)
-
-
+load('./Data/atc_targets.rdata')
+full_drugdb<-readRDS('./Data/DRUGBANK_DGIDB_CTD_interactions_long.rds')
+cellinker<-read_tsv('./Data/human-sMOL_remapped.txt')
 
 #-----Functions-----
 aba_enrich_genes<-function(genes){
@@ -74,6 +75,20 @@ enrich_pathways<-function(genes, showcats=20){
   results$go_plot<-go_enrichments_plot
   results
 }
+
+atc_targets[['ACE_INHIBITORS,_COMBINATIONS_C09B_targets']]
+
+list_to_t2g<-function(gene_set_list){
+  gs_names<-c()
+  gene_symbols<-c()
+  for (gs in names(gene_set_list)){
+    gene_symbols<-c(gene_symbols, gene_set_list[[gs]])
+    gs_names<-c(gs_names, rep(gs, length(gene_set_list[[gs]])))
+  }
+  as.data.frame(tibble(gs_name=gs_names, gene_symbol=gene_symbols))
+}
+
+
 
 enrich_genes_fgsea<-function(genes, expr_df){ #expr_df - a dataframe with first column 'hgnc_symbol' and other columns speifying expression levels across the analysed objects
   gene_sets<-c()
@@ -241,18 +256,52 @@ long_to_wide_enrichment_df_forcoldcuts<-function(df, add_suffix){
 
 
 
-
-
-
-subset_drugs_bygenes<-function(genes){
-  
-}
-
-subset_metabolites_bygenes<-function(genes){
-  
+subset_drugs_bygenes<-function(genes, full_drugdb){
+  results<-c()
+  results$df<-full_drugdb %>% 
+    filter(pipe_genesymbol %in% genes)
+  results$drugs<-unque(results$df$DRUG_Common_name)
+  results
 }
 
 
-enrich_atc<-function(drugs_dbids){
+
+subset_metabolites_bygenes<-function(genes, cellinker, showcats){
+  results<-c()
+  results$df<-cellinker %>% 
+    filter(pipe_genesymbol %in% genes)
+  results$small_mol_ligands<-unique(results$df$`ligand name`)
+  t2g<-cellinker %>% 
+    dplyr::select(`ligand name`,pipe_genesymbol) %>% 
+    rename(gs_name=`ligand name`, gene_symbol=pipe_genesymbol)
   
+  tryCatch({
+    results$enrichment_allres<-enricher(genes, TERM2GENE=t2g, pvalueCutoff = 1, minGSSize=1, qvalueCutoff=1)
+    results$enrichment_df<-results$enrichment_allres@result
+    results$plot<-mutate(results$enrichment_allres, qscore = -log(p.adjust, base=10)) %>% 
+      barplot(x="qscore", showCategory=showcats)
+  }, error = function(e) {
+    print('Lack of genetic overlap!')
+  }
+  )
+  results
+}
+
+
+
+enrich_atc<-function(genes, showcats=20){
+  atc_targets_t2g<-list_to_t2g(atc_targets)
+  results<-c()
+  
+  tryCatch({
+  res<-enricher(genes, TERM2GENE=atc_targets_t2g, pvalueCutoff = 1, minGSSize=1, qvalueCutoff=1)
+  results$plot<-mutate(res, qscore = -log(p.adjust, base=10)) %>% 
+    barplot(x="qscore", showCategory=showcats)
+  results$allres<-list(res)
+  results$df<-res@result
+  }, error = function(e) {
+    print('Lack of genetic overlap!')
+  }
+  )
+  results
 }
