@@ -35,6 +35,20 @@ full_drugdb<-readRDS('./Data/DRUGBANK_DGIDB_CTD_interactions_long.rds')
 cellinker<-read_tsv('./Data/human-sMOL_remapped.txt')
 
 #-----Functions-----
+remap_genes<-function(genes){
+  df<-tibble(genes=genes)
+  df %>% 
+    mutate(is_present=1) %>% 
+    write_delim('genedf.csv', delim=',')
+  system("python3 Remap_DF.py")
+  df<-read_csv('mapped_df.csv')
+  genes<-df$pipe_genesymbol
+  system('rm mapped_df.csv')
+  system('rm genedf.csv')
+  genes
+}
+
+
 aba_enrich_genes<-function(genes){
   for_aba_enrich<-genes %>% 
     tibble() %>% 
