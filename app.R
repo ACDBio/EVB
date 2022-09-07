@@ -12,7 +12,7 @@ ui <- fluidPage(
     # Sidebar panel for inputs ----
     sidebarPanel(
       
-      # Input: Select a file ----
+      # Input----
       fileInput("gene_csv", h4("Choose CSV File:"),
                 multiple = FALSE,
                 accept = c("text/csv",
@@ -24,14 +24,13 @@ ui <- fluidPage(
       textAreaInput("genes_text", h4("Paste gene symbols here:"), 
                     value = "Enter gene symbols..."),
       helpText("Note: Input one gene per line."),
-      # Horizontal line ----
       tags$hr(),
       checkboxInput("HUGORemap", "Remap gene symbols to HUGO", value = FALSE),
       # Selection of the required enrichment procedures
       checkboxGroupInput("EnrichmentPipeline", label = h3("Select analyses"), 
-                         choices = list("MSigDB" = 'msigdb', "Pathways (KEGG, Reactome, GO)" = 'rkg', "Brain regions (ABA+GTEx, Coldcuts) enrichment with brain region visualization" = 'ccuts',"Brain regoions (ABA) - fgsea" = 'aba', "Brain regions (ABA) - ABAEnrichment",
-                                        "Tissues (GTEx)" = 'gtex', "Cell types (ABA)"='caba', "Subset compounds (DGIDB, DrugBank, CTD)"='drugs', "Drug ATC category enrichment (DrugBank)" ='atc', 
-                                        "Signaling small molecule enrichment (cellinker)" ='sm'),
+                         choices = list("MSigDB" = 'msigdb', "Pathways (KEGG, Reactome, GO)" = 'rkg', "Brain regions (ABA+GTEx, Coldcuts) enrichment with brain region visualization" = 'ccuts',"Brain regoions (ABA) - fgsea" = 'aba_fgsea', "Brain regions (ABA) - ABAEnrichment" = 'aba_std',
+                                        "Tissues (GTEx)" = 'gtex', "Cell types (ABA)"='caba', "Subset compounds (DGIDB, DrugBank, CTD)"='drugs', "Drug target ATC category enrichment (DrugBank)" ='atc', 
+                                        "Signaling small molecule analysis (cellinker)" ='sm'),
                          selected = c('ccuts')),
       
       actionButton("RUN", "Run the analysis")
@@ -42,7 +41,7 @@ ui <- fluidPage(
     
     mainPanel(
       
-      # Output: Data file ----
+      # Output ----
       textOutput("genes"),
       textOutput("HUGO"),
       textOutput("HUGO_res"),
@@ -60,7 +59,15 @@ ui <- fluidPage(
       # )
       dashboardBody(
         uiOutput("msigdb_ui"),
-        uiOutput("rkg_ui")
+        uiOutput("rkg_ui"),
+        uiOutput("ccuts_ui"),
+        uiOutput("aba_fgsea_ui"),
+        uiOutput("aba_std_ui"),
+        uiOutput("gtex_ui"),
+        uiOutput("caba_ui"),
+        uiOutput("drugs_ui"),
+        uiOutput('atc_ui'),
+        uiOutput('sm_ui')
       )
     )
     )
@@ -139,7 +146,7 @@ server <- function(input, output, session) {
       
 #----MSigDB enrichment module----
          if ('msigdb' %in% input$EnrichmentPipeline){
-             print('MDigDB...')
+             print('MSigDB...')
              output$current<-renderText('MSigDB enrichment...')
              msigdb_res<-enrich_msigdb(genes, showcats=showcats)
              
@@ -190,10 +197,251 @@ server <- function(input, output, session) {
            output$go_output_plot<-renderPlot(pathway_res$go_plot)
            output$go_output_df<-renderDT(pathway_res$go@result, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
          }
-         
-         
 #----Pathway enrichment module - end----
-         
+#----DEBUG! Brain region enrichment module with visualization (ABA+GTEx)----
+         if ('ccuts' %in% input$EnrichmentPipeline){
+           print('Coldcuts region enrichment ...')
+           output$current<-renderText('Brain region (ABA+GTEx) enrichment with visualization...')
+           print('Getting expression...')
+           expr_df<-get_expression_df(sources=c('gtex','aba_ds_adult'))
+           enr_results<-enrich_genes_fgsea(genes, expr_df)
+           print('Preprocessing enrichment results...')
+           enr_results<-preprocess_enrichment_res_forcoldcuts(enr_results, brainonsources=c('ABA_dataset_adult','GTEx'))
+           seg<-get_seg_default()
+           print('Getting the assay for the left hemi...')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=results$left_hemi, assay_name='left')
+           print('Getting the assay for the right hemi...')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=results$right_hemi, assay_name='right')
+           left_nes_plot<-seg_feature_plot(segmentation = seg,
+                            assay = "left",
+                            feature = "NES_Left",
+                            smooth=FALSE)
+           right_nes_plot<-seg_feature_plot(segmentation = seg,
+                                           assay = "right",
+                                           feature = "NES_Right",
+                                           smooth=FALSE)
+           
+           
+           output$ccuts_ui <- renderUI({
+             check1 <- 'ccuts' %in% input$EnrichmentPipeline
+             if(length(check1)==0){check1 <- F}
+             if(check1){
+               tabBox(title = h1("Brain region enrichment (ABA+GTEx) with visualization results"),id= "ccuts_tabs", width = 12, #height = "420px",
+                      tabPanel("Brain enrichment NES plots", 
+                               h3('Left hemisphere:'),
+                               plotOutput("brainreg_output_plot_left",height = "1000px"),
+                               h3('Right hemisphere:'),
+                               plotOutput("brainreg_output_plot_right",height = "1000px")),
+                      tabPanel("Brain region enrichment (ABA+GTEx) table", DTOutput("brainreg_output_df"))
+               )}
+           })
+           output$brainreg_output_plot_left<-renderPlot(left_nes_plot)
+           output$brainreg_output_plot_right<-renderPlot(right_nes_plot)
+           output$brainreg_output_df<-renderDT(enr_results$full_annotated_enrichment_data, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+                 }
+#----Brain region enrichment module with visualization (ABA+GTEx) - end----
+#----Brain region enrichment (ABA) - fgsea----
+         if ('aba_fgsea' %in% input$EnrichmentPipeline){
+           print('ABA fgsea...')
+           output$current<-renderText('ABA fgsea enrichment...')
+           expr_df<-get_expression_df(sources=c('aba_ds_adult'))
+           enr_results_abafgsea<-enrich_genes_fgsea(genes, expr_df)%>% 
+             select(-pathway)
+           
+           output$aba_fgsea_ui <- renderUI({
+             check1 <- 'aba_fgsea' %in% input$EnrichmentPipeline
+             if(length(check1)==0){check1 <- F}
+             if(check1){
+               tabBox(title = h1("ABA brain region enrichment results with fgsea"),id= "aba_fgsea_tabs", width = 12, #height = "420px",
+                      tabPanel("ABA brain region enrichment table with fgsea", DTOutput("aba_fgsea_output_df"))
+               )
+               
+               
+               
+             }
+             
+           }
+           )
+           output$aba_fgsea_output_df<-renderDT(enr_results_abafgsea, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           output$current<-renderText('ABA fgsea enrichment-done.')
+         }         
+#----Brain region enrichment (ABA) - fgsea - end----
+#----DEBUG! Brain region enrichment (ABA) - standard----
+         if ('aba_std' %in% input$EnrichmentPipeline){
+           print('ABA standard...')
+           output$current<-renderText('ABA standard enrichment...')
+           enr_results_abastd<-aba_enrich_genes(genes)
+           print(enr_results_abastd)
+           enr_results_abastd<-enr_results_abastd$results
+           print(enr_results_abastd)
+           output$aba_std_ui <- renderUI({
+             check1 <- 'aba_std' %in% input$EnrichmentPipeline
+             if(length(check1)==0){check1 <- F}
+             if(check1){
+               tabBox(title = h1("ABA brain region enrichment results with ABAEnrichment"),id= "aba_std_tabs", width = 12, #height = "420px",
+                      tabPanel("ABA brain region enrichment table with with ABAEnrichment", DTOutput("aba_std_output_df"))
+               )
+             }
+           }
+           )
+           output$aba_fgsea_output_df<-renderDT(enr_results_abastd, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           output$current<-renderText('ABA fgsea enrichment-done.')
+         }         
+#----Brain region enrichment (ABA) - standard - end----
+#----GTEx enrichment----
+         if ('gtex' %in% input$EnrichmentPipeline){
+           print('GTEx fgsea...')
+           output$current<-renderText('GTEx fgsea enrichment...')
+           expr_df<-get_expression_df(sources=c('gtex'))
+           enr_results_gt<-enrich_genes_fgsea(genes, expr_df) %>% 
+             select(-pathway)
+           
+           output$gtex_ui <- renderUI({
+             check1 <- 'gtex' %in% input$EnrichmentPipeline
+             if(length(check1)==0){check1 <- F}
+             if(check1){
+               tabBox(title = h1("GTEx enrichment results with fgsea"),id= "gtex_tabs", width = 12, #height = "420px",
+                      tabPanel("GTEx enrichment table with fgsea", DTOutput("gtex_df"))
+               )
+               
+               
+               
+             }
+             
+           }
+           )
+           output$gtex_df<-renderDT(enr_results_gt, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           output$current<-renderText('GTEx fgsea enrichment-done.')
+         }            
+#----GTEx enrichment - end----         
+#----Cell type enrichment----
+         if ('caba' %in% input$EnrichmentPipeline){
+           print('Cell types fgsea...')
+           output$current<-renderText('Cell types fgsea enrichment...')
+           expr_df<-get_expression_df(sources=c('aba_cells'))
+           enr_results_caba<-enrich_genes_fgsea(genes, expr_df) %>% 
+             select(-pathway)
+           
+           output$caba_ui <- renderUI({
+             check1 <- 'caba' %in% input$EnrichmentPipeline
+             if(length(check1)==0){check1 <- F}
+             if(check1){
+               tabBox(title = h1("Cell type enrichment results with fgsea"),id= "caba_tabs", width = 12, #height = "420px",
+                      tabPanel("Cell type enrichment table with fgsea", DTOutput("caba_df"))
+               )
+               
+               
+               
+             }
+             
+           }
+           )
+           output$caba_df<-renderDT(enr_results_caba, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           output$current<-renderText('Cell types fgsea enrichment-done.')
+         }            
+#----Cell type enrichment - end---- 
+#----Compound selection----
+        if ('drugs' %in% input$EnrichmentPipeline){
+           print('Compound selection...')
+           output$current<-renderText('Compound selection procedure...')
+           drugs_subset<-subset_drugs_bygenes(genes)
+           
+           
+           output$caba_ui <- renderUI({
+             check1 <- 'drugs' %in% input$EnrichmentPipeline
+             if(length(check1)==0){check1 <- F}
+             if(check1){
+               tabBox(title = h1("Drug selection results with fgsea"),id= "drug_tabs", width = 12, #height = "420px",
+                      tabPanel("Drug-target gene interaction table", DTOutput("drug_df")),
+                      tabPanel("Drugs interacting with target genes", DTOutput("unique_drugs_df"))
+               )
+               
+               
+               
+             }
+             
+           }
+           )
+           output$drug_df<-renderDT(drugs_subset$df %>% 
+                                      select(-interaction_present), filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           output$unique_drugs_df<-renderDT(tibble(drugs=drugs_subset$drugs), filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           output$current<-renderText('Compound selection-done.')
+        }         
+#----Compound selection - end----
+#----ATC enrichment----
+      if ('atc' %in% input$EnrichmentPipeline){
+           print('ATC enrichment...')
+           output$current<-renderText('ATC enrichment...')
+           atc_enrichres<-enrich_atc(genes, showcats=showcats)
+           
+           if (length(atc_enrichres)>0){
+             output$atc_ui <- renderUI({
+               check1 <- 'atc' %in% input$EnrichmentPipeline
+               if(length(check1)==0){check1 <- F}
+               if(check1){
+                 tabBox(title = h1("ATC categories enrichment results"),id= "atc_tabs", width = 12, #height = "420px",
+                        tabPanel("ATC enrichment plot", plotOutput("atc_plot")),
+                        tabPanel("ATC enrichment table", DTOutput("atc_df"))
+                 )
+                 
+                 
+                 
+               }
+               
+             }
+             )
+             #print(atc_enrichres)
+             print(atc_enrichres)
+             output$atc_plot<-renderPlot(atc_enrichres$plot)
+             output$atc_df<-renderDT(atc_enrichres$df, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+          
+             output$current<-renderText('ATC enrichment-done.')
+           } else {
+             print('Not enough ATC drug targets for enrichment analysis.')
+             output$atc_ui<-renderUI({textOutput('atc_message')})
+             output$atc_message<-renderText('Not enough ATC drug targets for enrichment analysis.')
+             
+           }
+      }         
+#----ATC enrichment - end----
+#----Small molecule enrichment----
+         if ('sm' %in% input$EnrichmentPipeline){
+           print('Small signaling molecule enrichment...')
+           output$current<-renderText('Small signaling molecule enrichment...')
+           sm_enrichres<-subset_metabolites_bygenes(genes, showcats=showcats)
+           
+           if (length(sm_enrichres$df$small_molecule_interactors)>0){
+             output$sm_ui <- renderUI({
+               check1 <- 'sm' %in% input$EnrichmentPipeline
+               if(length(check1)==0){check1 <- F}
+               if(check1){
+                 tabBox(title = h1("Small signaling molecule enrichment results"),id= "sm_tabs", width = 12, #height = "420px",
+                        tabPanel("Small signaling molecule enrichment plot", plotOutput("sm_plot")),
+                        tabPanel("Small signaling molecule enrichment table", DTOutput("sm_df")),
+                        tabPanel("Small signaling molecule interactions table", DTOutput("sm_inter_df")),
+                        tabPanel("Small signaling molecule interactors", DTOutput("sm_comp_df"))
+                 )
+                 
+                 
+                 
+               }
+               
+             }
+             )
+
+             output$sm_plot<-renderPlot(sm_enrichres$plot)
+             output$sm_df<-renderDT(sm_enrichres$enrichment_df, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+             output$sm_inter_df<-renderDT(tibble(small_molecule_interactors=sm_enrichres$df), filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+             output$sm_comp_df<-renderDT(tibble(small_molecule_interactors=sm_enrichres$small_mol_ligands), filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+             output$current<-renderText('Small signaling molecule enrichment-done.')
+           } else {
+             print('Not enough small signaling molecule interactors for enrichment analysis.')
+             output$sm_ui<-renderUI({textOutput('sm_message')})
+             output$sm_message<-renderText('Not enough small signaling molecule interactors for analysis.')
+             
+           }
+         }         
+#----Small molecule enrichment - end----         
        }
   })
 }

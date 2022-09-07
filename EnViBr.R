@@ -14,25 +14,24 @@ data("dataset_adult")
 #data("dataset_5_stages")
 #data("dataset_dev_effect")
 #setting working directory to package directory
-tryCatch({
-  setwd(getSrcDirectory()[1])
-}, error = function(e) {
-  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-})
+# tryCatch({
+#    setwd(getSrcDirectory()[1])
+#  }, error = function(e) {
+#    setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+#  })
 
 brainseg_gz_filepath_half<-"./Data/ABA_Human_half/ABA_Human_half.nii.gz"
 brainseg_ontology_filepath_half<-"./Data/ABA_Human_half/ABA_human_ontology.csv"
-brainseg_gz_filepath_full<-"./Data/ABA_Human_full/ABA_Human.nii.gz"
-brainseg_ontology_filepath_full<-"./Data/ABA_Human_full/ABA_human_ontology.csv"
 gtexpath<-"./Data/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.tsv"
 full_brainont_path<-"./Data/ABA_coldcuts_GTEx_ontology.tsv"
-
+celldata_filepath<-'./Data/human_mca_smartseq.tsv'
 gtex<-read_tsv(gtexpath)
 n_enrichment_categories_toshow<-20
 brainontology<-read_tsv(full_brainont_path)
 load('./Data/atc_targets.rdata')
 full_drugdb<-readRDS('./Data/DRUGBANK_DGIDB_CTD_interactions_long.rds')
 cellinker<-read_tsv('./Data/human-sMOL_remapped.txt')
+
 
 #-----Functions-----
 remap_genes<-function(genes){
@@ -67,9 +66,9 @@ enrich_pathways<-function(genes, showcats=20){
                      OrgDb = org.Hs.eg.db) %>% 
     dplyr::select(ENTREZID) %>% 
     pull()
-  react_erichments<-enrichPathway(gene=genes_entrez)
-  kegg_enrichments<-enrichKEGG(genes_entrez)
-  go_enrichments<-enrichGO(genes_entrez, org.Hs.eg.db)
+  react_erichments<-enrichPathway(gene=genes_entrez, pvalueCutoff = 1, qvalueCutoff = 1)
+  kegg_enrichments<-enrichKEGG(genes_entrez, pvalueCutoff = 1, qvalueCutoff = 1)
+  go_enrichments<-enrichGO(genes_entrez, org.Hs.eg.db, pvalueCutoff = 1, qvalueCutoff = 1)
   
   react_enrichments_plot<-mutate(react_erichments, qscore = -log(p.adjust, base=10)) %>% 
     barplot(x="qscore", showCategory=showcats)
@@ -121,7 +120,7 @@ enrich_genes_fgsea<-function(genes, expr_df){ #expr_df - a dataframe with first 
                      eps=0)
     
     fgsea_res<-fgsea_res %>% 
-      mutate(region=reg)
+      mutate(target=reg) #here there was region=reg
     
     if (started==0){
       enr_result<-fgsea_res
@@ -130,8 +129,9 @@ enrich_genes_fgsea<-function(genes, expr_df){ #expr_df - a dataframe with first 
     }
     started=1
   }
-  
-  enr_result
+  enr_result<-enr_result %>% 
+    relocate(target) %>% 
+    arrange(padj)
 }
 
 enrich_genes_geneset<-function(genes, expr_df, quantile){ #expr_df - a dataframe with first column 'hgnc_symbol' and other columns speifying expression levels across the analysed objects, quantile - a quantile to subset top expressed genes for gene set generation
@@ -190,6 +190,7 @@ enrich_msigdb<-function(genes, showcats=20){
   results$df<-msigdbr_enrichment@result
   results$plot<-mutate(msigdbr_enrichment, qscore = -log(p.adjust, base=10)) %>% 
     barplot(x="qscore", showCategory=showcats)
+  results
 }
 
 get_seg_default<-function(brainseg_gz_fp, brainseg_ontology_fp){
@@ -201,7 +202,7 @@ get_seg_default<-function(brainseg_gz_fp, brainseg_ontology_fp){
 }
 
 
-get_var_distribution_brainwise<-function(seg, brainstats, brainseg_ontology_fp, brainseg_gz_fp){ #Brainstats - a df with variables of interest in rows and indices of brain regions corresponding to the IDs in segmentation ontology in columns. First row in brainstats represents variables.
+get_var_distribution_brainwise<-function(seg, brainstats, brainseg_ontology_fp=brainseg_ontology_filepath_half, brainseg_gz_fp=brainseg_gz_filepath_half, assay_name='default'){ #Brainstats - a df with variables of interest in rows and indices of brain regions corresponding to the IDs in segmentation ontology in columns. First row in brainstats represents variables.
   varids=brainstats[[1]]
   brainstats=as.data.frame(brainstats[[c(2:ncol(brainstats))]])
   rownames(brainstats)<-varids
@@ -219,10 +220,10 @@ get_var_distribution_brainwise<-function(seg, brainstats, brainseg_ontology_fp, 
                   sampledata = coldata)
   seg <- seg_assay_add(segmentation = seg, 
                        assay = abaAssay, 
-                       name = "ABA")
+                       name = assay_name)
   
   structures_chosen<-intersect(coldata$structure_acronym, seg@ontology$acronym)
-  seg <- seg_projection_add(name = "ABA", 
+  seg <- seg_projection_add(name = assay_name, 
                             segmentation = seg, 
                             structures = structures_chosen, 
                             planes_chosen = "sagittal")
@@ -232,7 +233,7 @@ get_var_distribution_brainwise<-function(seg, brainstats, brainseg_ontology_fp, 
 
 
 
-preprocess_enrichment_res_forcoldcuts<-function(enr_result, brainontology, brainonsources=c('ABA_dataset_adult','GTEx')){ #Subsets enrichment results according to the specifiedfilters. Outputs a dataframe with columns according to coldcuts ids and rows - to metrics. Brainontology - the file with mappings of expression entity ids to coldcuts ids. It should have columns 'structure_id' (character), 'coldcuts_id' (character), 'Left_hemisphere' (bool),'Right_hemisphere' (Bool),'Undefined_hemisphere' (bool).
+preprocess_enrichment_res_forcoldcuts<-function(enr_result, brainontology=brainontology, brainonsources=c('ABA_dataset_adult','GTEx')){ #Subsets enrichment results according to the specifiedfilters. Outputs a dataframe with columns according to coldcuts ids and rows - to metrics. Brainontology - the file with mappings of expression entity ids to coldcuts ids. It should have columns 'structure_id' (character), 'coldcuts_id' (character), 'Left_hemisphere' (bool),'Right_hemisphere' (Bool),'Undefined_hemisphere' (bool).
   enr_result<-enr_result %>% 
     rename(structure_id=region)
   brainontology_dedup<-brainontology %>% 
@@ -270,22 +271,22 @@ long_to_wide_enrichment_df_forcoldcuts<-function(df, add_suffix){
 
 
 
-subset_drugs_bygenes<-function(genes, full_drugdb){
+subset_drugs_bygenes<-function(genes, full_drugdbd=full_drugdb){
   results<-c()
-  results$df<-full_drugdb %>% 
-    filter(pipe_genesymbol %in% genes)
-  results$drugs<-unque(results$df$DRUG_Common_name)
+  results$df<-full_drugdbd %>% 
+    dplyr::filter(pipe_genesymbol %in% genes)
+  results$drugs<-unique(results$df$DRUG_Common_name)
   results
 }
 
 
 
-subset_metabolites_bygenes<-function(genes, cellinker, showcats){
+subset_metabolites_bygenes<-function(genes, showcats, cellinkerd=cellinker){
   results<-c()
-  results$df<-cellinker %>% 
+  results$df<-cellinkerd %>% 
     filter(pipe_genesymbol %in% genes)
   results$small_mol_ligands<-unique(results$df$`ligand name`)
-  t2g<-cellinker %>% 
+  t2g<-cellinkerd %>% 
     dplyr::select(`ligand name`,pipe_genesymbol) %>% 
     rename(gs_name=`ligand name`, gene_symbol=pipe_genesymbol)
   
@@ -319,3 +320,36 @@ enrich_atc<-function(genes, showcats=20){
   )
   results
 }
+
+get_expression_df<-function(sources=c('gtex','aba_ds_adult','aba_cells'), gtex_fp=gtexpath, celldata_fp=celldata_filepath){
+  resdf<-c()
+  init=0
+  for (source in sources){
+    if (source=='gtex'){
+      data<-read_tsv(gtex_fp)%>% 
+        dplyr::select(-Name) %>% 
+        dplyr::rename(hgnc_symbol=Description)
+    } else if (source=='aba_ds_adult'){
+      data<-dataset_adult %>% dplyr::select(hgnc_symbol, structure, signal) %>%
+        group_by(hgnc_symbol, structure) %>%
+        summarise_at('signal', .funs='mean') %>% 
+        spread(key='structure', value='signal')
+      
+    } else if (source=='aba_cells'){
+      data<-read_tsv(celldata_fp)
+    }
+    
+    if (init==0){
+      resdf<-data
+    } else {
+      resdf<-left_join(resdf, data)
+    }
+   init=1
+  }
+
+  resdf<-resdf %>% 
+    drop_na()
+}
+
+
+
