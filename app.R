@@ -44,7 +44,7 @@ ui <- fluidPage(
       checkboxInput("HUGORemap", "Remap gene symbols to HUGO", value = FALSE),
       # Selection of the required enrichment procedures
       checkboxGroupInput("EnrichmentPipeline", label = h3("Select analyses"), 
-                         choices = list("MSigDB" = 'msigdb', "Pathways (KEGG, Reactome, GO)" = 'rkg', "Brain regions (ABA+GTEx, Coldcuts) enrichment with brain region visualization" = 'ccuts',"Brain regoions (ABA) - fgsea" = 'aba_fgsea', "Brain regions (ABA) - ABAEnrichment" = 'aba_std',
+                         choices = list("MSigDB" = 'msigdb', "Pathways (KEGG, Reactome, GO)" = 'rkg', "Brain regions (ABA, Coldcuts) fgsea enrichment with visualization" = 'ccuts',"Brain regoions (ABA) - fgsea" = 'aba_fgsea', "Brain regions (ABA) - ABAEnrichment" = 'aba_std',
                                         "Tissues (GTEx)" = 'gtex', "Cell types (ABA)"='caba', "Subset compounds (DGIDB, DrugBank, CTD)"='drugs', "Drug target ATC category enrichment (DrugBank)" ='atc', 
                                         "Signaling small molecule analysis (cellinker)" ='sm'),
                          selected = c('ccuts')),
@@ -95,6 +95,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   showcats=20
+  brainplot_hight="700px"
   border_style="border: 10px solid DarkGrey;"
   table_opts<-list(dom = 'Bfrtip',
                    #pageLength =  showcats,
@@ -178,6 +179,7 @@ server <- function(input, output, session) {
       
 #----MSigDB enrichment module----
          if ('msigdb' %in% input$EnrichmentPipeline){
+           showModal(modalDialog("Running MSigDB enrichment...", footer=NULL))
            # withConsoleRedirect("console", {
            #   print('MSigDB...')
            # })
@@ -203,11 +205,12 @@ server <- function(input, output, session) {
              output$msigdb_output_plot<-renderPlot(msigdb_res$plot)
              output$msigdb_output_df<-renderDT(msigdb_res$df, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
              output$current<-renderText('MSigDB enrichment-done.')
-         }
+         removeModal()}
          
 #----MsigDB enrichment module - end----    
 #----Pathway enrichment module----
          if ('rkg' %in% input$EnrichmentPipeline){
+           showModal(modalDialog("Running KEGG, Reactome, GO enrichments...", footer=NULL))
            print('KEGG, Reactome, GO...')
            output$current<-renderText('KEGG, Reactome, GO enrichment...')
            pathway_res<-enrich_pathways(genes, showcats=showcats)
@@ -230,15 +233,15 @@ server <- function(input, output, session) {
            output$kegg_output_df<-renderDT(pathway_res$kegg@result, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            output$go_output_plot<-renderPlot(pathway_res$go_plot)
            output$go_output_df<-renderDT(pathway_res$go@result, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
-         }
+         removeModal()}
 #----Pathway enrichment module - end----
-#----DEBUG! Brain region enrichment module with visualization (ABA+GTEx)----
+#----Brain region enrichment module with visualization (ABA - fgsea)----
          if ('ccuts' %in% input$EnrichmentPipeline){
-           showModal(modalDialog("Running brain region enrichment...", footer=NULL))
+           showModal(modalDialog("Running brain region (ABA-fgsea) enrichment with visualizations...", footer=NULL))
            print('Coldcuts region enrichment ...')
-           output$current<-renderText('Brain region (ABA+GTEx) enrichment with visualization...')
+           output$current<-renderText('Brain region (ABA) enrichment with visualization...')
            print('Getting expression...')
-           expr_df<-get_expression_df(sources=c('gtex','aba_ds_adult'))
+           expr_df<-get_expression_df(sources=c('aba_ds_adult'))
            enr_results<-enrich_genes_fgsea(genes, expr_df)
            print('Preprocessing enrichment results...')
            print(enr_results)
@@ -272,72 +275,90 @@ server <- function(input, output, session) {
            left_nes_plot_minp<-seg_feature_plot(segmentation = seg,
                             assay = "left_minp",
                             feature = "NES",
-                            smooth=FALSE)
+                            smooth=FALSE,
+                            labelsize=6,
+                            remove_axes=TRUE)
            right_nes_plot_minp<-seg_feature_plot(segmentation = seg,
                                            assay = "right_minp",
                                            feature = "NES",
-                                           smooth=FALSE)
+                                           smooth=FALSE,
+                                           labelsize=6,
+                                           remove_axes=TRUE)
            all_nes_plot_minp<-seg_feature_plot(segmentation = seg,
                                             assay = "all_minp",
                                             feature = "NES",
-                                            smooth=FALSE)
+                                            smooth=FALSE,
+                                            labelsize=6,
+                                            remove_axes=TRUE)
            print('Minp - done.')
            
            left_nes_plot_med<-seg_feature_plot(segmentation = seg,
                                                 assay = "left_med",
                                                 feature = "NES",
-                                                smooth=FALSE)
+                                                smooth=FALSE,
+                                               labelsize=6,
+                                               remove_axes=TRUE)
            right_nes_plot_med<-seg_feature_plot(segmentation = seg,
                                                  assay = "right_med",
                                                  feature = "NES",
-                                                 smooth=FALSE)
+                                                 smooth=FALSE,
+                                                labelsize=6,
+                                                remove_axes=TRUE)
            all_nes_plot_med<-seg_feature_plot(segmentation = seg,
                                                assay = "all_med",
                                                feature = "NES",
-                                               smooth=FALSE)  
+                                               smooth=FALSE,
+                                              labelsize=6,
+                                              remove_axes=TRUE)  
            print('Med - done.')
            
            left_nes_plot_mean<-seg_feature_plot(segmentation = seg,
                                                assay = "left_mean",
                                                feature = "NES",
-                                               smooth=FALSE)
+                                               smooth=FALSE,
+                                               labelsize=6,
+                                               remove_axes=TRUE)
            right_nes_plot_mean<-seg_feature_plot(segmentation = seg,
                                                 assay = "right_mean",
                                                 feature = "NES",
-                                                smooth=FALSE)
+                                                smooth=FALSE,
+                                                labelsize=6,
+                                                remove_axes=TRUE)
            all_nes_plot_mean<-seg_feature_plot(segmentation = seg,
                                               assay = "all_mean",
                                               feature = "NES",
-                                              smooth=FALSE)
+                                              smooth=FALSE,
+                                              labelsize=6,
+                                              remove_axes=TRUE)
            print('Mean - done.')
            output$ccuts_ui <- renderUI({
              check1 <- 'ccuts' %in% input$EnrichmentPipeline
              if(length(check1)==0){check1 <- F}
              if(check1){
-               fluidRow(style=border_style,tabBox(title = h1("Brain region enrichment (ABA+GTEx) with visualization results"),id= "ccuts_tabs", width = 12, #height = "420px",
+               fluidRow(style=border_style,tabBox(title = h1("Brain region enrichment (ABA-fgsea) with visualization results"),id= "ccuts_tabs", width = 12, #height = "420px",
                       tabPanel("Brain enrichment NES plots", 
                                h3('Left hemisphere (aggregated by min(padj)):'),
-                               plotOutput("brainreg_output_plot_left"),#,height = "1000px"),
+                               plotOutput("brainreg_output_plot_left",height = brainplot_hight),
                                h3('Right hemisphere (aggregated by min(padj)):'),
-                               plotOutput("brainreg_output_plot_right"),#,height = "1000px"),
-                               h3('Right hemisphere (aggregated by min(padj)):'),
-                               plotOutput("brainreg_output_plot_all"),#,height = "1000px"),
+                               plotOutput("brainreg_output_plot_right",height = brainplot_hight),
+                               h3('Both hemispheres (aggregated by min(padj)):'),
+                               plotOutput("brainreg_output_plot_all",height = brainplot_hight),
                                
                                h3('Left hemisphere (aggregated by medians):'),
-                               plotOutput("brainreg_output_plot_left_med"),#,height = "1000px"),
+                               plotOutput("brainreg_output_plot_left_med",height = brainplot_hight),
                                h3('Right hemisphere (aggregated by medians):'),
-                               plotOutput("brainreg_output_plot_right_med"),#,height = "1000px"),
-                               h3('Right hemisphere (aggregated by medians):'),
-                               plotOutput("brainreg_output_plot_all_med"),#,height = "1000px"),
+                               plotOutput("brainreg_output_plot_right_med",height = brainplot_hight),
+                               h3('Both hemispheres (aggregated by medians):'),
+                               plotOutput("brainreg_output_plot_all_med",height = brainplot_hight),
                       
                                h3('Left hemisphere (aggregated by means):'),
-                               plotOutput("brainreg_output_plot_left_mean"),#,height = "1000px"),
+                               plotOutput("brainreg_output_plot_left_mean",height = brainplot_hight),
                                h3('Right hemisphere (aggregated by means):'),
-                               plotOutput("brainreg_output_plot_right_mean"),#,height = "1000px"),
-                               h3('Right hemisphere (aggregated by means):'),
-                               plotOutput("brainreg_output_plot_all_mean")),#,height = "1000px")),                  
+                               plotOutput("brainreg_output_plot_right_mean",height = brainplot_hight),
+                               h3('Both hemispheres (aggregated by means):'),
+                               plotOutput("brainreg_output_plot_all_mean",height = brainplot_hight)),                  
                       
-                      tabPanel("Brain region enrichment (ABA+GTEx) table", DTOutput("brainreg_output_df"))
+                      tabPanel("Brain region enrichment (ABA-fgsea) table", DTOutput("brainreg_output_df"))
                ))}
            })
            print('Plotting...')
@@ -358,9 +379,10 @@ server <- function(input, output, session) {
            output$brainreg_output_df<-renderDT(enr_results$full_annotated_enrichment_data %>% 
                                                  select(-pathway), filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            removeModal() }
-#----Brain region enrichment module with visualization (ABA+GTEx) - end----
+#----Brain region enrichment module with visualization (ABA - fgsea) - end----
 #----Brain region enrichment (ABA) - fgsea----
          if ('aba_fgsea' %in% input$EnrichmentPipeline){
+           showModal(modalDialog("Running ABA fgsea enrichment...", footer=NULL))
            print('ABA fgsea...')
            output$current<-renderText('ABA fgsea enrichment...')
            expr_df<-get_expression_df(sources=c('aba_ds_adult'))
@@ -383,10 +405,11 @@ server <- function(input, output, session) {
            )
            output$aba_fgsea_output_df<-renderDT(enr_results_abafgsea, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            output$current<-renderText('ABA fgsea enrichment-done.')
-         }         
+         removeModal()}         
 #----Brain region enrichment (ABA) - fgsea - end----
 #----Brain region enrichment (ABA) - standard----
          if ('aba_std' %in% input$EnrichmentPipeline){
+           showModal(modalDialog("Running ABA enrichment...", footer=NULL))
            print('ABA standard...')
            output$current<-renderText('ABA standard enrichment...')
            enr_results_abastd<-aba_enrich_genes(genes)
@@ -404,10 +427,11 @@ server <- function(input, output, session) {
            )
            output$aba_std_output_df<-renderDT(enr_results_abastd, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            output$current<-renderText('ABA fgsea enrichment-done.')
-         }         
+         removeModal()}         
 #----Brain region enrichment (ABA) - standard - end----
 #----GTEx enrichment----
          if ('gtex' %in% input$EnrichmentPipeline){
+           showModal(modalDialog("Running GTEx enrichment...", footer=NULL))
            print('GTEx fgsea...')
            output$current<-renderText('GTEx fgsea enrichment...')
            expr_df<-get_expression_df(sources=c('gtex'))
@@ -430,10 +454,11 @@ server <- function(input, output, session) {
            )
            output$gtex_df<-renderDT(enr_results_gt, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            output$current<-renderText('GTEx fgsea enrichment-done.')
-         }            
+         removeModal()}            
 #----GTEx enrichment - end----         
 #----Cell type enrichment----
          if ('caba' %in% input$EnrichmentPipeline){
+           showModal(modalDialog("Running Cell type (ABA) enrichment...", footer=NULL))
            print('Cell types fgsea...')
            output$current<-renderText('Cell types fgsea enrichment...')
            expr_df<-get_expression_df(sources=c('aba_cells'))
@@ -456,10 +481,11 @@ server <- function(input, output, session) {
            )
            output$caba_df<-renderDT(enr_results_caba, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            output$current<-renderText('Cell types fgsea enrichment-done.')
-         }            
+         removeModal()}            
 #----Cell type enrichment - end---- 
 #----Compound selection----
         if ('drugs' %in% input$EnrichmentPipeline){
+          showModal(modalDialog("Selecting compounds interacting with the genes...", footer=NULL))
            print('Compound selection...')
            output$current<-renderText('Compound selection procedure...')
            drugs_subset<-subset_drugs_bygenes(genes)
@@ -484,10 +510,11 @@ server <- function(input, output, session) {
                                       select(-interaction_present), filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            output$unique_drugs_df<-renderDT(tibble(drugs=drugs_subset$drugs), filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            output$current<-renderText('Compound selection-done.')
-        }         
+        removeModal()}         
 #----Compound selection - end----
 #----ATC enrichment----
       if ('atc' %in% input$EnrichmentPipeline){
+        showModal(modalDialog("Running ATC target enrichment...", footer=NULL))
            print('ATC enrichment...')
            output$current<-renderText('ATC enrichment...')
            atc_enrichres<-enrich_atc(genes, showcats=showcats)
@@ -520,10 +547,11 @@ server <- function(input, output, session) {
              output$atc_message<-renderText('Not enough ATC drug targets for enrichment analysis.')
              
            }
-      }         
+      removeModal()}         
 #----ATC enrichment - end----
 #----Small molecule enrichment----
          if ('sm' %in% input$EnrichmentPipeline){
+           showModal(modalDialog("Getting small signaling molecule interactors...", footer=NULL))
            print('Small signaling molecule enrichment...')
            output$current<-renderText('Small signaling molecule enrichment...')
            sm_enrichres<-subset_metabolites_bygenes(genes, showcats=showcats)
@@ -558,7 +586,7 @@ server <- function(input, output, session) {
              output$sm_message<-renderText('Not enough small signaling molecule interactors for analysis.')
              
            }
-         }         
+         removeModal()}         
 #----Small molecule enrichment - end----         
        }
   })
