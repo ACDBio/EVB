@@ -27,7 +27,7 @@ full_brainont_path<-"./Data/ABA_coldcuts_GTEx_ontology.tsv"
 celldata_filepath<-'./Data/human_mca_smartseq.tsv'
 gtex<-read_tsv(gtexpath)
 n_enrichment_categories_toshow<-20
-brainontology<-read_tsv(full_brainont_path)
+brainontology_data<-read_tsv(full_brainont_path)
 load('./Data/atc_targets.rdata')
 full_drugdb<-readRDS('./Data/DRUGBANK_DGIDB_CTD_interactions_long.rds')
 cellinker<-read_tsv('./Data/human-sMOL_remapped.txt')
@@ -233,7 +233,7 @@ get_var_distribution_brainwise<-function(seg, brainstats, brainseg_ontology_fp=b
 
 
 
-preprocess_enrichment_res_forcoldcuts<-function(enr_result, brainontology=brainontology, brainonsources=c('ABA_dataset_adult','GTEx')){ #Subsets enrichment results according to the specifiedfilters. Outputs a dataframe with columns according to coldcuts ids and rows - to metrics. Brainontology - the file with mappings of expression entity ids to coldcuts ids. It should have columns 'structure_id' (character), 'coldcuts_id' (character), 'Left_hemisphere' (bool),'Right_hemisphere' (Bool),'Undefined_hemisphere' (bool).
+preprocess_enrichment_res_forcoldcuts<-function(enr_result, brainontology=brainontology_data, brainonsources=c('ABA_dataset_adult','GTEx')){ #Subsets enrichment results according to the specifiedfilters. Outputs a dataframe with columns according to coldcuts ids and rows - to metrics. Brainontology - the file with mappings of expression entity ids to coldcuts ids. It should have columns 'structure_id' (character), 'coldcuts_id' (character), 'Left_hemisphere' (bool),'Right_hemisphere' (Bool),'Undefined_hemisphere' (bool).
   enr_result<-enr_result %>% 
     rename(structure_id=region)
   brainontology_dedup<-brainontology %>% 

@@ -77,17 +77,18 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   showcats=20
+  border_style="border: 10px solid DarkGrey;"
   table_opts<-list(dom = 'Bfrtip',
                    #pageLength =  showcats,
                              buttons = 
                                list('colvis', list(
                                  extend = 'collection',
                                  buttons = list(list(extend='csv',
-                                                     filename = 'enrichment_table.csv'),
+                                                     filename = 'enrichment_table'),
                                                 list(extend='excel',
-                                                     filename = 'enrichment_table.excel'),
+                                                     filename = 'enrichment_table'),
                                                 list(extend='pdf',
-                                                     filename= 'enrichment_table.pdf')),
+                                                     filename= 'enrichment_table')),
                                  text = 'Download'
                                )),
                              scrollX = TRUE
@@ -155,10 +156,10 @@ server <- function(input, output, session) {
                check1 <- 'msigdb' %in% input$EnrichmentPipeline
                if(length(check1)==0){check1 <- F}
                if(check1){
-                 tabBox(title = h1("MSigDB enrichment results"),id= "msigdb_tabs", width = 12, #height = "420px",
+                 fluidRow(style=border_style,tabBox(title = h1("MSigDB enrichment results"),id= "msigdb_tabs", width = 12, #height = "420px",
                         tabPanel("MSigDB enrichment plot", plotOutput("msigdb_output_plot",height = "800px")),
                         tabPanel("MSigDB enrichment table", DTOutput("msigdb_output_df"))
-                 )
+                 ))
                  
                  
                  
@@ -181,14 +182,14 @@ server <- function(input, output, session) {
            check1 <- 'rkg' %in% input$EnrichmentPipeline
            if(length(check1)==0){check1 <- F}
            if(check1){
-               tabBox(title = h1("KEGG, Reactome, GO enrichment results"),id= "rkg_tabs", width = 12, #height = "420px",
+             fluidRow(style=border_style,tabBox(title = h1("KEGG, Reactome, GO enrichment results"),id= "rkg_tabs", width = 12, #height = "420px",
                       tabPanel("Reactome enrichment plot", plotOutput("reactome_output_plot",height = "1000px")),
                       tabPanel("Reactome enrichment table", DTOutput("reactome_output_df")),
                       tabPanel("Kegg enrichment plot", plotOutput("kegg_output_plot",height = "1000px")),
                       tabPanel("Kegg enrichment table", DTOutput("kegg_output_df")),
                       tabPanel("GO enrichment plot", plotOutput("go_output_plot",height = "1000px")),
                       tabPanel("GO enrichment table", DTOutput("go_output_df"))
-               )}
+               ))}
            })
            output$reactome_output_plot<-renderPlot(pathway_res$react_plot)
            output$reactome_output_df<-renderDT(pathway_res$react@result, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
@@ -226,14 +227,14 @@ server <- function(input, output, session) {
              check1 <- 'ccuts' %in% input$EnrichmentPipeline
              if(length(check1)==0){check1 <- F}
              if(check1){
-               tabBox(title = h1("Brain region enrichment (ABA+GTEx) with visualization results"),id= "ccuts_tabs", width = 12, #height = "420px",
+               fluidRow(style=border_style,tabBox(title = h1("Brain region enrichment (ABA+GTEx) with visualization results"),id= "ccuts_tabs", width = 12, #height = "420px",
                       tabPanel("Brain enrichment NES plots", 
                                h3('Left hemisphere:'),
                                plotOutput("brainreg_output_plot_left",height = "1000px"),
                                h3('Right hemisphere:'),
                                plotOutput("brainreg_output_plot_right",height = "1000px")),
                       tabPanel("Brain region enrichment (ABA+GTEx) table", DTOutput("brainreg_output_df"))
-               )}
+               ))}
            })
            output$brainreg_output_plot_left<-renderPlot(left_nes_plot)
            output$brainreg_output_plot_right<-renderPlot(right_nes_plot)
@@ -252,9 +253,9 @@ server <- function(input, output, session) {
              check1 <- 'aba_fgsea' %in% input$EnrichmentPipeline
              if(length(check1)==0){check1 <- F}
              if(check1){
-               tabBox(title = h1("ABA brain region enrichment results with fgsea"),id= "aba_fgsea_tabs", width = 12, #height = "420px",
+               fluidRow(style=border_style,tabBox(title = h1("ABA brain region enrichment results with fgsea"),id= "aba_fgsea_tabs", width = 12, #height = "420px",
                       tabPanel("ABA brain region enrichment table with fgsea", DTOutput("aba_fgsea_output_df"))
-               )
+               ))
                
                
                
@@ -266,25 +267,24 @@ server <- function(input, output, session) {
            output$current<-renderText('ABA fgsea enrichment-done.')
          }         
 #----Brain region enrichment (ABA) - fgsea - end----
-#----DEBUG! Brain region enrichment (ABA) - standard----
+#----Brain region enrichment (ABA) - standard----
          if ('aba_std' %in% input$EnrichmentPipeline){
            print('ABA standard...')
            output$current<-renderText('ABA standard enrichment...')
            enr_results_abastd<-aba_enrich_genes(genes)
-           print(enr_results_abastd)
-           enr_results_abastd<-enr_results_abastd$results
-           print(enr_results_abastd)
+           enr_results_abastd<-enr_results_abastd$results %>% 
+             arrange(-(n_significant), min_FWER)
            output$aba_std_ui <- renderUI({
              check1 <- 'aba_std' %in% input$EnrichmentPipeline
              if(length(check1)==0){check1 <- F}
              if(check1){
-               tabBox(title = h1("ABA brain region enrichment results with ABAEnrichment"),id= "aba_std_tabs", width = 12, #height = "420px",
+               fluidRow(style=border_style,tabBox(title = h1("ABA brain region enrichment results with ABAEnrichment"),id= "aba_std_tabs", width = 12, #height = "420px",
                       tabPanel("ABA brain region enrichment table with with ABAEnrichment", DTOutput("aba_std_output_df"))
-               )
+               ))
              }
            }
            )
-           output$aba_fgsea_output_df<-renderDT(enr_results_abastd, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           output$aba_std_output_df<-renderDT(enr_results_abastd, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            output$current<-renderText('ABA fgsea enrichment-done.')
          }         
 #----Brain region enrichment (ABA) - standard - end----
@@ -300,9 +300,9 @@ server <- function(input, output, session) {
              check1 <- 'gtex' %in% input$EnrichmentPipeline
              if(length(check1)==0){check1 <- F}
              if(check1){
-               tabBox(title = h1("GTEx enrichment results with fgsea"),id= "gtex_tabs", width = 12, #height = "420px",
+               fluidRow(style = border_style, tabBox(title = h1("GTEx enrichment results with fgsea"),id= "gtex_tabs", width = 12, #height = "420px",
                       tabPanel("GTEx enrichment table with fgsea", DTOutput("gtex_df"))
-               )
+               ))
                
                
                
@@ -326,9 +326,9 @@ server <- function(input, output, session) {
              check1 <- 'caba' %in% input$EnrichmentPipeline
              if(length(check1)==0){check1 <- F}
              if(check1){
-               tabBox(title = h1("Cell type enrichment results with fgsea"),id= "caba_tabs", width = 12, #height = "420px",
+               fluidRow(style=border_style, tabBox(title = h1("Cell type enrichment results with fgsea"),id= "caba_tabs", width = 12, #height = "420px",
                       tabPanel("Cell type enrichment table with fgsea", DTOutput("caba_df"))
-               )
+               ))
                
                
                
@@ -351,10 +351,10 @@ server <- function(input, output, session) {
              check1 <- 'drugs' %in% input$EnrichmentPipeline
              if(length(check1)==0){check1 <- F}
              if(check1){
-               tabBox(title = h1("Drug selection results with fgsea"),id= "drug_tabs", width = 12, #height = "420px",
+               fluidRow(style=border_style,tabBox(title = h1("Drug selection results with fgsea"),id= "drug_tabs", width = 12, #height = "420px",
                       tabPanel("Drug-target gene interaction table", DTOutput("drug_df")),
                       tabPanel("Drugs interacting with target genes", DTOutput("unique_drugs_df"))
-               )
+               ))
                
                
                
@@ -379,10 +379,10 @@ server <- function(input, output, session) {
                check1 <- 'atc' %in% input$EnrichmentPipeline
                if(length(check1)==0){check1 <- F}
                if(check1){
-                 tabBox(title = h1("ATC categories enrichment results"),id= "atc_tabs", width = 12, #height = "420px",
+                 fluidRow(style=border_style,tabBox(title = h1("ATC categories enrichment results"),id= "atc_tabs", width = 12, #height = "420px",
                         tabPanel("ATC enrichment plot", plotOutput("atc_plot")),
                         tabPanel("ATC enrichment table", DTOutput("atc_df"))
-                 )
+                 ))
                  
                  
                  
@@ -415,12 +415,12 @@ server <- function(input, output, session) {
                check1 <- 'sm' %in% input$EnrichmentPipeline
                if(length(check1)==0){check1 <- F}
                if(check1){
-                 tabBox(title = h1("Small signaling molecule enrichment results"),id= "sm_tabs", width = 12, #height = "420px",
+                 fluidRow(style=border_style,tabBox(title = h1("Small signaling molecule enrichment results"),id= "sm_tabs", width = 12, #height = "420px",
                         tabPanel("Small signaling molecule enrichment plot", plotOutput("sm_plot")),
                         tabPanel("Small signaling molecule enrichment table", DTOutput("sm_df")),
                         tabPanel("Small signaling molecule interactions table", DTOutput("sm_inter_df")),
                         tabPanel("Small signaling molecule interactors", DTOutput("sm_comp_df"))
-                 )
+                 ))
                  
                  
                  
