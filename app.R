@@ -46,18 +46,21 @@ ui <- fluidPage(
       textOutput("genes"),
       textOutput("HUGO"),
       textOutput("HUGO_res"),
+      tags$br(),
       column(3, offset = 0),
       column(3, offset = 0, uiOutput("download_hugo", style = "text-align: center;")),
       column(3, offset = 0),
       #tableOutput("contents"),
+      tags$br(),
       tags$hr(),
-      textOutput('status'),
+      #textOutput('status'),
       # conditionalPanel(
       #   condition = "input.breaks == 'custom'",
       #   sliderInput("breakCount", "Break Count", min = 1, max = 50, value = 10)
       # )
       dashboardBody(
-        uiOutput("msigdb_ui")
+        uiOutput("msigdb_ui"),
+        uiOutput("rkg_ui")
       )
     )
     )
@@ -68,6 +71,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   showcats=20
   table_opts<-list(dom = 'Bfrtip',
+                   #pageLength =  showcats,
                              buttons = 
                                list('colvis', list(
                                  extend = 'collection',
@@ -112,7 +116,7 @@ server <- function(input, output, session) {
            genes=remap_genes(genes)
            output$HUGO_res<-renderText(paste(length(genes), 'genes were remapped.'))
            output$download_hugo <- renderUI({
-             div(style = "display:inline-block;width:0%;", downloadButton("HUGO_remapped_genes", "Download", icon = icon("download"), 
+             div(style = "display:inline-block;width:0%;", downloadButton("HUGO_remapped_genes", "Download remapped genes", icon = icon("download"), 
                                                                         style = " 
            flex-grow: 1;
            display: inline-block;
@@ -133,6 +137,7 @@ server <- function(input, output, session) {
            )
          }
       
+#----MSigDB enrichment module----
          if ('msigdb' %in% input$EnrichmentPipeline){
              print('MDigDB...')
              output$current<-renderText('MSigDB enrichment...')
@@ -143,9 +148,9 @@ server <- function(input, output, session) {
                check1 <- 'msigdb' %in% input$EnrichmentPipeline
                if(length(check1)==0){check1 <- F}
                if(check1){
-                 tabBox(title = "MSigDB enrichment results",id= "msigdb_tabs", width = 12, height = "420px",
-                        tabPanel("Enrichment plot", plotOutput("msigdb_output_plot")),
-                        tabPanel("Enrichment table", DTOutput("msigdb_output_df"))
+                 tabBox(title = h1("MSigDB enrichment results"),id= "msigdb_tabs", width = 12, #height = "420px",
+                        tabPanel("MSigDB enrichment plot", plotOutput("msigdb_output_plot",height = "800px")),
+                        tabPanel("MSigDB enrichment table", DTOutput("msigdb_output_df"))
                  )
                  
                  
@@ -154,14 +159,41 @@ server <- function(input, output, session) {
              
               }
              )
-             
-             
-             
-             
              output$msigdb_output_plot<-renderPlot(msigdb_res$plot)
              output$msigdb_output_df<-renderDT(msigdb_res$df, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
              output$current<-renderText('MSigDB enrichment-done.')
-         }  
+         }
+         
+#----MsigDB enrichment module - end----    
+#----Pathway enrichment module----
+         if ('rkg' %in% input$EnrichmentPipeline){
+           print('KEGG, Reactome, GO...')
+           output$current<-renderText('KEGG, Reactome, GO enrichment...')
+           pathway_res<-enrich_pathways(genes, showcats=showcats)
+           output$rkg_ui <- renderUI({
+           check1 <- 'rkg' %in% input$EnrichmentPipeline
+           if(length(check1)==0){check1 <- F}
+           if(check1){
+               tabBox(title = h1("KEGG, Reactome, GO enrichment results"),id= "rkg_tabs", width = 12, #height = "420px",
+                      tabPanel("Reactome enrichment plot", plotOutput("reactome_output_plot",height = "1000px")),
+                      tabPanel("Reactome enrichment table", DTOutput("reactome_output_df")),
+                      tabPanel("Kegg enrichment plot", plotOutput("kegg_output_plot",height = "1000px")),
+                      tabPanel("Kegg enrichment table", DTOutput("kegg_output_df")),
+                      tabPanel("GO enrichment plot", plotOutput("go_output_plot",height = "1000px")),
+                      tabPanel("GO enrichment table", DTOutput("go_output_df"))
+               )}
+           })
+           output$reactome_output_plot<-renderPlot(pathway_res$react_plot)
+           output$reactome_output_df<-renderDT(pathway_res$react@result, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           output$kegg_output_plot<-renderPlot(pathway_res$kegg_plot)
+           output$kegg_output_df<-renderDT(pathway_res$kegg@result, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           output$go_output_plot<-renderPlot(pathway_res$go_plot)
+           output$go_output_df<-renderDT(pathway_res$go@result, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+         }
+         
+         
+#----Pathway enrichment module - end----
+         
        }
   })
 }
