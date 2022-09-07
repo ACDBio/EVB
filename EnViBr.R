@@ -15,10 +15,10 @@ data("dataset_adult")
 #data("dataset_dev_effect")
 #setting working directory to package directory
 # tryCatch({
-#    setwd(getSrcDirectory()[1])
-#  }, error = function(e) {
-#    setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-#  })
+#     setwd(getSrcDirectory()[1])
+#   }, error = function(e) {
+#     setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+#   })
 
 brainseg_gz_filepath_half<-"./Data/ABA_Human_half/ABA_Human_half.nii.gz"
 brainseg_ontology_filepath_half<-"./Data/ABA_Human_half/ABA_human_ontology.csv"
@@ -89,7 +89,7 @@ enrich_pathways<-function(genes, showcats=20){
   results
 }
 
-atc_targets[['ACE_INHIBITORS,_COMBINATIONS_C09B_targets']]
+
 
 list_to_t2g<-function(gene_set_list){
   gs_names<-c()
@@ -193,7 +193,7 @@ enrich_msigdb<-function(genes, showcats=20){
   results
 }
 
-get_seg_default<-function(brainseg_gz_fp, brainseg_ontology_fp){
+get_seg_default<-function(brainseg_gz_fp=brainseg_gz_filepath_half, brainseg_ontology_fp=brainseg_ontology_filepath_half){
   seg <- seg_draw(nifti_file = brainseg_gz_fp, 
                   ontology_file = brainseg_ontology_fp,
                   reference_space = "MNI152",
@@ -204,15 +204,18 @@ get_seg_default<-function(brainseg_gz_fp, brainseg_ontology_fp){
 
 get_var_distribution_brainwise<-function(seg, brainstats, brainseg_ontology_fp=brainseg_ontology_filepath_half, brainseg_gz_fp=brainseg_gz_filepath_half, assay_name='default'){ #Brainstats - a df with variables of interest in rows and indices of brain regions corresponding to the IDs in segmentation ontology in columns. First row in brainstats represents variables.
   varids=brainstats[[1]]
-  brainstats=as.data.frame(brainstats[[c(2:ncol(brainstats))]])
+  brainstats=as.data.frame(brainstats[c(2:ncol(brainstats))])
   rownames(brainstats)<-varids
+  print(brainstats)
   ont<-read_csv(brainseg_ontology_fp)
-  map<-ont$id
-  names(map)<-ont$acronym
+  map<-ont$acronym
+  names(map)<-ont$id
   map<-as.list(map)
   column_names=colnames(brainstats)
+  
   coldata=as.data.frame(tibble(sample_id=column_names, structure_acronym=unlist(map[column_names])))
   rownames(coldata)<-coldata$sample_id
+  print(unlist(map[column_names]))
   
   abaAssay <- new("segmentationAssay",
                   values = as.matrix(brainstats),
@@ -221,8 +224,9 @@ get_var_distribution_brainwise<-function(seg, brainstats, brainseg_ontology_fp=b
   seg <- seg_assay_add(segmentation = seg, 
                        assay = abaAssay, 
                        name = assay_name)
-  
   structures_chosen<-intersect(coldata$structure_acronym, seg@ontology$acronym)
+  
+  print(structures_chosen)
   seg <- seg_projection_add(name = assay_name, 
                             segmentation = seg, 
                             structures = structures_chosen, 
@@ -235,7 +239,7 @@ get_var_distribution_brainwise<-function(seg, brainstats, brainseg_ontology_fp=b
 
 preprocess_enrichment_res_forcoldcuts<-function(enr_result, brainontology=brainontology_data, brainonsources=c('ABA_dataset_adult','GTEx')){ #Subsets enrichment results according to the specifiedfilters. Outputs a dataframe with columns according to coldcuts ids and rows - to metrics. Brainontology - the file with mappings of expression entity ids to coldcuts ids. It should have columns 'structure_id' (character), 'coldcuts_id' (character), 'Left_hemisphere' (bool),'Right_hemisphere' (Bool),'Undefined_hemisphere' (bool).
   enr_result<-enr_result %>% 
-    rename(structure_id=region)
+    rename(structure_id=target)
   brainontology_dedup<-brainontology %>% 
     distinct(structure_id, .keep_all=TRUE)
   enr_result<-left_join(enr_result, brainontology_dedup)
@@ -245,29 +249,111 @@ preprocess_enrichment_res_forcoldcuts<-function(enr_result, brainontology=braino
   enr_result_right<-enr_result %>% 
     drop_na(coldcuts_id) %>% 
     filter(Right_hemisphere==TRUE | Undefined_hemisphere==TRUE)
-  enr_result_left<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_left, add_suffix = 'Left')
-  enr_result_right<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_right, add_suffix = 'Right')
+  enr_result_all<-enr_result%>% 
+    drop_na(coldcuts_id)
+  print('Processing long to wide...')
+  
+  
+  
+  enr_result_left_minp<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_left, add_suffix = 'Left')
+  enr_result_right_minp<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_right, add_suffix = 'Right')
+  enr_result_all_minp<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_all, add_suffix = 'All')
+  
+  enr_result_left_med<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_left, add_suffix = 'Left', agg='median')
+  enr_result_right_med<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_right, add_suffix = 'Right', agg='median')
+  enr_result_all_med<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_all, add_suffix = 'All', agg='median')
+  
+  enr_result_left_mean<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_left, add_suffix = 'Left', agg='mean')
+  enr_result_right_mean<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_right, add_suffix = 'Right', agg='mean')
+  enr_result_all_mean<-long_to_wide_enrichment_df_forcoldcuts(df=enr_result_all, add_suffix = 'All', agg='mean')
+  
   results<-c()
-  results$left_hemi<-enr_result_left
-  results$right_hemi<-enr_result_right
+  results$left_hemi_minp<-enr_result_left_minp
+  results$right_hemi_minp<-enr_result_right_minp
+  results$all_minp<-enr_result_all_minp
+  
+  results$left_hemi_med<-enr_result_left_med
+  results$right_hemi_med<-enr_result_right_med
+  results$all_med<-enr_result_all_med
+  
+  results$left_hemi_mean<-enr_result_left_mean
+  results$right_hemi_mean<-enr_result_right_mean
+  results$all_mean<-enr_result_all_mean
+  
   results$full_annotated_enrichment_data<-enr_result
+  print('done.')
   results
 }
 
 
-
-long_to_wide_enrichment_df_forcoldcuts<-function(df, add_suffix){
-  df<-df %>%  #leaving only most enriched regions within each coldcuts id
-    select(coldcuts_id, pval, padj, ES, NES) %>% 
-    mutate(negLogPadj=-log(padj)) %>% 
-    group_by(coldcuts_id) %>% 
-    filter(padj==min(padj))
+long_to_wide_enrichment_df_forcoldcuts<-function(df, add_suffix='N', agg='minpadj'){
+  if (agg=='minpadj'){
+    df<-df %>%  #leaving only most enriched regions within each coldcuts id
+      select(coldcuts_id, pval, padj, ES, NES) %>% 
+      mutate(negLogPadj=-log(padj)) %>% 
+      group_by(coldcuts_id) %>% 
+      filter(padj==min(padj))
+  } else if (agg=='median'){
+    df<-df %>%  #leaving only most enriched regions within each coldcuts id
+      select(coldcuts_id, pval, padj, ES, NES) %>% 
+      mutate(negLogPadj=-log(padj)) %>% 
+      group_by(coldcuts_id) %>% 
+      summarise_all(.funs='median')
+  } else if (agg=='mean'){
+    df<-df %>%  #leaving only most enriched regions within each coldcuts id
+      select(coldcuts_id, pval, padj, ES, NES) %>% 
+      mutate(negLogPadj=-log(padj)) %>% 
+      group_by(coldcuts_id) %>% 
+      summarise_all(.funs='mean')
+  }
+  print(df)
   df<-df %>%
     pivot_longer(cols = -coldcuts_id, names_to = 'attribute') %>% 
     pivot_wider(names_from = coldcuts_id, values_from = value)
-  df$attribute<-paste(df$attribute, direction, sep='_')
+  #df$attribute<-paste(df$attribute, add_suffix, sep='_')
   df
 }
+
+
+#----DEBUG----
+# genes<-read_tsv('/home/biorp/Gitrepos/Psychiatry/ANHEDONIA/EnViBr/Input_examples/gene_list.csv')$genes
+# expr_df<-get_expression_df(sources=c('gtex','aba_ds_adult'))
+# enr_results<-enrich_genes_fgsea(genes, expr_df)
+# print('Preprocessing enrichment results...')
+# print(enr_results)
+# enr_results<-preprocess_enrichment_res_forcoldcuts(enr_results, brainonsources=c('ABA_dataset_adult','GTEx'))
+# view(enr_results)
+# seg<-get_seg_default()
+# print('Getting the assay for the left hemi...')
+# enr_results$left_hemi
+# 
+# seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$left_hemi, assay_name='left')
+# 
+# 
+# print('Getting the assay for the right hemi...')
+# seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$right_hemi, assay_name='right')
+# left_nes_plot<-seg_feature_plot(segmentation = seg,
+#                                 assay = "left",
+#                                 feature = "NES_Left",
+#                                 smooth=FALSE)
+# right_nes_plot<-seg_feature_plot(segmentation = seg,
+#                                  assay = "right",
+#                                  feature = "NES_Right",
+#                                  smooth=FALSE)
+#----DEBUG-end-----
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

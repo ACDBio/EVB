@@ -3,7 +3,23 @@ source('EnViBr.R')
 library(tidyverse)
 library(DT)
 library(shinydashboard)
+#----List of things to improve---
+#----1. Debug why cerebellum not shown on enrichment plots----
+#----2. Add brain visualization for the standard ABA enrichment----
+#----3. Dockerize----
 
+
+withConsoleRedirect <- function(containerId, expr) {
+  # Change type="output" to type="message" to catch stderr
+  # (messages, warnings, and errors) instead of stdout.
+  txt <- capture.output(results <- expr, type = "output")
+  if (length(txt) > 0) {
+    insertUI(paste0("#", containerId), where = "beforeEnd",
+             ui = paste0(txt, "\n", collapse = "")
+    )
+  }
+  results
+}
 ui <- fluidPage(
 # App title ----
   titlePanel("EVB"),
@@ -57,7 +73,9 @@ ui <- fluidPage(
       #   condition = "input.breaks == 'custom'",
       #   sliderInput("breakCount", "Break Count", min = 1, max = 50, value = 10)
       # )
-      dashboardBody(
+     # fluidPage(shinyjs::useShinyjs(),
+     # pre(id="console")),
+      dashboardBody(id='dashbd',
         uiOutput("msigdb_ui"),
         uiOutput("rkg_ui"),
         uiOutput("ccuts_ui"),
@@ -100,6 +118,19 @@ server <- function(input, output, session) {
   # input$RUN<-FALSE
   status<-reactiveValues()
   genes<-c()
+  
+  # global <- reactiveValues(refresh = FALSE)
+  # observe({
+  #   if(input$RUN) isolate(global$refresh <- TRUE)
+  # })
+  # output$dt <- renderUI({
+  #   if(global$refresh) return()
+  # })
+  # observeEvent(input$RUN, {
+  #   shinyjs::hideElement('gtex_ui')
+  #  # shinyjs::showElement("")
+  # })
+  
   observeEvent(input$RUN, {
      
        print(input$gene_csv)
@@ -147,7 +178,9 @@ server <- function(input, output, session) {
       
 #----MSigDB enrichment module----
          if ('msigdb' %in% input$EnrichmentPipeline){
-             print('MSigDB...')
+           # withConsoleRedirect("console", {
+           #   print('MSigDB...')
+           # })
              output$current<-renderText('MSigDB enrichment...')
              msigdb_res<-enrich_msigdb(genes, showcats=showcats)
              
@@ -201,45 +234,130 @@ server <- function(input, output, session) {
 #----Pathway enrichment module - end----
 #----DEBUG! Brain region enrichment module with visualization (ABA+GTEx)----
          if ('ccuts' %in% input$EnrichmentPipeline){
+           showModal(modalDialog("Running brain region enrichment...", footer=NULL))
            print('Coldcuts region enrichment ...')
            output$current<-renderText('Brain region (ABA+GTEx) enrichment with visualization...')
            print('Getting expression...')
            expr_df<-get_expression_df(sources=c('gtex','aba_ds_adult'))
            enr_results<-enrich_genes_fgsea(genes, expr_df)
            print('Preprocessing enrichment results...')
+           print(enr_results)
            enr_results<-preprocess_enrichment_res_forcoldcuts(enr_results, brainonsources=c('ABA_dataset_adult','GTEx'))
+           print('Getting the segmentation...')
            seg<-get_seg_default()
+           
            print('Getting the assay for the left hemi...')
-           seg<-get_var_distribution_brainwise(seg=seg, brainstats=results$left_hemi, assay_name='left')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$left_hemi_minp, assay_name='left_minp')
            print('Getting the assay for the right hemi...')
-           seg<-get_var_distribution_brainwise(seg=seg, brainstats=results$right_hemi, assay_name='right')
-           left_nes_plot<-seg_feature_plot(segmentation = seg,
-                            assay = "left",
-                            feature = "NES_Left",
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$right_hemi_minp, assay_name='right_minp')
+           print('Getting the assay for both hemi...')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$all_minp, assay_name='all_minp')
+           
+           print('Getting the assay for the left hemi (medians)...')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$left_hemi_med, assay_name='left_med')
+           print('Getting the assay for the right hemi (medains)...')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$right_hemi_med, assay_name='right_med')
+           print('Getting the assay for both hemi (medians)...')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$all_med, assay_name='all_med')
+           
+           
+           print('Getting the assay for the left hemi (means)...')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$left_hemi_mean, assay_name='left_mean')
+           print('Getting the assay for the right hemi (means)...')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$right_hemi_mean, assay_name='right_mean')
+           print('Getting the assay for both hemi (means)...')
+           seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$all_mean, assay_name='all_mean')
+           
+           
+           left_nes_plot_minp<-seg_feature_plot(segmentation = seg,
+                            assay = "left_minp",
+                            feature = "NES",
                             smooth=FALSE)
-           right_nes_plot<-seg_feature_plot(segmentation = seg,
-                                           assay = "right",
-                                           feature = "NES_Right",
+           right_nes_plot_minp<-seg_feature_plot(segmentation = seg,
+                                           assay = "right_minp",
+                                           feature = "NES",
                                            smooth=FALSE)
+           all_nes_plot_minp<-seg_feature_plot(segmentation = seg,
+                                            assay = "all_minp",
+                                            feature = "NES",
+                                            smooth=FALSE)
+           print('Minp - done.')
            
+           left_nes_plot_med<-seg_feature_plot(segmentation = seg,
+                                                assay = "left_med",
+                                                feature = "NES",
+                                                smooth=FALSE)
+           right_nes_plot_med<-seg_feature_plot(segmentation = seg,
+                                                 assay = "right_med",
+                                                 feature = "NES",
+                                                 smooth=FALSE)
+           all_nes_plot_med<-seg_feature_plot(segmentation = seg,
+                                               assay = "all_med",
+                                               feature = "NES",
+                                               smooth=FALSE)  
+           print('Med - done.')
            
+           left_nes_plot_mean<-seg_feature_plot(segmentation = seg,
+                                               assay = "left_mean",
+                                               feature = "NES",
+                                               smooth=FALSE)
+           right_nes_plot_mean<-seg_feature_plot(segmentation = seg,
+                                                assay = "right_mean",
+                                                feature = "NES",
+                                                smooth=FALSE)
+           all_nes_plot_mean<-seg_feature_plot(segmentation = seg,
+                                              assay = "all_mean",
+                                              feature = "NES",
+                                              smooth=FALSE)
+           print('Mean - done.')
            output$ccuts_ui <- renderUI({
              check1 <- 'ccuts' %in% input$EnrichmentPipeline
              if(length(check1)==0){check1 <- F}
              if(check1){
                fluidRow(style=border_style,tabBox(title = h1("Brain region enrichment (ABA+GTEx) with visualization results"),id= "ccuts_tabs", width = 12, #height = "420px",
                       tabPanel("Brain enrichment NES plots", 
-                               h3('Left hemisphere:'),
-                               plotOutput("brainreg_output_plot_left",height = "1000px"),
-                               h3('Right hemisphere:'),
-                               plotOutput("brainreg_output_plot_right",height = "1000px")),
+                               h3('Left hemisphere (aggregated by min(padj)):'),
+                               plotOutput("brainreg_output_plot_left"),#,height = "1000px"),
+                               h3('Right hemisphere (aggregated by min(padj)):'),
+                               plotOutput("brainreg_output_plot_right"),#,height = "1000px"),
+                               h3('Right hemisphere (aggregated by min(padj)):'),
+                               plotOutput("brainreg_output_plot_all"),#,height = "1000px"),
+                               
+                               h3('Left hemisphere (aggregated by medians):'),
+                               plotOutput("brainreg_output_plot_left_med"),#,height = "1000px"),
+                               h3('Right hemisphere (aggregated by medians):'),
+                               plotOutput("brainreg_output_plot_right_med"),#,height = "1000px"),
+                               h3('Right hemisphere (aggregated by medians):'),
+                               plotOutput("brainreg_output_plot_all_med"),#,height = "1000px"),
+                      
+                               h3('Left hemisphere (aggregated by means):'),
+                               plotOutput("brainreg_output_plot_left_mean"),#,height = "1000px"),
+                               h3('Right hemisphere (aggregated by means):'),
+                               plotOutput("brainreg_output_plot_right_mean"),#,height = "1000px"),
+                               h3('Right hemisphere (aggregated by means):'),
+                               plotOutput("brainreg_output_plot_all_mean")),#,height = "1000px")),                  
+                      
                       tabPanel("Brain region enrichment (ABA+GTEx) table", DTOutput("brainreg_output_df"))
                ))}
            })
-           output$brainreg_output_plot_left<-renderPlot(left_nes_plot)
-           output$brainreg_output_plot_right<-renderPlot(right_nes_plot)
-           output$brainreg_output_df<-renderDT(enr_results$full_annotated_enrichment_data, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
-                 }
+           print('Plotting...')
+           output$brainreg_output_plot_left<-renderPlot(plot(left_nes_plot_minp))
+           output$brainreg_output_plot_right<-renderPlot(plot(right_nes_plot_minp))
+           output$brainreg_output_plot_all<-renderPlot(plot(all_nes_plot_minp))
+           
+           output$brainreg_output_plot_left_med<-renderPlot(plot(left_nes_plot_med))
+           output$brainreg_output_plot_right_med<-renderPlot(plot(right_nes_plot_med))
+           output$brainreg_output_plot_all_med<-renderPlot(plot(all_nes_plot_med))
+           
+           output$brainreg_output_plot_left_mean<-renderPlot(plot(left_nes_plot_mean))
+           output$brainreg_output_plot_right_mean<-renderPlot(plot(right_nes_plot_mean))
+           output$brainreg_output_plot_all_mean<-renderPlot(plot(all_nes_plot_mean))           
+           
+           
+           
+           output$brainreg_output_df<-renderDT(enr_results$full_annotated_enrichment_data %>% 
+                                                 select(-pathway), filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           removeModal() }
 #----Brain region enrichment module with visualization (ABA+GTEx) - end----
 #----Brain region enrichment (ABA) - fgsea----
          if ('aba_fgsea' %in% input$EnrichmentPipeline){
@@ -445,6 +563,7 @@ server <- function(input, output, session) {
        }
   })
 }
+
 shinyApp(ui, server)
 
 
