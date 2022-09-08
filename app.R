@@ -3,10 +3,11 @@ source('EnViBr.R')
 library(tidyverse)
 library(DT)
 library(shinydashboard)
-#----List of things to improve---
-#----1. Debug why cerebellum not shown on enrichment plots----
-#----2. Add brain visualization for the standard ABA enrichment----
-#----3. Dockerize----
+#----List of things to improve in the future----
+#----1. Define subsetting ABA regions present in coldcuts only and enrich only them for visualization----
+#----2. Make visualization for ABAEnrichment results----
+#----3. Check why differences with original run with fgsea ABA----
+#----4. Dockerize----
 
 
 withConsoleRedirect <- function(containerId, expr) {
@@ -44,7 +45,7 @@ ui <- fluidPage(
       checkboxInput("HUGORemap", "Remap gene symbols to HUGO", value = FALSE),
       # Selection of the required enrichment procedures
       checkboxGroupInput("EnrichmentPipeline", label = h3("Select analyses"), 
-                         choices = list("MSigDB" = 'msigdb', "Pathways (KEGG, Reactome, GO)" = 'rkg', "Brain regions (ABA, Coldcuts) fgsea enrichment with visualization" = 'ccuts',"Brain regoions (ABA) - fgsea" = 'aba_fgsea', "Brain regions (ABA) - ABAEnrichment" = 'aba_std',
+                         choices = list("MSigDB" = 'msigdb', "Pathways (KEGG, Reactome, GO)" = 'rkg', "Brain regions (ABA, Coldcuts) fgsea enrichment with visualization" = 'ccuts',"Brain regions (ABA, Coldcuts) ABAenrichment with visualization" = 'abastd_ccuts',"Brain regoions (ABA) - fgsea" = 'aba_fgsea', "Brain regions (ABA) - ABAEnrichment" = 'aba_std',
                                         "Tissues (GTEx)" = 'gtex', "Cell types (ABA)"='caba', "Subset compounds (DGIDB, DrugBank, CTD)"='drugs', "Drug target ATC category enrichment (DrugBank)" ='atc', 
                                         "Signaling small molecule analysis (cellinker)" ='sm'),
                          selected = c('ccuts')),
@@ -79,6 +80,7 @@ ui <- fluidPage(
         uiOutput("msigdb_ui"),
         uiOutput("rkg_ui"),
         uiOutput("ccuts_ui"),
+        uiOutput("abastd_ccuts_ui"),
         uiOutput("aba_fgsea_ui"),
         uiOutput("aba_std_ui"),
         uiOutput("gtex_ui"),
@@ -241,11 +243,11 @@ server <- function(input, output, session) {
            print('Coldcuts region enrichment ...')
            output$current<-renderText('Brain region (ABA) enrichment with visualization...')
            print('Getting expression...')
-           expr_df<-get_expression_df(sources=c('aba_ds_adult'))
+           expr_df<-get_expression_df(sources=c('aba_ds_adult'), filter='coldcuts')
            enr_results<-enrich_genes_fgsea(genes, expr_df)
            print('Preprocessing enrichment results...')
            print(enr_results)
-           enr_results<-preprocess_enrichment_res_forcoldcuts(enr_results, brainonsources=c('ABA_dataset_adult','GTEx'))
+           enr_results<-preprocess_enrichment_res_forcoldcuts(enr_result=enr_results, brainonsources=c('ABA_dataset_adult','GTEx'))
            print('Getting the segmentation...')
            seg<-get_seg_default()
            
@@ -270,26 +272,35 @@ server <- function(input, output, session) {
            seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$right_hemi_mean, assay_name='right_mean')
            print('Getting the assay for both hemi (means)...')
            seg<-get_var_distribution_brainwise(seg=seg, brainstats=enr_results$all_mean, assay_name='all_mean')
-           
+           nes_scores<-enr_results$full_annotated_enrichment_data %>% 
+             filter(coldcuts==TRUE) %>% 
+             select(NES) %>% 
+             pull()
+           min_nes<-min(nes_scores)
+           max_nes<-max(nes_scores)
+           nes_span<-c(min_nes, max_nes)
            
            left_nes_plot_minp<-seg_feature_plot(segmentation = seg,
                             assay = "left_minp",
                             feature = "NES",
                             smooth=FALSE,
                             labelsize=6,
-                            remove_axes=TRUE)
+                            remove_axes=TRUE,
+                            rng=nes_span)
            right_nes_plot_minp<-seg_feature_plot(segmentation = seg,
                                            assay = "right_minp",
                                            feature = "NES",
                                            smooth=FALSE,
                                            labelsize=6,
-                                           remove_axes=TRUE)
+                                           remove_axes=TRUE,
+                                           rng=nes_span)
            all_nes_plot_minp<-seg_feature_plot(segmentation = seg,
                                             assay = "all_minp",
                                             feature = "NES",
                                             smooth=FALSE,
                                             labelsize=6,
-                                            remove_axes=TRUE)
+                                            remove_axes=TRUE,
+                                            rng=nes_span)
            print('Minp - done.')
            
            left_nes_plot_med<-seg_feature_plot(segmentation = seg,
@@ -297,19 +308,22 @@ server <- function(input, output, session) {
                                                 feature = "NES",
                                                 smooth=FALSE,
                                                labelsize=6,
-                                               remove_axes=TRUE)
+                                               remove_axes=TRUE,
+                                               rng=nes_span)
            right_nes_plot_med<-seg_feature_plot(segmentation = seg,
                                                  assay = "right_med",
                                                  feature = "NES",
                                                  smooth=FALSE,
                                                 labelsize=6,
-                                                remove_axes=TRUE)
+                                                remove_axes=TRUE,
+                                                rng=nes_span)
            all_nes_plot_med<-seg_feature_plot(segmentation = seg,
                                                assay = "all_med",
                                                feature = "NES",
                                                smooth=FALSE,
                                               labelsize=6,
-                                              remove_axes=TRUE)  
+                                              remove_axes=TRUE,
+                                              rng=nes_span)  
            print('Med - done.')
            
            left_nes_plot_mean<-seg_feature_plot(segmentation = seg,
@@ -317,19 +331,22 @@ server <- function(input, output, session) {
                                                feature = "NES",
                                                smooth=FALSE,
                                                labelsize=6,
-                                               remove_axes=TRUE)
+                                               remove_axes=TRUE,
+                                               rng=nes_span)
            right_nes_plot_mean<-seg_feature_plot(segmentation = seg,
                                                 assay = "right_mean",
                                                 feature = "NES",
                                                 smooth=FALSE,
                                                 labelsize=6,
-                                                remove_axes=TRUE)
+                                                remove_axes=TRUE,
+                                                rng=nes_span)
            all_nes_plot_mean<-seg_feature_plot(segmentation = seg,
                                               assay = "all_mean",
                                               feature = "NES",
                                               smooth=FALSE,
                                               labelsize=6,
-                                              remove_axes=TRUE)
+                                              remove_axes=TRUE,
+                                              rng=nes_span)
            print('Mean - done.')
            output$ccuts_ui <- renderUI({
              check1 <- 'ccuts' %in% input$EnrichmentPipeline
@@ -380,6 +397,198 @@ server <- function(input, output, session) {
                                                  select(-pathway), filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
            removeModal() }
 #----Brain region enrichment module with visualization (ABA - fgsea) - end----
+#----Brain region enrichment (ABAEnrichment) with visualization----
+         if ('abastd_ccuts' %in% input$EnrichmentPipeline){
+           showModal(modalDialog("Running brain region enrichment (ABAenrichment) with visualizations...", footer=NULL))
+           print('Coldcuts region enrichment ...')
+           print('Getting expression...')
+           
+           genes_vec<-rep(1, length(genes))
+           names(genes_vec)<-genes
+           abares<-aba_enrich(genes=genes_vec)
+           abares<-abares$results
+           abares$structure_id<-word(abares$structure_id, 2, sep=':')
+           abares<-abares %>% 
+             filter(structure_id %in% abaincc)
+           
+           
+           print('Preprocessing enrichment results...')
+           enr_results_a<-preprocess_abaenrichment_output_forcoldcuts(enr_result=abares)
+           print('Getting the segmentation...')
+           seg_a<-get_seg_default()
+           
+           print('Getting the assay for the left hemi...')
+           seg_a<-get_var_distribution_brainwise(seg=seg_a, brainstats=enr_results_a$left_hemi, assay_name='left')
+           print('Getting the assay for the right hemi...')
+           seg_a<-get_var_distribution_brainwise(seg=seg_a, brainstats=enr_results_a$right_hemi, assay_name='right')
+           print('Getting the assay for both hemi...')
+           seg_a<-get_var_distribution_brainwise(seg=seg_a, brainstats=enr_results_a$all, assay_name='all')
+           
+           nsign<-enr_results_a$full_annotated_enrichment_data %>% 
+             filter(coldcuts==TRUE) %>% 
+             select(n_significant) %>% 
+             pull()
+           min_ns<-min(nsign)
+           max_ns<-max(nsign)
+           ns_span<-c(min_ns, max_ns)
+           print(ns_span)
+           
+           minfwer<-enr_results_a$full_annotated_enrichment_data %>% 
+             filter(coldcuts==TRUE) %>% 
+             select(neg_logp_minfwer) %>% 
+             pull()
+           min_minfwer<-min(minfwer)
+           max_minfwer<-max(minfwer)
+           # if (!is.finite(max_minfwer)){
+           #   max_minfwer=1
+           # }
+               
+           neg_logp_minfwer_span<-c(min_minfwer, max_minfwer)
+           print(neg_logp_minfwer_span)
+           
+           
+           
+           meanfwer<-enr_results_a$full_annotated_enrichment_data %>% 
+             filter(coldcuts==TRUE) %>% 
+             select(neg_logp_meanfwer) %>% 
+             pull()
+           min_meanfwer<-min(meanfwer)
+           max_meanfwer<-max(meanfwer)
+           neg_logp_meanfwer_span<-c(min_meanfwer, max_meanfwer)
+           print(neg_logp_meanfwer_span)
+           
+           print(enr_results_a$left_hemi)
+           print('Plotting to variables...')
+           left_nsign_plot<-seg_feature_plot(segmentation = seg_a,
+                                                assay = "left",
+                                                feature = "n_significant_minpadj",
+                                                smooth=FALSE,
+                                                labelsize=6,
+                                                remove_axes=TRUE,
+                                                rng=ns_span)
+           print('ready.')
+           right_nsign_plot<-seg_feature_plot(segmentation = seg_a,
+                                                 assay = "right",
+                                                 feature = "n_significant_minpadj",
+                                                 smooth=FALSE,
+                                                 labelsize=6,
+                                                 remove_axes=TRUE,
+                                                 rng=ns_span)
+           print('ready.')
+           all_nsign_plot<-seg_feature_plot(segmentation = seg_a,
+                                               assay = "all",
+                                               feature = "n_significant_minpadj",
+                                               smooth=FALSE,
+                                               labelsize=6,
+                                               remove_axes=TRUE,
+                                               rng=ns_span)
+            print('ready.')
+           # left_minfwer_plot<-seg_feature_plot(segmentation = seg_a,
+           #                                      assay = "left",
+           #                                      feature = "neg_logp_minfwer_minpadj",
+           #                                      smooth=FALSE,
+           #                                      labelsize=6,
+           #                                      remove_axes=TRUE)
+           #                                      #rng=neg_logp_minfwer_span)
+           # print('ready.')
+           # right_minfwer_plot<-seg_feature_plot(segmentation = seg_a,
+           #                                       assay = "right",
+           #                                       feature = "neg_logp_minfwer_minpadj",
+           #                                       smooth=FALSE,
+           #                                       labelsize=6,
+           #                                       remove_axes=TRUE)
+           #                                       #rng=neg_logp_minfwer_span)
+           # print('ready.')
+           # all_minfwer_plot<-seg_feature_plot(segmentation = seg_a,
+           #                                     assay = "all",
+           #                                     feature = "neg_logp_minfwer_minpadj",
+           #                                     smooth=FALSE,
+           #                                     labelsize=6,
+           #                                     remove_axes=TRUE)
+           #                                     #rng=neg_logp_minfwer_span)  
+           # 
+           # print('ready.')
+           # left_meanfwer_plot<-seg_feature_plot(segmentation = seg_a,
+           #                                   assay = "left",
+           #                                   feature = "neg_logp_meanfwer_mean",
+           #                                   smooth=FALSE,
+           #                                   labelsize=6,
+           #                                   remove_axes=TRUE,
+           #                                   rng=neg_logp_meanfwer_span)
+           # print('ready.')
+           # right_meanfwer_plot<-seg_feature_plot(segmentation = seg_a,
+           #                                    assay = "right",
+           #                                    feature = "neg_logp_meanfwer_mean",
+           #                                    smooth=FALSE,
+           #                                    labelsize=6,
+           #                                    remove_axes=TRUE,
+           #                                    rng=neg_logp_meanfwer_span)
+           # print('ready.')
+           # all_meanfwer_plot<-seg_feature_plot(segmentation = seg_a,
+           #                                  assay = "all",
+           #                                  feature = "neg_logp_meanfwer_mean",
+           #                                  smooth=FALSE,
+           #                                  labelsize=6,
+           #                                  remove_axes=TRUE,
+           #                                  rng=neg_logp_meanfwer_span)           
+           # print('ready.')
+           # 
+           
+           output$abastd_ccuts_ui <- renderUI({
+             check1 <- 'abastd_ccuts' %in% input$EnrichmentPipeline
+             if(length(check1)==0){check1 <- F}
+             if(check1){
+               fluidRow(style=border_style,tabBox(title = h1("Brain region enrichment (ABAEnrichment) with visualization results"),id= "abastd_ccuts_tabs", width = 12, #height = "420px",
+                                                  tabPanel('Brain region enrichment (ABAEnrichment) plots',
+                                                           h2("Brain enrichment plots with counts of significant enrichments"), 
+                                                           h3('Left hemisphere:'),
+                                                           plotOutput("brainreg_output_plot_left_ns",height = brainplot_hight),
+                                                           h3('Right hemisphere:'),
+                                                           plotOutput("brainreg_output_plot_right_ns",height = brainplot_hight),
+                                                           h3('Both hemispheres:'),
+                                                           plotOutput("brainreg_output_plot_all_ns",height = brainplot_hight)),
+                                                           
+                                                           # h2("Brain enrichment plots with -log10(min_FWER)"),
+                                                           # h3('Left hemisphere (aggregated by medians):'),
+                                                           # plotOutput("brainreg_output_plot_left_logminfwer",height = brainplot_hight),
+                                                           # h3('Right hemisphere (aggregated by medians):'),
+                                                           # plotOutput("brainreg_output_plot_right_logminfwer",height = brainplot_hight),
+                                                           # h3('Both hemispheres (aggregated by medians):'),
+                                                           # plotOutput("brainreg_output_plot_all_logminfwer",height = brainplot_hight),
+                                                           
+                                                           # h2("Brain enrichment plots with -log10(mean_FWER)"),
+                                                           # h3('Left hemisphere (aggregated by means):'),
+                                                           # plotOutput("brainreg_output_plot_left_logmeanfwer",height = brainplot_hight),
+                                                           # h3('Right hemisphere (aggregated by means):'),
+                                                           # plotOutput("brainreg_output_plot_right_logmeanfwer",height = brainplot_hight),
+                                                           # h3('Both hemispheres (aggregated by means):'),
+                                                           # plotOutput("brainreg_output_plot_all_logmeanfwer",height = brainplot_hight)),                  
+                                                           # 
+                                                  tabPanel("Brain region enrichment (ABAEnrichment) table", DTOutput("brainreg_output_df_std"))
+               ))}
+           })
+           print('Plotting...')
+           output$brainreg_output_plot_left_ns<-renderPlot(plot(left_nsign_plot))
+           output$brainreg_output_plot_right_ns<-renderPlot(plot(right_nsign_plot))
+           output$brainreg_output_plot_all_ns<-renderPlot(plot(all_nsign_plot))
+           
+           # output$brainreg_output_plot_left_logminfwer<-renderPlot(plot(left_minfwer_plot))
+           # output$brainreg_output_plot_right_logminfwer<-renderPlot(plot(right_minfwer_plot))
+           # output$brainreg_output_plot_all_logminfwer<-renderPlot(plot(all_minfwer_plot))
+           
+           # output$brainreg_output_plot_left_logmeanfwer<-renderPlot(plot(left_meanfwer_plot))
+           # output$brainreg_output_plot_right_logmeanfwer<-renderPlot(plot(right_meanfwer_plot))
+           # output$brainreg_output_plot_all_logmeanfwer<-renderPlot(plot(all_meanfwer_plot))           
+           
+           
+           
+           output$brainreg_output_df_std<-renderDT(enr_results_a$full_annotated_enrichment_data, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+           removeModal() }
+#----Brain region enrichment (ABAEnrichment) with visualization - end----         
+         
+         
+         
+         
 #----Brain region enrichment (ABA) - fgsea----
          if ('aba_fgsea' %in% input$EnrichmentPipeline){
            showModal(modalDialog("Running ABA fgsea enrichment...", footer=NULL))
