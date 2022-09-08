@@ -10,7 +10,7 @@ library(fgsea)
 library(msigdbr)
 library(enrichR)
 library(clusterProfiler)
-library(plyr)
+#library(plyr)
 
 data("dataset_adult")
 #data("dataset_5_stages")
@@ -74,13 +74,13 @@ enrich_pathways<-function(genes, showcats=20){
   kegg_enrichments<-enrichKEGG(genes_entrez, pvalueCutoff = 1, qvalueCutoff = 1)
   go_enrichments<-enrichGO(genes_entrez, org.Hs.eg.db, pvalueCutoff = 1, qvalueCutoff = 1)
   
-  react_enrichments_plot<-mutate(react_erichments, qscore = -log(p.adjust, base=10)) %>% 
+  react_enrichments_plot<-dplyr::mutate(react_erichments, qscore = -log(p.adjust, base=10)) %>% 
     barplot(x="qscore", showCategory=showcats)
   
-  kegg_enrichments_plot<-mutate(kegg_enrichments, qscore = -log(p.adjust, base=10)) %>% 
+  kegg_enrichments_plot<-dplyr::mutate(kegg_enrichments, qscore = -log(p.adjust, base=10)) %>% 
     barplot(x="qscore", showCategory=showcats)
   
-  go_enrichments_plot<-mutate(go_enrichments, qscore = -log(p.adjust, base=10)) %>% 
+  go_enrichments_plot<-dplyr::mutate(go_enrichments, qscore = -log(p.adjust, base=10)) %>% 
     barplot(x="qscore", showCategory=showcats)
   
   results<-list()
@@ -148,7 +148,7 @@ enrich_genes_geneset<-function(genes, expr_df, quantile){ #expr_df - a dataframe
   results<-list()
   results$allres<-list(enrichment)
   results$df<-enrichment@result
-  results$plot<-mutate(enrichment, qscore = -log(p.adjust, base=10)) %>% 
+  results$plot<-dplyr::mutate(enrichment, qscore = -log(p.adjust, base=10)) %>% 
     barplot(x="qscore", showCategory=showcats)
   results
 }
@@ -189,10 +189,11 @@ enrich_msigdb<-function(genes, showcats=20){
   all_gene_sets = msigdbr(species = "Homo sapiens")
   msigdbr_t2g = all_gene_sets %>% dplyr::distinct(gs_name, gene_symbol) %>% as.data.frame()
   msigdbr_enrichment=enricher(gene = genes, TERM2GENE = msigdbr_t2g)
+  print(msigdbr_enrichment)
   results<-list()
   results$allres<-list(msigdbr_enrichment)
   results$df<-msigdbr_enrichment@result
-  results$plot<-mutate(msigdbr_enrichment, qscore = -log(p.adjust, base=10)) %>% 
+  results$plot<-dplyr::mutate(msigdbr_enrichment, qscore = -log(p.adjust, base=10)) %>% 
     barplot(x="qscore", showCategory=showcats)
   results
 }
@@ -423,12 +424,12 @@ subset_metabolites_bygenes<-function(genes, showcats, cellinkerd=cellinker){
   results$small_mol_ligands<-unique(results$df$`ligand name`)
   t2g<-cellinkerd %>% 
     dplyr::select(`ligand name`,pipe_genesymbol) %>% 
-    rename(gs_name=`ligand name`, gene_symbol=pipe_genesymbol)
+    dplyr::rename(gs_name=`ligand name`, gene_symbol=pipe_genesymbol)
   
   tryCatch({
     results$enrichment_allres<-enricher(genes, TERM2GENE=t2g, pvalueCutoff = 1, minGSSize=1, qvalueCutoff=1)
     results$enrichment_df<-results$enrichment_allres@result
-    results$plot<-mutate(results$enrichment_allres, qscore = -log(p.adjust, base=10)) %>% 
+    results$plot<-dplyr::mutate(results$enrichment_allres, qscore = -log(p.adjust, base=10)) %>% 
       barplot(x="qscore", showCategory=showcats)
   }, error = function(e) {
     print('Lack of genetic overlap!')
@@ -445,7 +446,7 @@ enrich_atc<-function(genes, showcats=20){
   
   tryCatch({
   res<-enricher(genes, TERM2GENE=atc_targets_t2g, pvalueCutoff = 1, minGSSize=1, qvalueCutoff=1)
-  results$plot<-mutate(res, qscore = -log(p.adjust, base=10)) %>% 
+  results$plot<-dplyr::mutate(res, qscore = -log(p.adjust, base=10)) %>% 
     barplot(x="qscore", showCategory=showcats)
   results$allres<-list(res)
   results$df<-res@result
