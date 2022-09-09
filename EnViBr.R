@@ -17,10 +17,10 @@ data("dataset_adult")
 #data("dataset_dev_effect")
 #setting working directory to package directory
 # tryCatch({
-#      setwd(getSrcDirectory()[1])
-#    }, error = function(e) {
-#      setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-#    })
+#       setwd(getSrcDirectory()[1])
+#     }, error = function(e) {
+#       setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+#     })
 
 brainseg_gz_filepath_half<-"./Data/ABA_Human_half/ABA_Human_half.nii.gz"
 brainseg_ontology_filepath_half<-"./Data/ABA_Human_half/ABA_human_ontology.csv"
@@ -37,6 +37,8 @@ aca_ccuts_filepath<-'./Data/dataset_adult_incc.rds'
 abaincc<-brainontology_data %>% 
   filter(coldcuts==TRUE) %>% 
   select(structure_id) %>% pull()
+hugo<-read_tsv('./Data/HUGO_ensembl_extended.txt')
+universe_d<-unique(hugo$`Approved symbol`)
 #-----Functions-----
 remap_genes<-function(genes){
   df<-tibble(genes=genes)
@@ -95,14 +97,22 @@ enrich_pathways<-function(genes, showcats=20){
 
 
 
-list_to_t2g<-function(gene_set_list){
+list_to_t2g<-function(gene_set_list, universe=universe_d){
   gs_names<-c()
   gene_symbols<-c()
   for (gs in names(gene_set_list)){
     gene_symbols<-c(gene_symbols, gene_set_list[[gs]])
     gs_names<-c(gs_names, rep(gs, length(gene_set_list[[gs]])))
   }
-  as.data.frame(tibble(gs_name=gs_names, gene_symbol=gene_symbols))
+  res=as.data.frame(tibble(gs_name=gs_names, gene_symbol=gene_symbols))
+  #res$gs_name<-gsub('-','_', res$gs_name)
+  #res$gs_name<-gsub(',','_', res2g$gs_name)
+  
+  add_cat<-tibble(gene_symbol=universe_d[!universe_d %in% res$gene_symbol]) %>%  #adding all genes from HUGO which didn't fall into the categories in Undefined category
+    mutate(gs_name='Undefined') %>% 
+    select(gs_name, gene_symbol)
+  
+  res<-rbind(res, add_cat)
 }
 
 
@@ -489,8 +499,43 @@ get_expression_df<-function(sources=c('gtex','aba_ds_adult','aba_cells'), filter
   resdf<-resdf %>% 
     drop_na()
 }
+#----TESTING COMPONENTS----
+# genes<-read_tsv('./Input_examples/gene_list.csv')$genes
+# atc_targets_t2g<-list_to_t2g(atc_targets)
+# hugo<-read_tsv('./Data/HUGO_ensembl_extended.txt')
+# universe_d<-unique(hugo$`Approved symbol`)
+# 
+# atc_targets_t2g
+# atc_targets_t2g$gs_name<-gsub('-','_', atc_targets_t2g$gs_name)
+# atc_targets_t2g$gs_name<-gsub(',','_', atc_targets_t2g$gs_name)
+# 
+# 
+# length(unique(atc_targets_t2g$gene_symbol))
+# length(unique(universe_d))
+# 
+# 
+# 
+# atc_targets_t2g
+# 
+# add_cat<-tibble(gene_symbol=universe_d[!universe_d %in% atc_targets_t2g$gene_symbol]) %>% 
+#   mutate(gs_name='Undefined') %>% 
+#   select(gs_name, gene_symbol)
+# 
+# atc_targets_t2g<-rbind(atc_targets_t2g, add_cat)
+# 
+# res<-enricher(genes, TERM2GENE=atc_targets_t2g, pvalueCutoff = 10, minGSSize=0, qvalueCutoff=10, pAdjustMethod='none')
+# res@result
+# 
+# 
+# 
+# 
+# intersect(genes, unique(atc_targets_t2g$gene_symbol))
+# res@geneSets
+# 
+# dplyr::mutate(res, qscore = -log(p.adjust, base=10)) %>% 
+#   barplot(x="qscore", showCategory=20)
 
-
+#----TESTING-END----
 #----DEBUG----
 # genes<-read_tsv('/home/biorp/Gitrepos/Psychiatry/ANHEDONIA/EnViBr/Input_examples/gene_list.csv')$genes
 # expr_df<-get_expression_df(sources=c('gtex','aba_ds_adult'))
