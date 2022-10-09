@@ -1,0 +1,10 @@
+action	interaction_direction
+inhibitor	-1
+agonist	1
+activator	1
+inducer	1
+antagonist	-1
+blocker	-1
+suppressor	-1
+inactivator	-1
+unknown	0
