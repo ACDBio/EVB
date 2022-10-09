@@ -11,8 +11,9 @@ library(msigdbr)
 library(enrichR)
 library(clusterProfiler)
 #library(plyr)
-
+#For each region in ABAEnrichment when visualization is done with Coldcuts, the data for the region with min FWER within Coldcuts structure is displayed.
 data("dataset_adult")
+
 #data("dataset_5_stages")
 #data("dataset_dev_effect")
 #setting working directory to package directory
@@ -22,10 +23,23 @@ data("dataset_adult")
 #       setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 #     })
 
+
 brainseg_gz_filepath_half<-"./Data/ABA_Human_half/ABA_Human_half.nii.gz"
 brainseg_ontology_filepath_half<-"./Data/ABA_Human_half/ABA_human_ontology.csv"
 gtexpath<-"./Data/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.tsv"
-full_brainont_path<-"./Data/ABA_coldcuts_GTEx_ontology.tsv"
+
+#Drug selection options
+db_long_filename<-'./Data/DRUGBANK_DGIDB_CTD_gene_interactions_DB/DRUGBANK_DGIDB_CTD_interactions_long.rds'
+interactions_mapping_filename<-'./Data/ex_drugsel/interactions_mapping.tsv'
+small_molecule_receptor_interactions_filename<-'./Data/LRInteractions/human-sMOL_remapped.txt'
+sourcelist<-'./Data/ex_drugsel/sources.tsv'
+
+
+#3 variants of brain ontology:
+full_brainont_path<-'./Data/ABA_coldcuts_GTEx_ontology_CgG_mapped.tsv' #manually mapped CgG regions between ABA and Coldcuts, see CgG_mapping_ABA_Coldcuts.txt
+#full_brainont_path<-"./Data/brainseg_ontology_half_singularCGG.tsv" #one single CgG region (not displayed in the standard segmentation)
+#full_brainont_path<-"./Data/ABA_coldcuts_GTEx_ontology.tsv" #automatic mapping of CgG - may produce unexpected results
+
 celldata_filepath<-'./Data/human_mca_smartseq.tsv'
 gtex<-read_tsv(gtexpath)
 n_enrichment_categories_toshow<-20
@@ -40,6 +54,151 @@ abaincc<-brainontology_data %>%
 hugo<-read_tsv('./Data/HUGO_ensembl_extended.txt')
 universe_d<-unique(hugo$`Approved symbol`)
 #-----Functions-----
+get_signaling_profile_genes_formol<-function(mol_name, direction, filename='gene_mapping.tsv', return=FALSE, save=TRUE, small_molecule_receptor_interactions_filename=small_molecule_receptor_interactions_filename){
+  # generates a profile of receptor genes for a given naturally occurring signaling molecule
+  smolmol_rec_interactions<-read_tsv(small_molecule_receptor_interactions_filename)
+  smolmol_rec_interactions<-smolmol_rec_interactions%>% 
+    filter(`ligand name`==mol_name) %>% 
+    select(pipe_genesymbol) %>% 
+    mutate(gene_target_interaction_direction=direction) 
+  if (save==TRUE){
+    smolmol_rec_interactions %>% 
+      write_tsv(filename)    
+  }
+  if (return==TRUE){
+    return(smolmol_rec_interactions)
+  }
+}
+
+get_signaling_profile_for_molcombo<-function(molnames, moldirections, filename='gene_mapping.csv', return=FALSE, save=TRUE, interfile=small_molecule_receptor_interactions_filename){
+  
+  resdata<-list()
+  for (ind in c(1:length(molnames))){
+    molname=molnames[ind]
+    moldirection=moldirections[ind]
+    moldata<-get_signaling_profile_genes_formol(molname, moldirection, filename='temp.tsv', return=TRUE, save=FALSE, small_molecule_receptor_interactions_filename=interfile)
+    if (length(moldata$pipe_genesymbol)>0){
+      moldata$mol=molname
+      resdata<-c(resdata, list(moldata))
+    }
+  }
+  print(resdata)
+  resdata<-resdata%>%reduce(full_join)
+  resdata<-resdata %>% 
+    select(-mol) %>% 
+    group_by(pipe_genesymbol) %>% 
+    summarise_at('gene_target_interaction_direction', .funs=sum) %>% 
+    filter(gene_target_interaction_direction!=0)
+  
+  if (save==TRUE){
+    resdata %>% 
+      write_tsv(filename)    
+  }
+  if (return==TRUE){
+    return(resdata)
+  }
+  
+}
+
+rank_compounds<-function(mapping_file, mode){
+  print("Starteddrug selection process...")
+  interdb<-readRDS(db_long_filename)
+  intermapping<-read_tsv(interactions_mapping_filename)
+  if (mode=='signaling_molecules'){
+    signaling_profile=read_tsv(mapping_file)
+      mol_names=signaling_profile$molname
+      mol_directions=signaling_profile$signaling_change
+      genemapping=get_signaling_profile_for_molcombo(molnames=mol_names, moldirections=mol_directions, filename=gene_mapping_filename, return=TRUE, save=FALSE)
+  } else {
+    
+    genemapping=mapping_file
+    
+  }
+  sources<-read_tsv(sourcelist) %>% 
+    select(source) %>% 
+    pull()
+  
+  interdb<-interdb %>% 
+    filter(source %in% sources)
+  #print(interdb)
+  #print(genemapping)
+  interdb<-left_join(interdb, genemapping)
+  interdb<-left_join(interdb, intermapping)
+  interdb<-interdb %>% 
+    drop_na(interaction_direction)
+  interdb[is.na(interdb)]<-0
+  
+  druggene_interactions_counts<-interdb %>%
+    mutate(n_interactions=1) %>% 
+    select(DRUG_Common_name, pipe_genesymbol, n_interactions) %>% 
+    distinct() %>% 
+    group_by(DRUG_Common_name) %>% 
+    summarise_at('n_interactions', sum)
+  
+  interdb<-interdb %>% 
+    mutate(interaction_score=gene_target_interaction_direction*interaction_direction)
+  
+  druggene_interactions_profile_scores<-interdb %>% 
+    select(DRUG_Common_name, pipe_genesymbol, interaction_score) %>% 
+    distinct() %>% 
+    group_by(DRUG_Common_name) %>% 
+    summarise_at('interaction_score', sum)
+  
+  druggene_target_interactions_counts<-interdb %>%
+    filter(gene_target_interaction_direction!=0) %>% 
+    mutate(n_target_interactions=1) %>% 
+    select(DRUG_Common_name, pipe_genesymbol, n_target_interactions) %>% 
+    distinct() %>% 
+    group_by(DRUG_Common_name) %>% 
+    summarise_at('n_target_interactions', sum)
+  
+  drug_summary<-left_join(druggene_interactions_profile_scores,druggene_interactions_counts)
+  drug_summary<-left_join(drug_summary, druggene_target_interactions_counts)
+  drug_summary[is.na(drug_summary)]<-0
+  drug_summary<-drug_summary %>% 
+    mutate(target_profile_interaction_specificity=n_target_interactions/n_interactions)
+  
+  drug_summary<-drug_summary %>% 
+    mutate(is_profile_active_drug=interaction_score>0)
+  
+  drug_profilegene_interactions_table<-interdb %>% 
+    filter(gene_target_interaction_direction!=0) %>% 
+    select(DRUG_Common_name, pipe_genesymbol, interaction_score) %>% 
+    distinct() %>% 
+    group_by(DRUG_Common_name, pipe_genesymbol) %>% 
+    summarise_at('interaction_score',sum) %>% 
+    spread(key=pipe_genesymbol, value=interaction_score)
+  
+  drug_summary<-left_join(drug_summary,drug_profilegene_interactions_table)
+  drug_summary[is.na(drug_summary)]<-0
+  experiment_result<-list()
+  experiment_result$drug_summary<-drug_summary
+  experiment_result$gene_profile<-genemapping
+  experiment_result$interactions_profile<-intermapping
+  experiment_result$sources<-sources
+  experiment_result$db<-interdb
+  experiment_result
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 remap_genes<-function(genes){
   df<-tibble(genes=genes)
   df %>% 
@@ -113,11 +272,29 @@ list_to_t2g<-function(gene_set_list, universe=universe_d){
     select(gs_name, gene_symbol)
   
   res<-rbind(res, add_cat)
+  res
 }
 
+enrich_genesets_fgsea<-function(geneset_list_named, expr_df, sources='aba_ds_adult'){
+  ind=1
+  for (data in geneset_list_named){
+    print(ind)
+    gsname<-names(geneset_list_named)[ind]
+    expr_df<-get_expression_df(sources=sources)
+    enr_results_abafgsea<-enrich_genes_fgsea(genes, expr_df, return_only_NES=TRUE)
+    colnames(enr_results_abafgsea)<-c('target', gsname)
+    
+    if (ind==1){
+      res<-enr_results_abafgsea
+    } else {
+      res<-left_join(res, enr_results_abafgsea, by='target')
+    }
+    ind=ind+1
+  }
+  res
+}
 
-
-enrich_genes_fgsea<-function(genes, expr_df){ #expr_df - a dataframe with first column 'hgnc_symbol' and other columns speifying expression levels across the analysed objects
+enrich_genes_fgsea<-function(genes, expr_df, return_only_NES=FALSE){ #expr_df - a dataframe with first column 'hgnc_symbol' and other columns speifying expression levels across the analysed objects
   gene_sets<-c()
   gene_sets$gs<-genes
   enr_result<-'Undefined'
@@ -127,6 +304,7 @@ enrich_genes_fgsea<-function(genes, expr_df){ #expr_df - a dataframe with first 
     print('Processing structure:')
     print(reg)
     expr_vec<-expr_df[[reg]]
+    expr_vec=expr_vec+runif(length(expr_vec))*0.000001 #this operation - to break s
     names(expr_vec)<-expr_df[['hgnc_symbol']]
     fgsea_res<-fgsea(pathways = gene_sets, 
                      stats = expr_vec,
@@ -143,9 +321,16 @@ enrich_genes_fgsea<-function(genes, expr_df){ #expr_df - a dataframe with first 
     }
     started=1
   }
-  enr_result<-enr_result %>% 
-    relocate(target) %>% 
-    arrange(padj)
+  
+  if (return_only_NES==TRUE){
+    enr_result<-enr_result %>% 
+      relocate(target) %>% 
+      select(target, NES)
+  } else {
+    enr_result<-enr_result %>% 
+      relocate(target) %>% 
+      arrange(padj)
+  }
 }
 
 enrich_genes_geneset<-function(genes, expr_df, quantile){ #expr_df - a dataframe with first column 'hgnc_symbol' and other columns speifying expression levels across the analysed objects, quantile - a quantile to subset top expressed genes for gene set generation
@@ -533,7 +718,7 @@ get_expression_df<-function(sources=c('gtex','aba_ds_adult','aba_cells'), filter
 # res@geneSets
 # 
 # dplyr::mutate(res, qscore = -log(p.adjust, base=10)) %>% 
-#   barplot(x="qscore", showCategory=20)
+#    barplot(x="qscore", showCategory=20)
 
 #----TESTING-END----
 #----DEBUG----
@@ -565,6 +750,21 @@ get_expression_df<-function(sources=c('gtex','aba_ds_adult','aba_cells'), filter
 
 #-----NEW FEATURE-----
 # 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # genes<-read_tsv('/home/biorp/Gitrepos/Psychiatry/ANHEDONIA/EnViBr/Input_examples/gene_list.csv')$genes
 # genes_vec<-rep(1, length(genes))
 # names(genes_vec)<-genes
@@ -654,7 +854,7 @@ get_expression_df<-function(sources=c('gtex','aba_ds_adult','aba_cells'), filter
 # 
 # 
 # 
-# 
+#
 # 
 # 
 # 
@@ -731,3 +931,47 @@ get_expression_df<-function(sources=c('gtex','aba_ds_adult','aba_cells'), filter
 #                                     remove_axes=TRUE,
 #                                     rng=neg_logp_minfwer_span)   
 #Error in rownames: trying to get slot "values" from an object of a basic class ("NULL") with no slots
+
+# hf<-read.csv(brainseg_ontology_filepath_half)
+# length(unique(hf$acronym))
+# length(atc_targets)
+# 
+# atc_targets_t2g %>% 
+#   filter(gs_name!='Undefined') %>% 
+#   write_tsv('atc_targets.tsv')
+# ont<-read_tsv('/home/biorp/Gitrepos/Psychiatry/ANHEDONIA/EVB/Data/ABA_coldcuts_GTEx_ontology.tsv')
+# ont2<-ont %>% 
+#   dplyr::select(structure_id, structure_name) %>% 
+#   distinct()
+# 
+# library("readxl")
+# enr_res<-read_xlsx('/home/biorp/Gitrepos/Psychiatry/ANHEDONIA/EVBr_Analysis_Data/ABA_fgsea_brainregions.xlsx', skip=1)
+# enr_res_full<-read_xlsx('/home/biorp/Gitrepos/Psychiatry/ANHEDONIA/EVBr_Analysis_Data/ABA_fgsea_allregions.xlsx', skip=1)
+# 
+# 
+# enr_res_full<-enr_res_full %>%
+#   rename(structure_id=target)
+# enr_res_full$structure_id<-as.character(enr_res_full$structure_id)
+# enr_res_full<-left_join(enr_res_full, ont2)
+# enr_res_full<-left_join(enr_res_full, ont)
+# enr_res_full %>% 
+#   write_tsv('/home/biorp/Gitrepos/Psychiatry/ANHEDONIA/EVBr_Analysis_Data/ABA_fgsea_brainregions_ann.tsv')
+# view(enr_res_full)
+#COMPARISON OF GENE EXPRESSION LEVELS
+# colnames(dataset_adult)
+# library(ggsci)
+# 
+# dataset_adult %>% 
+#   select(hgnc_symbol, structure, signal) %>% 
+#   filter(hgnc_symbol %in% genes) %>% 
+#   group_by(hgnc_symbol, structure) %>%
+#   summarize_at('signal', .funs='mean') %>% 
+#   arrange(signal) %>% 
+#   ggplot(aes(x=reorder(hgnc_symbol, signal), y=signal, hue=hgnc_symbol))+
+#   geom_boxplot()+
+#   theme_classic()+
+#   theme(axis.text.x = element_text(angle = 90))+
+#   xlab('gene')+
+#   ylab('Expression signal')+
+#   coord_flip()
+  
