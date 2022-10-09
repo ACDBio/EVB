@@ -69,7 +69,12 @@ get_signaling_profile_genes_formol<-function(mol_name, direction, filename='gene
     return(smolmol_rec_interactions)
   }
 }
-
+subset_compounds<-function(compounds){
+  full_drugdb %>% 
+    filter(DRUG_Common_name %in% compounds)
+  
+  
+}
 get_signaling_profile_for_molcombo<-function(molnames, moldirections, filename='gene_mapping.csv', return=FALSE, save=TRUE, interfile=small_molecule_receptor_interactions_filename){
   
   resdata<-list()

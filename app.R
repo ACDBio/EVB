@@ -8,6 +8,9 @@ library(shinydashboard)
 #----2. Make visualization for ABAEnrichment results----
 #----3. Check why differences with original run with fgsea ABA----
 #----4. Dockerize----
+autocomplete_list<-read_tsv('./Data/compounds.tsv') %>% 
+  select(DRUG_Common_name) %>% 
+  pull()
 
 
 withConsoleRedirect <- function(containerId, expr) {
@@ -61,6 +64,18 @@ ui <- fluidPage(
                            "text/tab-separated-values,text/plain",
                            ".tsv")),
       checkboxInput("SelDrugs_mode_signmol", "Signaling molecule input provided", value = FALSE),
+      tags$br(),
+      tags$hr(),
+      h2("Get compound interactions"),
+      checkboxInput("GetTargets", "Get information on compound interactions", value = FALSE),
+      selectizeInput(
+        inputId = 'tarcompound',
+        label = 'Input compound',
+        choices = autocomplete_list,
+        selected = NULL,
+        multiple = TRUE, # allow for multiple inputs
+        options = list(create = FALSE) # if TRUE, allows newly created inputs
+      ),
       actionButton("RUN", "Run the analysis")
       
       
@@ -99,7 +114,8 @@ ui <- fluidPage(
         uiOutput("drugs_ui"),
         uiOutput('atc_ui'),
         uiOutput('sm_ui'),
-        uiOutput('drugsel_ui')
+        uiOutput('drugsel_ui'),
+        uiOutput('drugtar_ui')
       )
     )
     )
@@ -813,6 +829,7 @@ server <- function(input, output, session) {
            }
            
       if (input$SelDrugs==TRUE){
+        showModal(modalDialog("Selecting compounds...", footer=NULL))
         if (!is.null(input$mapping_file)){
             mapping_file<-read_tsv(input$mapping_file$datapath)
           
@@ -831,7 +848,6 @@ server <- function(input, output, session) {
             if(length(check1)==0){check1 <- F}
             print(check1)
             if(check1){
-              print("Here")
               fluidRow(style=border_style,tabBox(title = h1("Compound selection results"),id= "drugsel_tabs", width = 12, #height = "420px",
                                                  tabPanel("Compound selection table", DTOutput("drugsel_df")),
                                                  tabPanel("Gene profile", DTOutput("genemapping_df"))
@@ -841,9 +857,28 @@ server <- function(input, output, session) {
           output$drugsel_df<-renderDT(res$drug_summary, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
           output$genemapping_df<-renderDT(res$gene_profile, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
           print("Done!")
-          
+          removeModal()
           
         }
+      }
+    
+    if (input$GetTargets==TRUE){
+        showModal(modalDialog("Getting compound interactions...", footer=NULL))
+        restar<-subset_compounds(input$tarcompound)
+        output$drugtar_ui <- renderUI({
+          check1 <- input$GetTargets==TRUE
+          if(length(check1)==0){check1 <- F}
+          print(check1)
+          if(check1){
+            fluidRow(style=border_style,tabBox(title = h1("Compound selection results"),id= "drugsel_tabs", width = 12, #height = "420px",
+                                               tabPanel("Compound interactions", DTOutput("tar_df"))
+            ))}})
+        
+        
+        output$tar_df<-renderDT(restar, filter = "top" ,extensions = 'Buttons', options=table_opts, server = FALSE)
+        print("Done!")
+        
+        removeModal()  
       }
       
   })
