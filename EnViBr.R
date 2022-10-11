@@ -110,7 +110,6 @@ rank_compounds<-function(mapping_file, mode){
   print("Starteddrug selection process...")
   interdb<-readRDS(db_long_filename)
   intermapping<-read_tsv(interactions_mapping_filename)
-  print('HERE1')
   print(mode)
   if (mode=='signaling_molecules'){
     signaling_profile=mapping_file
