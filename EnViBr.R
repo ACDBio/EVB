@@ -10,6 +10,7 @@ library(fgsea)
 library(msigdbr)
 library(enrichR)
 library(clusterProfiler)
+library(purrr)
 #library(plyr)
 #For each region in ABAEnrichment when visualization is done with Coldcuts, the data for the region with min FWER within Coldcuts structure is displayed.
 data("dataset_adult")
@@ -88,7 +89,7 @@ get_signaling_profile_for_molcombo<-function(molnames, moldirections, filename='
     }
   }
   print(resdata)
-  resdata<-resdata%>%reduce(full_join)
+  resdata<-resdata%>%purrr::reduce(full_join)
   resdata<-resdata %>% 
     select(-mol) %>% 
     group_by(pipe_genesymbol) %>% 
@@ -109,12 +110,17 @@ rank_compounds<-function(mapping_file, mode){
   print("Starteddrug selection process...")
   interdb<-readRDS(db_long_filename)
   intermapping<-read_tsv(interactions_mapping_filename)
+  print('HERE1')
+  print(mode)
   if (mode=='signaling_molecules'){
-    signaling_profile=read_tsv(mapping_file)
-      mol_names=signaling_profile$molname
-      mol_directions=signaling_profile$signaling_change
-      genemapping=get_signaling_profile_for_molcombo(molnames=mol_names, moldirections=mol_directions, filename=gene_mapping_filename, return=TRUE, save=FALSE)
-  } else {
+    signaling_profile=mapping_file
+    mol_names=signaling_profile$molname
+    mol_directions=signaling_profile$signaling_change
+
+    genemapping=get_signaling_profile_for_molcombo(molnames=mol_names, moldirections=mol_directions, filename=gene_mapping_filename, return=TRUE, save=FALSE)
+
+    print(genemapping)
+    } else {
     
     genemapping=mapping_file
     

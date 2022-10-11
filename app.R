@@ -837,8 +837,10 @@ server <- function(input, output, session) {
           #   mapping_file<-c()
           #   output$mapping_file<-renderText('No mapping found in the input. Stopping.')
           # }
+          #print("SelDrugs_mode_signmol")  
+          #print(input$SelDrugs_mode_signmol)
           if (input$SelDrugs_mode_signmol==TRUE){
-            res<-rank_compounds(mapping_file, mode='signaling_molecules')
+            res<-rank_compounds(mapping_file, mode='signaling_molecules') 
           } else {
             res<-rank_compounds(mapping_file, mode='gene_profile')
             
